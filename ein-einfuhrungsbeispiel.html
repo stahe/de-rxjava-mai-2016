@@ -1,0 +1,1540 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="Einführung in RxJava. Anwendungen in Swing- und Android-Umgebungen">
+      
+      
+        <meta name="author" content="Serge Tahé">
+      
+      
+        <link rel="canonical" href="https://stahe.github.io/de-rxjava-mai-2016/ein-einfuhrungsbeispiel.html">
+      
+      
+        <link rel="prev" href="einleitung.html">
+      
+      
+        <link rel="next" href="signaturen-generischer-klassen-und-methoden.html">
+      
+      
+        
+      
+      
+      <link rel="icon" href="assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.0">
+    
+    
+      
+        <title>2. Ein Einführungsbeispiel - Einführung in RxJava. Anwendungen in Swing- und Android-Umgebungen</title>
+      
+    
+    
+      <link rel="stylesheet" href="assets/stylesheets/main.618322db.min.css">
+      
+        
+        <link rel="stylesheet" href="assets/stylesheets/palette.ab4e12ef.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="stylesheets/focus.css">
+    
+      <link rel="stylesheet" href="stylesheets/bidi.css">
+    
+    <script>__md_scope=new URL(".",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-EBZC3JVJNR"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    var siteName = "Einführung in RxJava. Anwendungen in Swing- und Android-Umgebungen";
+    gtag('config', 'G-EBZC3JVJNR', {
+        'page_title': siteName
+    });
+  </script>
+
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="blue" data-md-color-accent="purple">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#2-ein-einfuhrungsbeispiel" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="index.html" title="Einführung in RxJava. Anwendungen in Swing- und Android-Umgebungen" class="md-header__button md-logo" aria-label="Einführung in RxJava. Anwendungen in Swing- und Android-Umgebungen" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Einführung in RxJava. Anwendungen in Swing- und Android-Umgebungen
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              2. Ein Einführungsbeispiel
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: light)" data-md-color-scheme="default" data-md-color-primary="blue" data-md-color-accent="purple"  aria-label="Zum Dunkelmodus wechseln"  type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="Zum Dunkelmodus wechseln" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a4 4 0 0 0-4 4 4 4 0 0 0 4 4 4 4 0 0 0 4-4 4 4 0 0 0-4-4m0 10a6 6 0 0 1-6-6 6 6 0 0 1 6-6 6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: dark)" data-md-color-scheme="slate" data-md-color-primary="blue" data-md-color-accent="purple"  aria-label="Zum Hellmodus wechseln"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="Zum Hellmodus wechseln" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 18c-.89 0-1.74-.2-2.5-.55C11.56 16.5 13 14.42 13 12s-1.44-4.5-3.5-5.45C10.26 6.2 11.11 6 12 6a6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+      <div class="md-header__source">
+        <a href="https://stahe.github.io/de-rxjava-mai-2016" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M439.6 236.1 244 40.5c-5.4-5.5-12.8-8.5-20.4-8.5s-15 3-20.4 8.4L162.5 81l51.5 51.5c27.1-9.1 52.7 16.8 43.4 43.7l49.7 49.7c34.2-11.8 61.2 31 35.5 56.7-26.5 26.5-70.2-2.9-56-37.3L240.3 199v121.9c25.3 12.5 22.3 41.8 9.1 55-6.4 6.4-15.2 10.1-24.3 10.1s-17.8-3.6-24.3-10.1c-17.6-17.6-11.1-46.9 11.2-56v-123c-20.8-8.5-24.6-30.7-18.6-45L142.6 101 8.5 235.1C3 240.6 0 247.9 0 255.5s3 15 8.5 20.4l195.6 195.7c5.4 5.4 12.7 8.4 20.4 8.4s15-3 20.4-8.4l194.7-194.7c5.4-5.4 8.4-12.8 8.4-20.4s-3-15-8.4-20.4"/></svg>
+  </div>
+  <div class="md-source__repository">
+    GitHub
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+  
+
+<nav class="md-nav md-nav--primary md-nav--integrated" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="index.html" title="Einführung in RxJava. Anwendungen in Swing- und Android-Umgebungen" class="md-nav__button md-logo" aria-label="Einführung in RxJava. Anwendungen in Swing- und Android-Umgebungen" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    Einführung in RxJava. Anwendungen in Swing- und Android-Umgebungen
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://stahe.github.io/de-rxjava-mai-2016" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M439.6 236.1 244 40.5c-5.4-5.5-12.8-8.5-20.4-8.5s-15 3-20.4 8.4L162.5 81l51.5 51.5c27.1-9.1 52.7 16.8 43.4 43.7l49.7 49.7c34.2-11.8 61.2 31 35.5 56.7-26.5 26.5-70.2-2.9-56-37.3L240.3 199v121.9c25.3 12.5 22.3 41.8 9.1 55-6.4 6.4-15.2 10.1-24.3 10.1s-17.8-3.6-24.3-10.1c-17.6-17.6-11.1-46.9 11.2-56v-123c-20.8-8.5-24.6-30.7-18.6-45L142.6 101 8.5 235.1C3 240.6 0 247.9 0 255.5s3 15 8.5 20.4l195.6 195.7c5.4 5.4 12.7 8.4 20.4 8.4s15-3 20.4-8.4l194.7-194.7c5.4-5.4 8.4-12.8 8.4-20.4s-3-15-8.4-20.4"/></svg>
+  </div>
+  <div class="md-source__repository">
+    GitHub
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="index.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Willkommen
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="einleitung.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    1. Einleitung
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    2. Ein Einführungsbeispiel
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="ein-einfuhrungsbeispiel.html" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    2. Ein Einführungsbeispiel
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#21-die-architektur-der-beispielanwendung" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2.1. Die Architektur der Beispielanwendung
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#22-die-ausfuhrbare-datei" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2.2. Die ausführbare Datei
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#23-die-synchrone-schnittstelle" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2.3. Die synchrone Schnittstelle
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#24-der-synchrone-aufruf" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2.4. Der synchrone Aufruf
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#25-testen-synchroner-aufrufe" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2.5. Testen synchroner Aufrufe
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#26-die-asynchrone-schnittstelle-und-ihre-implementierung" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2.6. Die asynchrone Schnittstelle und ihre Implementierung
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#27-der-asynchrone-aufruf" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2.7. Der asynchrone Aufruf
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#28-testen-asynchroner-aufrufe" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2.8. Testen asynchroner Aufrufe
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="2.8. Testen asynchroner Aufrufe">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#281-mit-dem-schedulersio-scheduler" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2.8.1. mit dem [Schedulers.io]-Scheduler
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#282-mit-dem-scheduler-schedulerscomputation" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2.8.2. mit dem Scheduler [Schedulers.computation]
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#283-mit-dem-scheduler-schedulersnewthread" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2.8.3. mit dem Scheduler [Schedulers.newThread]
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#284-mit-den-schedulern-schedulerstrampoline-schedulersimmediate" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2.8.4. mit den Schedulern [Schedulers.trampoline, Schedulers.immediate]
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#29-randfalle" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2.9. Randfälle
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#210-fazit" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2.10. Fazit
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="signaturen-generischer-klassen-und-methoden.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    3. Signaturen generischer Klassen und Methoden
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="java-8-lambda-ausdrucke.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    4. Java 8 Lambda-Ausdrücke
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="der-typ-streamt-in-java-8.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    5. Der Typ Stream<T> in Java 8
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="die-funktionalen-schnittstellen-der-rxjava-bibliothek.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    6. Die funktionalen Schnittstellen der RxJava-Bibliothek
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="die-rxjava-bibliothek.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    7. Die RxJava-Bibliothek
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="rxjava-in-der-swing-umgebung.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    8. RxJava in der Swing-Umgebung
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="rxjava-in-der-android-umgebung.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    9. RxJava in der Android-Umgebung
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="anhange.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    10. Anhänge
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+
+<p><a id="refheading51101774887325"></a></p>
+<h1 id="2-ein-einfuhrungsbeispiel">2. <span style="color: #365f91">Ein Einführungsbeispiel</span></h1>
+<p>Meine ersten Berührungen mit RxJava hatte ich durch Kurse und Tutorials, die ich online gefunden habe. Abgesehen davon, dass die Theorie Konzepte verwendete, die mir nicht vertraut waren und die ich nur schwer verstehen konnte, konnte ich nicht wirklich erkennen, wie sie im Alltag nützlich sein könnte. Wir beginnen daher mit einem Beispiel (einem einfachen, wie ich hoffe), bei dem der Einsatz von RxJava zu einer echten Vereinfachung des Codes führt, und versuchen von dort aus, die wichtigen Elemente dieser Bibliothek herauszuarbeiten.</p>
+<p><span style="color: #000000">Die RxJava-Bibliothek basiert auf folgendem Konzept: Ein Strom von Elementen vom Typ T </span><strong>Observable&lt;T&gt;</strong> <span style="color: #000000">wird von einem oder mehreren Abonnenten (Subscribers, Observers, Consumers) </span><strong>vom Typ Subscriber&lt;T&gt;</strong> <span style="color: #000000">beobachtet. Die RxJava-Bibliothek ermöglicht es, den </span><strong>Observable&lt;T&gt;</strong><span style="color: #000000">-Stream in einem Thread T1 und seinen </span><strong>Subscriber&lt;T&gt;</strong><span style="color: #000000">-Beobachter in einem Thread T2 auszuführen, ohne dass sich der Entwickler um die Verwaltung des Lebenszyklus dieser Threads oder um naturgemäß schwierige Probleme wie den Datenaustausch zwischen Threads und deren Synchronisation zur Ausführung einer globalen Aufgabe kümmern muss. Sie erleichtert somit die asynchrone Programmierung.</span></p>
+<p><span style="color: #000000">Ein </span><strong><span style="color: #000000">Observable&lt;T&gt;</span></strong><span style="color: #000000">-Stream erzeugt Elemente vom Typ T, die bei ihrer Erzeugung beobachtet werden können. Befinden sich der Beobachter und das Observable (ein Begriff, der hier im weiteren Sinne für den Typ Observable&lt;T&gt; verwendet wird) im selben Thread, kann das Observable das Element (i+1) erst dann erzeugen, wenn der Beobachter das Element i verarbeitet hat. Es gibt nur wenige Fälle, in denen diese Architektur sinnvoll ist. Befinden sich der Beobachter und das Observable nicht im selben Thread, verhalten sich das Observable und sein Beobachter autonom: Das Observable sendet in seinem eigenen Tempo, und der Beobachter verarbeitet in seinem eigenen Tempo. Hierin liegt der Wert der Bibliothek. Bislang haben wir nur einen einzelnen Beobachter behandelt. In der Realität kann ein Observable eine beliebige Anzahl von Beobachtern haben.</span></p>
+<p><a id="refheading104080374082361"></a></p>
+<h2 id="21-die-architektur-der-beispielanwendung">2.1. <span style="color: #4f81bd">Die Architektur der Beispielanwendung</span></h2>
+<p>Die Beispielanwendung weist die folgende Architektur auf:</p>
+<p><img src="images/10000000000003680000015623D3D1A0.png" width="436" height="171" style="width:11.531cm;height:4.523cm;" alt="Image" class="odt-zoomable" data-zoom-src="images/10000000000003680000015623D3D1A0.png" /></p>
+<ul>
+  <li>In [1] generiert eine Service-Schicht Listen mit Zufallszahlen. Diese Schicht läuft im selben Thread wie die [swing]-Methode, die sie nutzt. Sie generiert ihre Zahlen dann synchron;
+  </li>
+  <li>in [2] ermöglicht eine mit RxJava implementierte dünne Anpassungsschicht die asynchrone Bereitstellung desselben Dienstes für die [swing]-Schicht: Dieser Dienst kann in einem anderen Thread als die [swing]-Methode laufen, die ihn nutzt;
+  </li>
+  <li>Der Aufruf [4] ist synchron, während die Aufrufe [5-6] asynchron sind;
+  </li>
+</ul>
+
+<p>Was wir hier zeigen wollen, ist, dass die Rx-Bibliothek es einfach macht, eine <strong>synchrone</strong> Schnittstelle in eine <strong>asynchrone</strong> umzuwandeln. Warum ist das nützlich? Ereignisse in einer Swing-Schnittstelle werden in einem Thread verarbeitet, <em>der</em> gemeinhin als <em>Ereignisschleife</em> bezeichnet wird. Ereignisse werden in eine Warteschlange gestellt und nacheinander verarbeitet. Das Ereignis Ei+1 kann erst verarbeitet werden, wenn das vorherige Ereignis Ei vollständig verarbeitet wurde. Es ist daher wichtig, dass die Ereignisbehandlung so kurz wie möglich ist, damit die GUI reaktionsfähig bleibt. Manchmal kann die Bearbeitung eines Ereignisses lange dauern. Dies ist der Fall, wenn die Bearbeitung einen Netzwerkzugriff erfordert. Wenn wir die GUI nicht in einer für den Benutzer inakzeptablen Weise einfrieren wollen, müssen diese Netzwerkoperationen in Threads ausgeführt werden, die von <em>der Ereignisschleife</em> getrennt sind, um diese zu entlasten. Dies führt uns in den Bereich der parallelen Programmierung (bei der mehrere Threads parallel laufen), die zu Recht als schwierig gilt. Die Rx-Bibliothek bietet eine einfache und elegante Lösung für dieses Problem.</p>
+<p>Um lang andauernde Prozesse zu simulieren, liefert der Dienst im Beispiel seine Zufallszahlen nach einer bestimmten Verzögerung aus, sodass wir das Verhalten der grafischen Benutzeroberfläche beobachten können.</p>
+<p><a id="refheading104082374082361"></a></p>
+<h2 id="22-die-ausfuhrbare-datei">2.2. <span style="color: #4f81bd">Die ausführbare Datei</span></h2>
+<p>Die ausführbare Datei für die Beispielanwendung befindet sich im Ordner [dvp/executables] der Beispiele:</p>
+<table class="odt-table" style="border-collapse: collapse; width: 100%; margin-bottom: 1em;"><tr><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top; text-align: left;"><img src="images/1000000000000083000000675286CE78.png" width="92" height="72" style="display:inline-block; margin:4px;width:2.431cm;height:1.91cm;" class="odt-zoomable" data-zoom-src="images/1000000000000083000000675286CE78.png" /></td><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top; text-align: left;"><img src="images/10000000000002250000012749324B0E.png" width="384" height="207" style="display:inline-block; margin:4px;width:10.171cm;height:5.465cm;" class="odt-zoomable" data-zoom-src="images/10000000000002250000012749324B0E.png" /></td></tr></table>
+
+<p>Es gibt verschiedene Möglichkeiten, das Archiv [swing-01] auszuführen, je nach Konfiguration des verwendeten Rechners. Sie können beispielsweise die Schritte [1-3] befolgen. Dadurch wird die folgende grafische Benutzeroberfläche angezeigt:</p>
+<table class="odt-table" style="border-collapse: collapse; width: 100%; margin-bottom: 1em;"><tr><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top; text-align: left;"><img src="images/10000000000002E6000001E918B6D6A5.png" width="460" height="303" style="display:inline-block; margin:4px;width:12.183cm;height:8.029cm;" class="odt-zoomable" data-zoom-src="images/10000000000002E6000001E918B6D6A5.png" /></td><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top; text-align: left;">&nbsp;</td></tr></table>
+
+<ul>
+  <li>Die Oberfläche verfügt über zwei Registerkarten [1-2]: eine [Request] zum Senden einer Anfrage an den Zufallszahlengenerator-Dienst und die andere [Response] zur Anzeige der empfangenen Zahlen;
+  </li>
+  <li>Unter [3] geben Sie an, wie viele Anfragen Sie an den Dienst senden möchten;
+  </li>
+  <li>Unter [4] geben Sie den gewünschten Bereich für die Zahlengenerierung [a,b] an;
+  </li>
+  <li>In [5] wird die Anzahl der vom Dienst zurückgegebenen Werte auf eine Zufallszahl innerhalb des vom Benutzer festgelegten Intervalls [minCount, maxCount] gesetzt;
+  </li>
+  <li>In [6] wartet der Dienst vor der Rückgabe seiner Antwort <i>delay </i>Millisekunden, wobei <i>delay </i>eine Zufallszahl innerhalb des vom Benutzer definierten Intervalls [minDelay, maxDelay] ist;
+  </li>
+  <li>Standardmäßig verwendet die [swing]-Schicht die synchrone Schnittstelle des Dienstes. Um die asynchrone Schicht zu verwenden, muss der Benutzer [7] aktivieren. In diesem Fall läuft der Generierungsdienst in Threads, die von der <i>Ereignisschleife</i> der GUI getrennt sind. Die Rx-Bibliothek bietet verschiedene Strategien zur Erzeugung dieser Threads. Der Benutzer kann seine Strategie in [8] auswählen;
+  </li>
+  <li>Die Zahlengenerierung erfolgt über die Schaltfläche [9];
+  </li>
+</ul>
+
+<table class="odt-table" style="border-collapse: collapse; width: 100%; margin-bottom: 1em;"><tr><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top; text-align: left;"><img src="images/10000000000002E6000001E9A5AA9CE8.png" width="519" height="342" style="display:inline-block; margin:4px;width:13.741cm;height:9.056cm;" class="odt-zoomable" data-zoom-src="images/10000000000002E6000001E9A5AA9CE8.png" /></td><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top; text-align: left;">&nbsp;</td></tr></table>
+
+<ul>
+  <li>[10] zeigt die Ergebnisse. Wir werden deren Struktur erläutern;
+  </li>
+  <li>in [11] die Anzahl der erhaltenen Ergebnisse;
+  </li>
+  <li>in [12] die Ausführungszeit in Millisekunden;
+  </li>
+  <li>in [13] hat der Benutzer die Möglichkeit, die Ausführung abzubrechen;
+  </li>
+</ul>
+
+<p>Jedes Ergebnis hat das folgende Format:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>{&quot;idClient&quot;:0,&quot;serviceResponse&quot;:{&quot;delay&quot;:412,&quot;aleas&quot;:[146,115,128,174,159,112,162,127],&quot;executedOn&quot;:&quot;RxComputationThreadPool-6&quot;},&quot;observedOn&quot;:&quot;AWT-EventQueue-0&quot;,&quot;requestAt&quot;:&quot;02:42:47:708&quot;,&quot;responseAt&quot;:&quot;02:42:52:931&quot;}
+</code></pre></div>
+<ul>
+  <li>[idClient]: die Anfrage-ID. Beachten Sie, dass mehrere Anfragen an den Generierungsdienst gesendet werden;
+  </li>
+  <li>[delay]: die Wartezeit in Millisekunden, die der Dienst vor dem Senden seines Ergebnisses vermerkt hat;
+  </li>
+  <li>[aleas]: die vom Dienst zurückgegebenen Zufallszahlen;
+  </li>
+  <li>[executedOn]: der Name des Threads, in dem der Dienst ausgeführt wurde;
+  </li>
+  <li>[observedOn]: der Name des Threads, der das Ergebnis angezeigt hat. Bei einer Swing-Oberfläche kann dies nur der Event-Loop-Thread sein, hier [AWT-EventQueue-0];
+  </li>
+  <li>[requestAt]: der Zeitpunkt der Anfrage im Format [Stunden:Minuten:Sekunden:Millisekunden];
+  </li>
+  <li>[responseAt]: der Zeitpunkt des Erhalts der Ergebnisse im gleichen Format;
+  </li>
+</ul>
+
+<p>Wir stellen nun die Codeausschnitte vor, die zum Verständnis des Beispiels erforderlich sind.</p>
+<p><a id="refheading31250117925167"></a></p>
+<h2 id="23-die-synchrone-schnittstelle">2.3. <span style="color: #4f81bd">Die synchrone Schnittstelle</span></h2>
+<p><img src="images/10000000000003680000015623D3D1A0.png" width="436" height="171" style="width:11.531cm;height:4.523cm;" alt="Image" class="odt-zoomable" data-zoom-src="images/10000000000003680000015623D3D1A0.png" /></p>
+<p>Die Service-Schicht [1] stellt die folgende Schnittstelle bereit:</p>
+<div class="odt-code-rich" data-linenums="true" style="counter-reset: odtline 0;"><pre><code class="language-sql">
+<span class="odt-code-line"><span class="odt-code-line-content"><span style="font-weight:bold;color:#7f0055">public</span><span style="color:#000000"> </span><span style="font-weight:bold;color:#7f0055">interface</span><span style="color:#000000"> IService {</span></span></span>
+<span class="odt-code-line"><span class="odt-code-line-content">  <span style="color:#000000">// random numbers in [a,b]</span></span></span>
+<span class="odt-code-line"><span class="odt-code-line-content">  <span style="color:#000000">// n numbers are generated with random n in the interval [minCount, maxCount]</span></span></span>
+<span class="odt-code-line"><span class="odt-code-line-content">  <span style="color:#000000">// numbers are generated after a delay of milliseconds,</span></span></span>
+<span class="odt-code-line"><span class="odt-code-line-content">  <span style="color:#000000">// where [delay] is a random number in the range [minDelay, maxDelay]</span></span></span>
+<span class="odt-code-line"><span class="odt-code-line-content"><span style="color:#000000">  </span><span style="font-weight:bold;color:#7f0055">public</span><span style="color:#000000"> ServiceResponse getAleas(</span><span style="font-weight:bold;color:#7f0055">int</span><span style="color:#000000"> </span><span style="color:#6a3e3e">a</span><span style="color:#000000">, </span><span style="font-weight:bold;color:#7f0055">int</span><span style="color:#000000"> </span><span style="color:#6a3e3e">b</span><span style="color:#000000">, </span><span style="font-weight:bold;color:#7f0055">int</span><span style="color:#000000"> </span><span style="color:#6a3e3e">minCount</span><span style="color:#000000">, </span><span style="font-weight:bold;color:#7f0055">int</span><span style="color:#000000"> </span><span style="color:#6a3e3e">maxCount</span><span style="color:#000000">, </span><span style="font-weight:bold;color:#7f0055">int</span><span style="color:#000000"> </span><span style="color:#6a3e3e">minDelay</span><span style="color:#000000">, </span><span style="font-weight:bold;color:#7f0055">int</span><span style="color:#000000"> </span><span style="color:#6a3e3e">maxDelay</span><span style="color:#000000">);</span></span></span>
+<span class="odt-code-line"><span class="odt-code-line-content">}</span></span>
+</code></pre></div>
+
+<p>Die [ServiceResponse] sieht wie folgt aus:</p>
+<div class="odt-code-rich" data-linenums="true" style="counter-reset: odtline 0;"><pre><code class="language-csharp">
+<span class="odt-code-line"><span class="odt-code-line-content"><span style="font-weight:bold;color:#7f0055">public</span><span style="color:#000000"> </span><span style="font-weight:bold;color:#7f0055">class</span><span style="color:#000000"> ServiceResponse {</span></span></span>
+<span class="odt-code-line"><span class="odt-code-line-content"> </span></span>
+<span class="odt-code-line"><span class="odt-code-line-content">  <span style="color:#000000">// service waiting time</span></span></span>
+<span class="odt-code-line"><span class="odt-code-line-content"><span style="color:#000000">  </span><span style="font-weight:bold;color:#7f0055">private</span><span style="color:#000000"> </span><span style="font-weight:bold;color:#7f0055">int</span><span style="color:#000000"> </span><span style="color:#0000c0">delay</span><span style="color:#000000">;</span></span></span>
+<span class="odt-code-line"><span class="odt-code-line-content">  <span style="color:#000000">// random numbers</span></span></span>
+<span class="odt-code-line"><span class="odt-code-line-content"><span style="color:#000000">  </span><span style="font-weight:bold;color:#7f0055">private</span><span style="color:#000000"> List&lt;Integer&gt; </span><span style="color:#0000c0">aleas</span><span style="color:#000000">;</span></span></span>
+<span class="odt-code-line"><span class="odt-code-line-content">  <span style="color:#000000">// execution thread</span></span></span>
+<span class="odt-code-line"><span class="odt-code-line-content"><span style="color:#000000">  </span><span style="font-weight:bold;color:#7f0055">private</span><span style="color:#000000"> String </span><span style="color:#0000c0">executedOn</span><span style="color:#000000">;</span></span></span>
+<span class="odt-code-line"><span class="odt-code-line-content"> </span></span>
+<span class="odt-code-line"><span class="odt-code-line-content">  <span style="color:#000000">// manufacturers</span></span></span>
+<span class="odt-code-line"><span class="odt-code-line-content"> </span></span>
+<span class="odt-code-line"><span class="odt-code-line-content"><span style="color:#000000">  </span><span style="font-weight:bold;color:#7f0055">public</span><span style="color:#000000"> ServiceResponse(</span><span style="font-weight:bold;color:#7f0055">int</span><span style="color:#000000"> </span><span style="color:#6a3e3e">delay</span><span style="color:#000000">, List&lt;Integer&gt; </span><span style="color:#6a3e3e">aleas</span><span style="color:#000000">) {</span></span></span>
+<span class="odt-code-line"><span class="odt-code-line-content"><span style="color:#000000">    </span><span style="color:#0000c0">executedOn</span><span style="color:#000000"> = Thread.</span><span style="font-style:italic;color:#000000">currentThread</span><span style="color:#000000">().getName();</span></span></span>
+<span class="odt-code-line"><span class="odt-code-line-content"><span style="color:#000000">    </span><span style="font-weight:bold;color:#7f0055">this</span><span style="color:#000000">.</span><span style="color:#0000c0">delay</span><span style="color:#000000"> = </span><span style="color:#6a3e3e">delay</span><span style="color:#000000">;</span></span></span>
+<span class="odt-code-line"><span class="odt-code-line-content"><span style="color:#000000">    </span><span style="font-weight:bold;color:#7f0055">this</span><span style="color:#000000">.</span><span style="color:#0000c0">aleas</span><span style="color:#000000"> = </span><span style="color:#6a3e3e">aleas</span><span style="color:#000000">;</span></span></span>
+<span class="odt-code-line"><span class="odt-code-line-content">  }</span></span>
+<span class="odt-code-line"><span class="odt-code-line-content"> </span></span>
+<span class="odt-code-line"><span class="odt-code-line-content">  <span style="color:#000000">// getters and setters</span></span></span>
+<span class="odt-code-line"><span class="odt-code-line-content">...</span></span>
+<span class="odt-code-line"><span class="odt-code-line-content">}</span></span>
+</code></pre></div>
+
+<p>Die Antwort besteht aus drei Teilen:</p>
+<ul>
+  <li>Zeile 6: die generierten Zufallszahlen;
+  </li>
+  <li>Zeile 4: die vom Dienst beobachtete Wartezeit vor der Rückgabe seines Ergebnisses;
+  </li>
+  <li>Zeile 8: der Ausführungsthread des Dienstes;
+  </li>
+</ul>
+<p><a id="refheading36591510222748"></a></p>
+<h2 id="24-der-synchrone-aufruf">2.4. <span style="color: #4f81bd">Der synchrone Aufruf</span></h2>
+<p><img src="images/10000000000003680000015623D3D1A0.png" width="436" height="171" style="width:11.531cm;height:4.523cm;" alt="Image" class="odt-zoomable" data-zoom-src="images/10000000000003680000015623D3D1A0.png" /></p>
+<p>Wir werden nun den synchronen Aufruf [4] detailliert beschreiben, den die [swing]-Schicht an den [1]-Dienst sendet:</p>
+<div class="odt-code-rich" data-linenums="true" style="counter-reset: odtline 0;"><pre><code class="language-java">
+<span class="odt-code-line"><span class="odt-code-line-content"><span style="color:#000000">  </span><span style="font-weight:bold;color:#7f0055">private</span><span style="color:#000000"> </span><span style="font-weight:bold;color:#7f0055">void</span><span style="color:#000000"> doGenerateWithService() {</span></span></span>
+<span class="odt-code-line"><span class="odt-code-line-content">    <span style="color:#000000">// start waiting</span></span></span>
+<span class="odt-code-line"><span class="odt-code-line-content">    beginWaiting();</span></span>
+<span class="odt-code-line"><span class="odt-code-line-content"><span style="color:#000000">    </span><span style="font-weight:bold;color:#7f0055">try</span><span style="color:#000000"> {</span></span></span>
+<span class="odt-code-line"><span class="odt-code-line-content"><span style="color:#000000">      </span><span style="font-weight:bold;color:#7f0055">for</span><span style="color:#000000"> (</span><span style="font-weight:bold;color:#7f0055">int</span><span style="color:#000000"> </span><span style="color:#6a3e3e">i</span><span style="color:#000000"> = 0; </span><span style="color:#6a3e3e">i</span><span style="color:#000000"> &lt; </span><span style="color:#0000c0">nbRequests</span><span style="color:#000000">; </span><span style="color:#6a3e3e">i</span><span style="color:#000000">++) {</span></span></span>
+<span class="odt-code-line"><span class="odt-code-line-content"><span style="color:#000000">        UiResponse </span><span style="color:#6a3e3e">uiResponse</span><span style="color:#000000"> = </span><span style="font-weight:bold;color:#7f0055">new</span><span style="color:#000000"> UiResponse();</span></span></span>
+<span class="odt-code-line"><span class="odt-code-line-content"><span style="color:#000000">        </span><span style="color:#6a3e3e">uiResponse</span><span style="color:#000000">.setIdClient(</span><span style="color:#6a3e3e">i</span><span style="color:#000000">);</span></span></span>
+<span class="odt-code-line"><span class="odt-code-line-content"><span style="color:#000000">        </span><span style="color:#6a3e3e">uiResponse</span><span style="color:#000000">.setServiceResponse(</span><span style="color:#0000c0">service</span><span style="color:#000000">.getAleas(</span><span style="color:#0000c0">a</span><span style="color:#000000">, </span><span style="color:#0000c0">b</span><span style="color:#000000">, </span><span style="color:#0000c0">minCount</span><span style="color:#000000">, </span><span style="color:#0000c0">maxCount</span><span style="color:#000000">, </span><span style="color:#0000c0">minDelay</span><span style="color:#000000">, </span><span style="color:#0000c0">maxDelay</span><span style="color:#000000">));</span></span></span>
+<span class="odt-code-line"><span class="odt-code-line-content"><span style="color:#000000">        </span><span style="color:#6a3e3e">uiResponse</span><span style="color:#000000">.setResponseAt();</span></span></span>
+<span class="odt-code-line"><span class="odt-code-line-content"><span style="color:#000000">        </span><span style="color:#0000c0">model</span><span style="color:#000000">.add(0, </span><span style="color:#0000c0">jsonMapper</span><span style="color:#000000">.writeValueAsString(</span><span style="color:#6a3e3e">uiResponse</span><span style="color:#000000">));</span></span></span>
+<span class="odt-code-line"><span class="odt-code-line-content"><span style="color:#000000">        </span><span style="color:#0000c0">jLabelNbReponses</span><span style="color:#000000">.setText(String.</span><span style="font-style:italic;color:#000000">valueOf</span><span style="color:#000000">(Integer.</span><span style="font-style:italic;color:#000000">parseInt</span><span style="color:#000000">(</span><span style="color:#0000c0">jLabelNbReponses</span><span style="color:#000000">.getText()) + 1));</span></span></span>
+<span class="odt-code-line"><span class="odt-code-line-content">      }</span></span>
+<span class="odt-code-line"><span class="odt-code-line-content"><span style="color:#000000">    } </span><span style="font-weight:bold;color:#7f0055">catch</span><span style="color:#000000"> (JsonProcessingException | RuntimeException </span><span style="color:#6a3e3e">e</span><span style="color:#000000">) {</span></span></span>
+<span class="odt-code-line"><span class="odt-code-line-content"><span style="color:#000000">      System.</span><span style="font-weight:bold;font-style:italic;color:#0000c0">out</span><span style="color:#000000">.println(</span><span style="color:#6a3e3e">e</span><span style="color:#000000">);</span></span></span>
+<span class="odt-code-line"><span class="odt-code-line-content">    }</span></span>
+<span class="odt-code-line"><span class="odt-code-line-content">    <span style="color:#000000">// end waiting</span></span></span>
+<span class="odt-code-line"><span class="odt-code-line-content">    endWaiting();</span></span>
+<span class="odt-code-line"><span class="odt-code-line-content">}</span></span>
+</code></pre></div>
+
+<ul>
+  <li>Zeilen 5–12: Die Schleife, die die vom Benutzer gestellten [nbRequests]-Anfragen verarbeitet;
+  </li>
+  <li>Zeile 8: [service] ist die Implementierung der in Abschnitt<a href="#refheading31250117925167"><u><span style="color: #0563c1"> 2.3</span></u></a> vorgestellten synchronen [IService]-Schnittstelle;
+  </li>
+  <li>Zeile 10: [model] ist das Modell, das von der JList-Komponente der Registerkarte [Response] angezeigt wird. Die Elemente dieses Modells sind JSON-Strings mit Elementen vom Typ [UiResponse] wie folgt:
+  </li>
+</ul>
+
+<div class="odt-code-rich" data-linenums="true" style="counter-reset: odtline 0;"><pre><code class="language-csharp">
+<span class="odt-code-line"><span class="odt-code-line-content"><span style="font-weight:bold;color:#7f0055">public</span><span style="color:#000000"> </span><span style="font-weight:bold;color:#7f0055">class</span><span style="color:#000000"> UiResponse {</span></span></span>
+<span class="odt-code-line"><span class="odt-code-line-content"> </span></span>
+<span class="odt-code-line"><span class="odt-code-line-content">  <span style="color:#000000">// customer id</span></span></span>
+<span class="odt-code-line"><span class="odt-code-line-content"><span style="color:#000000">  </span><span style="font-weight:bold;color:#7f0055">private</span><span style="color:#000000"> </span><span style="font-weight:bold;color:#7f0055">int</span><span style="color:#000000"> </span><span style="color:#0000c0">idClient</span><span style="color:#000000">;</span></span></span>
+<span class="odt-code-line"><span class="odt-code-line-content">  <span style="color:#000000">// service response</span></span></span>
+<span class="odt-code-line"><span class="odt-code-line-content"><span style="color:#000000">  </span><span style="font-weight:bold;color:#7f0055">private</span><span style="color:#000000"> ServiceResponse </span><span style="color:#0000c0">serviceResponse</span><span style="color:#000000">;</span></span></span>
+<span class="odt-code-line"><span class="odt-code-line-content">  <span style="color:#000000">// observation thread name</span></span></span>
+<span class="odt-code-line"><span class="odt-code-line-content"><span style="color:#000000">  </span><span style="font-weight:bold;color:#7f0055">private</span><span style="color:#000000"> String </span><span style="color:#0000c0">observedOn</span><span style="color:#000000">;</span></span></span>
+<span class="odt-code-line"><span class="odt-code-line-content">  <span style="color:#000000">// query time</span></span></span>
+<span class="odt-code-line"><span class="odt-code-line-content"><span style="color:#000000">  </span><span style="font-weight:bold;color:#7f0055">private</span><span style="color:#000000"> String </span><span style="color:#0000c0">requestAt</span><span style="color:#000000">;</span></span></span>
+<span class="odt-code-line"><span class="odt-code-line-content">  <span style="color:#000000">// response time</span></span></span>
+<span class="odt-code-line"><span class="odt-code-line-content"><span style="color:#000000">  </span><span style="font-weight:bold;color:#7f0055">private</span><span style="color:#000000"> String </span><span style="color:#0000c0">responseAt</span><span style="color:#000000">;</span></span></span>
+<span class="odt-code-line"><span class="odt-code-line-content"> </span></span>
+<span class="odt-code-line"><span class="odt-code-line-content">  <span style="color:#000000">// manufacturers</span></span></span>
+<span class="odt-code-line"><span class="odt-code-line-content"> </span></span>
+<span class="odt-code-line"><span class="odt-code-line-content"><span style="color:#000000">  </span><span style="font-weight:bold;color:#7f0055">public</span><span style="color:#000000"> UiResponse() {</span></span></span>
+<span class="odt-code-line"><span class="odt-code-line-content"><span style="color:#000000">    </span><span style="color:#0000c0">observedOn</span><span style="color:#000000"> = Thread.</span><span style="font-style:italic;color:#000000">currentThread</span><span style="color:#000000">().getName();</span></span></span>
+<span class="odt-code-line"><span class="odt-code-line-content"><span style="color:#000000">    </span><span style="color:#0000c0">requestAt</span><span style="color:#000000"> = getTimeStamp();</span></span></span>
+<span class="odt-code-line"><span class="odt-code-line-content">  }</span></span>
+<span class="odt-code-line"><span class="odt-code-line-content">  <span style="color:#000000">// private methods</span></span></span>
+<span class="odt-code-line"><span class="odt-code-line-content"> </span></span>
+<span class="odt-code-line"><span class="odt-code-line-content"><span style="color:#000000">  </span><span style="font-weight:bold;color:#7f0055">private</span><span style="color:#000000"> String getTimeStamp() {</span></span></span>
+<span class="odt-code-line"><span class="odt-code-line-content"><span style="color:#000000">    </span><span style="font-weight:bold;color:#7f0055">return</span><span style="color:#000000"> </span><span style="font-weight:bold;color:#7f0055">new</span><span style="color:#000000"> SimpleDateFormat(</span><span style="color:#2a00ff">&quot;hh:mm:ss:SSS&quot;</span><span style="color:#000000">).format(Calendar.</span><span style="font-style:italic;color:#000000">getInstance</span><span style="color:#000000">().getTime());</span></span></span>
+<span class="odt-code-line"><span class="odt-code-line-content">  }</span></span>
+<span class="odt-code-line"><span class="odt-code-line-content"> </span></span>
+<span class="odt-code-line"><span class="odt-code-line-content">  <span style="color:#000000">// getters and setters</span></span></span>
+<span class="odt-code-line"><span class="odt-code-line-content">...</span></span>
+<span class="odt-code-line"><span class="odt-code-line-content">}</span></span>
+</code></pre></div>
+
+<ul>
+  <li>Zeile 6: die Antwort vom Dienst zur Nummerngenerierung;
+  </li>
+  <li>Zeile 4: die Nummer der Anfrage, auf die geantwortet wird;
+  </li>
+  <li>Zeile 8: der Thread, der diese Antwort anzeigt. Wie bereits erwähnt, ist dies immer der <i>Event-Loop</i>-Thread;
+  </li>
+  <li>Zeilen 10 und 12: der Zeitpunkt der Anfrage und der Zeitpunkt der Antwort;
+  </li>
+</ul>
+<p><a id="refheading104084374082361"></a></p>
+<h2 id="25-testen-synchroner-aufrufe">2.5. <span style="color: #4f81bd">Testen synchroner Aufrufe</span></h2>
+<p>Wir führen die folgende Konfiguration aus:</p>
+<table class="odt-table" style="border-collapse: collapse; width: 100%; margin-bottom: 1em;"><tr><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top; text-align: left;"><img src="images/10000000000002E6000001E9C98F6240.png" width="479" height="316" style="display:inline-block; margin:4px;width:12.668cm;height:8.348cm;" class="odt-zoomable" data-zoom-src="images/10000000000002E6000001E9C98F6240.png" /></td><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top; text-align: left;">&nbsp;</td></tr></table>
+
+<p>Auf der Registerkarte [Response] erhalten wir folgende Ergebnisse:</p>
+<table class="odt-table" style="border-collapse: collapse; width: 100%; margin-bottom: 1em;"><tr><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top; text-align: left;"><img src="images/10000000000002E6000001E90557285B.png" width="479" height="316" style="display:inline-block; margin:4px;width:12.668cm;height:8.348cm;" class="odt-zoomable" data-zoom-src="images/10000000000002E6000001E90557285B.png" /></td><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top; text-align: left;">&nbsp;</td></tr></table>
+
+<ul>
+  <li>In [1-2] haben wir tatsächlich 10 Antworten wie angefordert erhalten. Sie wurden in der Reihenfolge ihres Eintreffens an die erste Position eingefügt. Wir können sehen, dass sie in der Reihenfolge der Anfragen empfangen wurden;
+  </li>
+  <li>Sie wurden alle im Event-Loop-Thread [AWT-EventQueue-0] ausgeführt und angezeigt. Die Anfragen wurden daher nacheinander in diesem Thread ausgeführt. Es gab keine gleichzeitigen Anfragen;
+  </li>
+  <li>Was hier nicht sichtbar ist: Während der Ausführung <b>ist die GUI eingefroren.</b> So ist es beispielsweise nicht möglich, auf die Registerkarte [Response] zuzugreifen, um eingehende Antworten anzuzeigen, oder die Ausführung über die Schaltfläche [Cancel] zu stoppen. Selbst wenn diese Schaltfläche auf der Registerkarte [Request] vorhanden gewesen wäre, wäre sie unbrauchbar gewesen. Tatsächlich gäbe es dann zwei Ereignisse:
+    <ul>
+      <li>Klicken auf die Schaltfläche [Generate];
+      </li>
+      <li>Klicken auf die Schaltfläche [Abbrechen];
+      </li>
+    </ul>
+  </li>
+</ul>
+
+<p>Der Klick auf die Schaltfläche [Cancel] wird erst verarbeitet, nachdem der durch den Klick auf die Schaltfläche [Generate] ausgelöste Vorgang abgeschlossen ist. Wir haben gerade gesehen, dass dieser Vorgang den Event-Loop-Thread für die gesamte Dauer der Ausführung belegt hat und dadurch die Verarbeitung des Klicks auf die Schaltfläche [Cancel] verhindert hat. Dies ist typischerweise die Art von Situation, in der Rx eine erhebliche Verbesserung bieten kann;</p>
+<p><a id="refheading104086374082361"></a></p>
+<h2 id="26-die-asynchrone-schnittstelle-und-ihre-implementierung">2.6. <span style="color: #4f81bd">Die asynchrone Schnittstelle und ihre Implementierung</span></h2>
+<p>Wir werden uns nun die Schnittstelle der Ebene [2] und ihre Implementierung mit Rx ansehen. Dies wird nicht sofort verständlich sein. Wir möchten lediglich die Einfachheit des Codes in dieser Implementierung hervorheben.</p>
+<p><img src="images/10000000000003680000015623D3D1A0.png" width="436" height="171" style="width:11.531cm;height:4.523cm;" alt="Image" class="odt-zoomable" data-zoom-src="images/10000000000003680000015623D3D1A0.png" /></p>
+<p>Die asynchrone Schnittstelle sieht wie folgt aus:</p>
+<div class="odt-code-rich" data-linenums="true" style="counter-reset: odtline 0;"><pre><code class="language-sql">
+<span class="odt-code-line"><span class="odt-code-line-content"><span style="font-weight:bold;color:#7f0055">public</span><span style="color:#000000"> </span><span style="font-weight:bold;color:#7f0055">interface</span><span style="color:#000000"> IRxService {</span></span></span>
+<span class="odt-code-line"><span class="odt-code-line-content">  <span style="color:#000000">// random numbers in [a,b]</span></span></span>
+<span class="odt-code-line"><span class="odt-code-line-content">  <span style="color:#000000">// n numbers are generated with random n in the interval [minCount, maxCount]</span></span></span>
+<span class="odt-code-line"><span class="odt-code-line-content">  <span style="color:#000000">// numbers are generated after a delay of milliseconds,</span></span></span>
+<span class="odt-code-line"><span class="odt-code-line-content">  <span style="color:#000000">// where [delay] is a random number in the range [minDelay, maxDelay]</span></span></span>
+<span class="odt-code-line"><span class="odt-code-line-content"><span style="color:#000000">  </span><span style="font-weight:bold;color:#7f0055">public</span><span style="color:#000000"> Observable&lt;UiResponse&gt; getAleas(</span><span style="font-weight:bold;color:#7f0055">int</span><span style="color:#000000"> </span><span style="color:#6a3e3e">a</span><span style="color:#000000">, </span><span style="font-weight:bold;color:#7f0055">int</span><span style="color:#000000"> </span><span style="color:#6a3e3e">b</span><span style="color:#000000">, </span><span style="font-weight:bold;color:#7f0055">int</span><span style="color:#000000"> </span><span style="color:#6a3e3e">minCount</span><span style="color:#000000">, </span><span style="font-weight:bold;color:#7f0055">int</span><span style="color:#000000"> </span><span style="color:#6a3e3e">maxCount</span><span style="color:#000000">, </span><span style="font-weight:bold;color:#7f0055">int</span><span style="color:#000000"> </span><span style="color:#6a3e3e">minDelay</span><span style="color:#000000">, </span><span style="font-weight:bold;color:#7f0055">int</span><span style="color:#000000"> </span><span style="color:#6a3e3e">maxDelay</span><span style="color:#000000">, UiResponse </span><span style="color:#6a3e3e">uiResponse</span><span style="color:#000000">);</span></span></span>
+<span class="odt-code-line"><span class="odt-code-line-content">}</span></span>
+</code></pre></div>
+
+<p>Die Unterschiede zur in Abschnitt<a href="#refheading31250117925167"><u><span style="color: #0563c1"> 2.3</span></u></a> vorgestellten synchronen Schnittstelle sind wie folgt:</p>
+<ul>
+  <li>Die in Abschnitt<a href="#refheading31250117925167"><u><span style="color: #0563c1"> 2.3</span></u></a> vorgestellte Klasse [UiResponse] ist nun Teil der Parameter der Methode [getAleas] (Zeile 6). Der Grund dafür ist, dass die Anfragen nun parallel ausgeführt werden und der Dienst eine zufällige Zeit abwartet, bevor er sein Ergebnis zurückgibt, sodass die Antworten nicht in der Reihenfolge der Anfragen bei uns eintreffen. Wir übergeben daher das [UiResponse]-Objekt, das unter anderem die Anfrage-ID enthält:
+  </li>
+</ul>
+
+<div class="odt-code-rich" data-linenums="false" style="counter-reset: odtline 0;"><pre><code class="language-text">
+<span class="odt-code-line"><span class="odt-code-line-content">  <span style="color:#000000">// id du client (requête)</span></span></span>
+<span class="odt-code-line"><span class="odt-code-line-content"><span style="color:#000000">  </span><span style="font-weight:bold;color:#7f0055">private</span><span style="color:#000000"> </span><span style="font-weight:bold;color:#7f0055">int</span><span style="color:#000000"> </span><span style="color:#0000c0">idClient</span><span style="color:#000000">;</span></span></span>
+<span class="odt-code-line"><span class="odt-code-line-content">  <span style="color:#000000">// réponse du service</span></span></span>
+<span class="odt-code-line"><span class="odt-code-line-content"><span style="color:#000000">  </span><span style="font-weight:bold;color:#7f0055">private</span><span style="color:#000000"> ServiceResponse </span><span style="color:#0000c0">serviceResponse</span><span style="color:#000000">;</span></span></span>
+<span class="odt-code-line"><span class="odt-code-line-content">  <span style="color:#000000">// nom du thread d&#x27;observation</span></span></span>
+<span class="odt-code-line"><span class="odt-code-line-content"><span style="color:#000000">  </span><span style="font-weight:bold;color:#7f0055">private</span><span style="color:#000000"> String </span><span style="color:#0000c0">observedOn</span><span style="color:#000000">;</span></span></span>
+<span class="odt-code-line"><span class="odt-code-line-content">  <span style="color:#000000">// heure de la requête</span></span></span>
+<span class="odt-code-line"><span class="odt-code-line-content"><span style="color:#000000">  </span><span style="font-weight:bold;color:#7f0055">private</span><span style="color:#000000"> String </span><span style="color:#0000c0">requestAt</span><span style="color:#000000">;</span></span></span>
+<span class="odt-code-line"><span class="odt-code-line-content">  <span style="color:#000000">// heure de la réponse</span></span></span>
+<span class="odt-code-line"><span class="odt-code-line-content"><span style="color:#000000">  </span><span style="font-weight:bold;color:#7f0055">private</span><span style="color:#000000"> String </span><span style="color:#0000c0">responseAt</span><span style="color:#000000">;</span></span></span>
+</code></pre></div>
+
+<ul>
+  <li>Der Antworttyp des asynchronen Dienstes ist vom Typ [Observable&lt;UiResponse&gt;]. Der Typ [Observable&lt;&gt;] wird von der Rx-Bibliothek bereitgestellt. Das Ergebnis [Observable&lt;UiResponse&gt;] zeigt an, dass die Methode [getAleas] einen Strom von Werten vom Typ [UiResponse] bereitstellt, die nacheinander an ihren Beobachter übermittelt werden;
+  </li>
+</ul>
+
+<p>Sehen wir uns nun die Implementierung dieser Schnittstelle an:</p>
+<div class="odt-code-rich" data-linenums="true" style="counter-reset: odtline 0;"><pre><code class="language-java">
+<span class="odt-code-line"><span class="odt-code-line-content"><span style="font-weight:bold;color:#7f0055">public</span><span style="color:#000000"> </span><span style="font-weight:bold;color:#7f0055">class</span><span style="color:#000000"> RxService </span><span style="font-weight:bold;color:#7f0055">implements</span><span style="color:#000000"> IRxService {</span></span></span>
+<span class="odt-code-line"><span class="odt-code-line-content"> </span></span>
+<span class="odt-code-line"><span class="odt-code-line-content">  <span style="color:#000000">// service</span></span></span>
+<span class="odt-code-line"><span class="odt-code-line-content"><span style="color:#000000">  </span><span style="font-weight:bold;color:#7f0055">private</span><span style="color:#000000"> IService </span><span style="color:#0000c0">service</span><span style="color:#000000">;</span></span></span>
+<span class="odt-code-line"><span class="odt-code-line-content"> </span></span>
+<span class="odt-code-line"><span class="odt-code-line-content">  <span style="color:#000000">// manufacturer</span></span></span>
+<span class="odt-code-line"><span class="odt-code-line-content"><span style="color:#000000">  </span><span style="font-weight:bold;color:#7f0055">public</span><span style="color:#000000"> RxService(IService </span><span style="color:#6a3e3e">service</span><span style="color:#000000">) {</span></span></span>
+<span class="odt-code-line"><span class="odt-code-line-content"><span style="color:#000000">    </span><span style="font-weight:bold;color:#7f0055">this</span><span style="color:#000000">.</span><span style="color:#0000c0">service</span><span style="color:#000000"> = </span><span style="color:#6a3e3e">service</span><span style="color:#000000">;</span></span></span>
+<span class="odt-code-line"><span class="odt-code-line-content">  }</span></span>
+<span class="odt-code-line"><span class="odt-code-line-content"> </span></span>
+<span class="odt-code-line"><span class="odt-code-line-content"><span style="color:#000000">  </span><span style="color:#646464">@Override</span></span></span>
+<span class="odt-code-line"><span class="odt-code-line-content"><span style="color:#000000">  </span><span style="font-weight:bold;color:#7f0055">public</span><span style="color:#000000"> Observable&lt;UiResponse&gt; getAleas(</span><span style="font-weight:bold;color:#7f0055">int</span><span style="color:#000000"> </span><span style="color:#6a3e3e">a</span><span style="color:#000000">, </span><span style="font-weight:bold;color:#7f0055">int</span><span style="color:#000000"> </span><span style="color:#6a3e3e">b</span><span style="color:#000000">, </span><span style="font-weight:bold;color:#7f0055">int</span><span style="color:#000000"> </span><span style="color:#6a3e3e">minCount</span><span style="color:#000000">, </span><span style="font-weight:bold;color:#7f0055">int</span><span style="color:#000000"> </span><span style="color:#6a3e3e">maxCount</span><span style="color:#000000">, </span><span style="font-weight:bold;color:#7f0055">int</span><span style="color:#000000"> </span><span style="color:#6a3e3e">minDelay</span><span style="color:#000000">, </span><span style="font-weight:bold;color:#7f0055">int</span><span style="color:#000000"> </span><span style="color:#6a3e3e">maxDelay</span><span style="color:#000000">, UiResponse </span><span style="color:#6a3e3e">uiResponse</span><span style="color:#000000">) {</span></span></span>
+<span class="odt-code-line"><span class="odt-code-line-content"><span style="color:#000000">    </span><span style="font-weight:bold;color:#7f0055">return</span><span style="color:#000000"> Observable.</span><span style="font-style:italic;color:#000000">create</span><span style="color:#000000">(</span><span style="color:#6a3e3e">subscriber</span><span style="color:#000000"> -&gt; {</span></span></span>
+<span class="odt-code-line"><span class="odt-code-line-content"><span style="color:#000000">      </span><span style="font-weight:bold;color:#7f0055">try</span><span style="color:#000000"> {</span></span></span>
+<span class="odt-code-line"><span class="odt-code-line-content"><span style="color:#000000">        </span><span style="color:#6a3e3e">uiResponse</span><span style="color:#000000">.setServiceResponse(</span><span style="color:#0000c0">service</span><span style="color:#000000">.getAleas(</span><span style="color:#6a3e3e">a</span><span style="color:#000000">, </span><span style="color:#6a3e3e">b</span><span style="color:#000000">, </span><span style="color:#6a3e3e">minCount</span><span style="color:#000000">, </span><span style="color:#6a3e3e">maxCount</span><span style="color:#000000">, </span><span style="color:#6a3e3e">minDelay</span><span style="color:#000000">, </span><span style="color:#6a3e3e">maxDelay</span><span style="color:#000000">));</span></span></span>
+<span class="odt-code-line"><span class="odt-code-line-content"><span style="color:#000000">        </span><span style="color:#6a3e3e">subscriber</span><span style="color:#000000">.onNext(</span><span style="color:#6a3e3e">uiResponse</span><span style="color:#000000">);</span></span></span>
+<span class="odt-code-line"><span class="odt-code-line-content"><span style="color:#000000">      } </span><span style="font-weight:bold;color:#7f0055">catch</span><span style="color:#000000"> (Exception </span><span style="color:#6a3e3e">e</span><span style="color:#000000">) {</span></span></span>
+<span class="odt-code-line"><span class="odt-code-line-content"><span style="color:#000000">        </span><span style="color:#6a3e3e">subscriber</span><span style="color:#000000">.onError(</span><span style="color:#6a3e3e">e</span><span style="color:#000000">);</span></span></span>
+<span class="odt-code-line"><span class="odt-code-line-content"><span style="color:#000000">      } </span><span style="font-weight:bold;color:#7f0055">finally</span><span style="color:#000000"> {</span></span></span>
+<span class="odt-code-line"><span class="odt-code-line-content"><span style="color:#000000">        </span><span style="color:#6a3e3e">subscriber</span><span style="color:#000000">.onCompleted();</span></span></span>
+<span class="odt-code-line"><span class="odt-code-line-content">      }</span></span>
+<span class="odt-code-line"><span class="odt-code-line-content">    });</span></span>
+<span class="odt-code-line"><span class="odt-code-line-content">  }</span></span>
+<span class="odt-code-line"><span class="odt-code-line-content">}</span></span>
+</code></pre></div>
+
+<ul>
+  <li>Zeilen 7–9: Wir übergeben dem Konstruktor eine Referenz auf die synchrone Schnittstelle [IService]. Diese Schnittstelle übernimmt die Erzeugung von Zufallszahlen;
+  </li>
+  <li>das von der Methode [getAleas] zurückgegebene Observable wird durch die statische Methode [Observable.create] erstellt. Diese Methode ermöglicht es uns, aus einer <b>synchronen </b>eine <b>asynchrone </b>Implementierung zu erstellen;
+  </li>
+  <li>Zeile 13: Der Parameter der statischen Methode [Observable.create] ist hier eine Lambda-Funktion, die einen Typ [Subscriber] als Parameter annimmt, wiederum einen Rx-Typ. Ein [Subscriber] ist ein Objekt, das einen Stream von Observables abonniert, d. h. einen Stream von asynchron gelieferten Daten. Hier verwenden wir drei Methoden dieses Subscribers:
+    <ul>
+      <li>[Subscriber.onNext], um Daten an ihn zu übergeben (Zeile 16);
+      </li>
+      <li>[Subscriber.onError], um ihm eine Ausnahme zu senden (Zeile 18);
+      </li>
+      <li>[Subscriber.onCompleted], um dem Subscriber mitzuteilen, dass der Datenstrom beendet ist (Zeile 20);
+      </li>
+    </ul>
+  </li>
+</ul>
+
+<p>Es kann mehrere Subscriber für dasselbe Observable geben. Hier haben wir nur einen Subscriber, der einen Stream mit einem einzigen Datenelement abonniert, nämlich das in den Zeilen 15–16 erzeugte. Die Daten werden durch die synchrone Implementierung des Dienstes erzeugt (Zeile 15) und an den Subscriber zurückgegeben (Zeile 16).</p>
+<p>Auch wenn all dies noch etwas undurchsichtig bleibt, kann man nicht umhin, von der extremen Prägnanz dieser asynchronen Implementierung des Dienstes beeindruckt zu sein.</p>
+<p><a id="refheading36611510222748"></a></p>
+<h2 id="27-der-asynchrone-aufruf">2.7. <span style="color: #4f81bd">Der asynchrone Aufruf</span></h2>
+<p><img src="images/10000000000003680000015623D3D1A0.png" width="436" height="171" style="width:11.531cm;height:4.523cm;" alt="Image" class="odt-zoomable" data-zoom-src="images/10000000000003680000015623D3D1A0.png" /></p>
+<p>Wir werden nun den synchronen Aufruf [5] untersuchen, den die [swing]-Schicht an den [2]-Dienst sendet:</p>
+<div class="odt-code-rich" data-linenums="true" style="counter-reset: odtline 0;"><pre><code class="language-java">
+<span class="odt-code-line"><span class="odt-code-line-content"><span style="font-weight:bold;color:#7f0055">private</span><span style="color:#000000"> </span><span style="font-weight:bold;color:#7f0055">void</span><span style="color:#000000"> doGenerateWithRxService() {</span></span></span>
+<span class="odt-code-line"><span class="odt-code-line-content">        <span style="color:#000000">// start waiting</span></span></span>
+<span class="odt-code-line"><span class="odt-code-line-content">        beginWaiting();</span></span>
+<span class="odt-code-line"><span class="odt-code-line-content">        <span style="color:#000000">// we ask for the random numbers</span></span></span>
+<span class="odt-code-line"><span class="odt-code-line-content"><span style="color:#000000">        Observable&lt;UiResponse&gt; </span><span style="color:#6a3e3e">observables</span><span style="color:#000000"> = Observable.</span><span style="font-style:italic;color:#000000">empty</span><span style="color:#000000">();</span></span></span>
+<span class="odt-code-line"><span class="odt-code-line-content"><span style="color:#000000">        </span><span style="font-weight:bold;color:#7f0055">for</span><span style="color:#000000"> (</span><span style="font-weight:bold;color:#7f0055">int</span><span style="color:#000000"> </span><span style="color:#6a3e3e">i</span><span style="color:#000000"> = 0; </span><span style="color:#6a3e3e">i</span><span style="color:#000000"> &lt; </span><span style="color:#0000c0">nbRequests</span><span style="color:#000000">; </span><span style="color:#6a3e3e">i</span><span style="color:#000000">++) {</span></span></span>
+<span class="odt-code-line"><span class="odt-code-line-content"><span style="color:#000000">            UiResponse </span><span style="color:#6a3e3e">uiResponse</span><span style="color:#000000"> = </span><span style="font-weight:bold;color:#7f0055">new</span><span style="color:#000000"> UiResponse();</span></span></span>
+<span class="odt-code-line"><span class="odt-code-line-content"><span style="color:#000000">            </span><span style="color:#6a3e3e">uiResponse</span><span style="color:#000000">.setIdClient(</span><span style="color:#6a3e3e">i</span><span style="color:#000000">);</span></span></span>
+<span class="odt-code-line"><span class="odt-code-line-content">            <span style="color:#000000">// scheduler</span></span></span>
+<span class="odt-code-line"><span class="odt-code-line-content"><span style="color:#000000">            </span><span style="font-weight:bold;color:#7f0055">int</span><span style="color:#000000"> </span><span style="color:#6a3e3e">schedulerIndex</span><span style="color:#000000"> = </span><span style="color:#0000c0">jComboBoxSchedulers</span><span style="color:#000000">.getSelectedIndex();</span></span></span>
+<span class="odt-code-line"><span class="odt-code-line-content"><span style="color:#000000">            </span><span style="font-weight:bold;color:#7f0055">switch</span><span style="color:#000000"> (</span><span style="color:#6a3e3e">schedulerIndex</span><span style="color:#000000">) {</span></span></span>
+<span class="odt-code-line"><span class="odt-code-line-content"><span style="color:#000000">            </span><span style="font-weight:bold;color:#7f0055">case</span><span style="color:#000000"> 0:</span></span></span>
+<span class="odt-code-line"><span class="odt-code-line-content"><span style="color:#000000">                </span><span style="color:#6a3e3e">observables</span><span style="color:#000000"> = </span><span style="color:#6a3e3e">observables</span><span style="color:#000000">.mergeWith(</span><span style="color:#0000c0">rxService</span><span style="color:#000000">.getAleas(</span><span style="color:#0000c0">a</span><span style="color:#000000">, </span><span style="color:#0000c0">b</span><span style="color:#000000">, </span><span style="color:#0000c0">minCount</span><span style="color:#000000">, </span><span style="color:#0000c0">maxCount</span><span style="color:#000000">, </span><span style="color:#0000c0">minDelay</span><span style="color:#000000">, </span><span style="color:#0000c0">maxDelay</span><span style="color:#000000">, </span><span style="color:#6a3e3e">uiResponse</span><span style="color:#000000">).subscribeOn(Schedulers.</span><span style="font-style:italic;color:#000000">io</span><span style="color:#000000">()));</span></span></span>
+<span class="odt-code-line"><span class="odt-code-line-content"><span style="color:#000000">                </span><span style="font-weight:bold;color:#7f0055">break</span><span style="color:#000000">;</span></span></span>
+<span class="odt-code-line"><span class="odt-code-line-content">...</span></span>
+<span class="odt-code-line"><span class="odt-code-line-content">            }</span></span>
+<span class="odt-code-line"><span class="odt-code-line-content">        }</span></span>
+<span class="odt-code-line"><span class="odt-code-line-content">...</span></span>
+<span class="odt-code-line"><span class="odt-code-line-content">    }</span></span>
+</code></pre></div>
+
+<ul>
+  <li>Zeilen 6–10: Ausführung der vom Benutzer angeforderten [nbRequests]-Anfragen;
+  </li>
+  <li>Zeilen 7–8: Vorbereitung des [UiResponse]-Objekts, das von der [getAleas]-Methode des asynchronen Dienstes (Zeile 13) benötigt wird. Dabei wird hauptsächlich die [idClient] der Anfrage gespeichert;
+  </li>
+  <li>Zeile 13: Die Methode [getAleas] des asynchronen Dienstes wird aufgerufen. Sie gibt ein [Observable&lt;UiResponse&gt;]-Objekt zurück. Dieser Aufruf <b>löst </b>den synchronen Dienst <b>noch nicht aus</b>. Kehren wir zum Code für das asynchrone [getAleas] zurück:
+  </li>
+</ul>
+
+<div class="odt-code-rich" data-linenums="true" style="counter-reset: odtline 0;"><pre><code class="language-java">
+<span class="odt-code-line"><span class="odt-code-line-content"><span style="color:#000000">  </span><span style="color:#646464">@Override</span></span></span>
+<span class="odt-code-line"><span class="odt-code-line-content"><span style="color:#000000">  </span><span style="font-weight:bold;color:#7f0055">public</span><span style="color:#000000"> Observable&lt;UiResponse&gt; getAleas(</span><span style="font-weight:bold;color:#7f0055">int</span><span style="color:#000000"> </span><span style="color:#6a3e3e">a</span><span style="color:#000000">, </span><span style="font-weight:bold;color:#7f0055">int</span><span style="color:#000000"> </span><span style="color:#6a3e3e">b</span><span style="color:#000000">, </span><span style="font-weight:bold;color:#7f0055">int</span><span style="color:#000000"> </span><span style="color:#6a3e3e">minCount</span><span style="color:#000000">, </span><span style="font-weight:bold;color:#7f0055">int</span><span style="color:#000000"> </span><span style="color:#6a3e3e">maxCount</span><span style="color:#000000">, </span><span style="font-weight:bold;color:#7f0055">int</span><span style="color:#000000"> </span><span style="color:#6a3e3e">minDelay</span><span style="color:#000000">, </span><span style="font-weight:bold;color:#7f0055">int</span><span style="color:#000000"> </span><span style="color:#6a3e3e">maxDelay</span><span style="color:#000000">, UiResponse </span><span style="color:#6a3e3e">uiResponse</span><span style="color:#000000">) {</span></span></span>
+<span class="odt-code-line"><span class="odt-code-line-content"><span style="color:#000000">    </span><span style="font-weight:bold;color:#7f0055">return</span><span style="color:#000000"> Observable.</span><span style="font-style:italic;color:#000000">create</span><span style="color:#000000">(</span><span style="color:#6a3e3e">subscriber</span><span style="color:#000000"> -&gt; {</span></span></span>
+<span class="odt-code-line"><span class="odt-code-line-content"><span style="color:#000000">      </span><span style="font-weight:bold;color:#7f0055">try</span><span style="color:#000000"> {</span></span></span>
+<span class="odt-code-line"><span class="odt-code-line-content"><span style="color:#000000">        </span><span style="color:#6a3e3e">uiResponse</span><span style="color:#000000">.setServiceResponse(</span><span style="color:#0000c0">service</span><span style="color:#000000">.getAleas(</span><span style="color:#6a3e3e">a</span><span style="color:#000000">, </span><span style="color:#6a3e3e">b</span><span style="color:#000000">, </span><span style="color:#6a3e3e">minCount</span><span style="color:#000000">, </span><span style="color:#6a3e3e">maxCount</span><span style="color:#000000">, </span><span style="color:#6a3e3e">minDelay</span><span style="color:#000000">, </span><span style="color:#6a3e3e">maxDelay</span><span style="color:#000000">));</span></span></span>
+<span class="odt-code-line"><span class="odt-code-line-content"><span style="color:#000000">        </span><span style="color:#6a3e3e">subscriber</span><span style="color:#000000">.onNext(</span><span style="color:#6a3e3e">uiResponse</span><span style="color:#000000">);</span></span></span>
+<span class="odt-code-line"><span class="odt-code-line-content"><span style="color:#000000">      } </span><span style="font-weight:bold;color:#7f0055">catch</span><span style="color:#000000"> (Exception </span><span style="color:#6a3e3e">e</span><span style="color:#000000">) {</span></span></span>
+<span class="odt-code-line"><span class="odt-code-line-content"><span style="color:#000000">        </span><span style="color:#6a3e3e">subscriber</span><span style="color:#000000">.onError(</span><span style="color:#6a3e3e">e</span><span style="color:#000000">);</span></span></span>
+<span class="odt-code-line"><span class="odt-code-line-content"><span style="color:#000000">      } </span><span style="font-weight:bold;color:#7f0055">finally</span><span style="color:#000000"> {</span></span></span>
+<span class="odt-code-line"><span class="odt-code-line-content"><span style="color:#000000">        </span><span style="color:#6a3e3e">subscriber</span><span style="color:#000000">.onCompleted();</span></span></span>
+<span class="odt-code-line"><span class="odt-code-line-content">      }</span></span>
+<span class="odt-code-line"><span class="odt-code-line-content">    });</span></span>
+<span class="odt-code-line"><span class="odt-code-line-content">}</span></span>
+</code></pre></div>
+
+<p>Der Code in den Zeilen 4–11, der den synchronen Dienst aufruft, wird nur ausgeführt, wenn sich ein Abonnent registriert. Solange es keine Abonnenten gibt, wird dieser Code nicht ausgeführt.</p>
+<p>Kehren wir zum Code für die Methode [doGenerateWithRxService] zurück:</p>
+<ul>
+  <li>Zeile 5: Wir erstellen ein leeres Observable (es wird nichts beobachtet);
+  </li>
+  <li>Zeile 13: Wir erstellen ein Observable, dessen Stream die Zusammenführung der asynchronen Streams [nbRequests] ist, die mit den [nbRequests]-Anfragen verbunden sind. Dies wird mithilfe der Methode [Observable.mergeWith] erreicht, die es ermöglicht, zwei asynchrone Streams zusammenzuführen. In der Rx-Terminologie wird [mergeWith] als <b>Stream-Operator</b> bezeichnet. Diese Operatoren zeichnen sich dadurch aus, dass das Ergebnis der Operation in den meisten Fällen ein weiteres [Observable] ist. Letztendlich bezieht sich die Variable [observables] nach Zeile 17 auf einen einzigen Stream, der aus den [nbRequests] asynchronen Antworten des asynchronen Dienstes besteht;
+  </li>
+  <li>Zeile 13: Die Merge-Operation hätte wie folgt geschrieben werden können:
+  </li>
+</ul>
+
+<div class="odt-code-rich" data-linenums="false" style="counter-reset: odtline 0;"><pre><code class="language-text">
+<span class="odt-code-line"><span class="odt-code-line-content"><span style="color:#6a3e3e">observables</span><span style="color:#000000"> = </span><span style="color:#6a3e3e">observables</span><span style="color:#000000">.mergeWith(</span><span style="color:#0000c0">rxService</span><span style="color:#000000">.getAleas(</span><span style="color:#0000c0">a</span><span style="color:#000000">, </span><span style="color:#0000c0">b</span><span style="color:#000000">, </span><span style="color:#0000c0">minCount</span><span style="color:#000000">, </span><span style="color:#0000c0">maxCount</span><span style="color:#000000">, </span><span style="color:#0000c0">minDelay</span><span style="color:#000000">, </span><span style="color:#0000c0">maxDelay</span><span style="color:#000000">, </span><span style="color:#6a3e3e">uiResponse</span><span style="color:#000000">));</span></span></span>
+</code></pre></div>
+
+<p>aber wir haben geschrieben:</p>
+<div class="odt-code-rich" data-linenums="false" style="counter-reset: odtline 0;"><pre><code class="language-text">
+<span class="odt-code-line"><span class="odt-code-line-content"><span style="color:#6a3e3e">observables</span><span style="color:#000000"> = </span><span style="color:#6a3e3e">observables</span><span style="color:#000000">.mergeWith(</span><span style="color:#0000c0">rxService</span><span style="color:#000000">.getAleas(</span><span style="color:#0000c0">a</span><span style="color:#000000">, </span><span style="color:#0000c0">b</span><span style="color:#000000">, </span><span style="color:#0000c0">minCount</span><span style="color:#000000">, </span><span style="color:#0000c0">maxCount</span><span style="color:#000000">, </span><span style="color:#0000c0">minDelay</span><span style="color:#000000">, </span><span style="color:#0000c0">maxDelay</span><span style="color:#000000">, </span><span style="color:#6a3e3e">uiResponse</span><span style="color:#000000">).subscribeOn(Schedulers.</span><span style="font-style:italic;color:#000000">io</span><span style="color:#000000">()));</span></span></span>
+</code></pre></div>
+
+<p>Hier haben wir den Operator [subscribeOn] auf das Observable [<span style="color: #0000c0">rxService</span><span style="color: #000000">.getAleas</span>] angewendet. Wie so oft ist das Ergebnis wiederum ein Observable. Der Operator [subscribeOn] legt fest, dass das Observable in einem von einem [Scheduler] bereitgestellten Thread ausgeführt werden muss. Es gibt mehrere mögliche [Scheduler], die für unterschiedliche Situationen geeignet sind. In der GUI haben wir mehrere Optionen bereitgestellt, um zu sehen, wie sie sich unterscheiden:</p>
+<table class="odt-table" style="border-collapse: collapse; width: 100%; margin-bottom: 1em;"><tr><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top; text-align: left;">&nbsp;</td><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top; text-align: left;"><img src="images/1000000000000100000000976D8F4B0B.png" width="179" height="106" style="display:inline-block; margin:4px;width:4.74cm;height:2.796cm;" class="odt-zoomable" data-zoom-src="images/1000000000000100000000976D8F4B0B.png" /></td><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top; text-align: left;">&nbsp;</td></tr></table>
+
+<p>Daraus ergibt sich folgender Code:</p>
+<div class="odt-code-rich" data-linenums="true" style="counter-reset: odtline 0;"><pre><code class="language-java">
+<span class="odt-code-line"><span class="odt-code-line-content"><span style="color:#000000">    </span><span style="font-weight:bold;color:#7f0055">private</span><span style="color:#000000"> </span><span style="font-weight:bold;color:#7f0055">void</span><span style="color:#000000"> doGenerateWithRxService() {</span></span></span>
+<span class="odt-code-line"><span class="odt-code-line-content">        <span style="color:#000000">// start waiting</span></span></span>
+<span class="odt-code-line"><span class="odt-code-line-content">        beginWaiting();</span></span>
+<span class="odt-code-line"><span class="odt-code-line-content">        <span style="color:#000000">// we ask for the random numbers</span></span></span>
+<span class="odt-code-line"><span class="odt-code-line-content"><span style="color:#000000">        Observable&lt;UiResponse&gt; </span><span style="color:#6a3e3e">observables</span><span style="color:#000000"> = Observable.</span><span style="font-style:italic;color:#000000">empty</span><span style="color:#000000">();</span></span></span>
+<span class="odt-code-line"><span class="odt-code-line-content"><span style="color:#000000">        </span><span style="font-weight:bold;color:#7f0055">for</span><span style="color:#000000"> (</span><span style="font-weight:bold;color:#7f0055">int</span><span style="color:#000000"> </span><span style="color:#6a3e3e">i</span><span style="color:#000000"> = 0; </span><span style="color:#6a3e3e">i</span><span style="color:#000000"> &lt; </span><span style="color:#0000c0">nbRequests</span><span style="color:#000000">; </span><span style="color:#6a3e3e">i</span><span style="color:#000000">++) {</span></span></span>
+<span class="odt-code-line"><span class="odt-code-line-content"><span style="color:#000000">            UiResponse </span><span style="color:#6a3e3e">uiResponse</span><span style="color:#000000"> = </span><span style="font-weight:bold;color:#7f0055">new</span><span style="color:#000000"> UiResponse();</span></span></span>
+<span class="odt-code-line"><span class="odt-code-line-content"><span style="color:#000000">            </span><span style="color:#6a3e3e">uiResponse</span><span style="color:#000000">.setIdClient(</span><span style="color:#6a3e3e">i</span><span style="color:#000000">);</span></span></span>
+<span class="odt-code-line"><span class="odt-code-line-content">            <span style="color:#000000">// scheduler</span></span></span>
+<span class="odt-code-line"><span class="odt-code-line-content"><span style="color:#000000">            </span><span style="font-weight:bold;color:#7f0055">int</span><span style="color:#000000"> </span><span style="color:#6a3e3e">schedulerIndex</span><span style="color:#000000"> = </span><span style="color:#0000c0">jComboBoxSchedulers</span><span style="color:#000000">.getSelectedIndex();</span></span></span>
+<span class="odt-code-line"><span class="odt-code-line-content"><span style="color:#000000">            </span><span style="font-weight:bold;color:#7f0055">switch</span><span style="color:#000000"> (</span><span style="color:#6a3e3e">schedulerIndex</span><span style="color:#000000">) {</span></span></span>
+<span class="odt-code-line"><span class="odt-code-line-content"><span style="color:#000000">            </span><span style="font-weight:bold;color:#7f0055">case</span><span style="color:#000000"> 0:</span></span></span>
+<span class="odt-code-line"><span class="odt-code-line-content"><span style="color:#000000">                </span><span style="color:#6a3e3e">observables</span><span style="color:#000000"> = </span><span style="color:#6a3e3e">observables</span><span style="color:#000000">.mergeWith(</span><span style="color:#0000c0">rxService</span><span style="color:#000000">.getAleas(</span><span style="color:#0000c0">a</span><span style="color:#000000">, </span><span style="color:#0000c0">b</span><span style="color:#000000">, </span><span style="color:#0000c0">minCount</span><span style="color:#000000">, </span><span style="color:#0000c0">maxCount</span><span style="color:#000000">, </span><span style="color:#0000c0">minDelay</span><span style="color:#000000">, </span><span style="color:#0000c0">maxDelay</span><span style="color:#000000">, </span><span style="color:#6a3e3e">uiResponse</span><span style="color:#000000">).subscribeOn(Schedulers.</span><span style="font-style:italic;color:#000000">io</span><span style="color:#000000">()));</span></span></span>
+<span class="odt-code-line"><span class="odt-code-line-content"><span style="color:#000000">                </span><span style="font-weight:bold;color:#7f0055">break</span><span style="color:#000000">;</span></span></span>
+<span class="odt-code-line"><span class="odt-code-line-content"><span style="color:#000000">            </span><span style="font-weight:bold;color:#7f0055">case</span><span style="color:#000000"> 1:</span></span></span>
+<span class="odt-code-line"><span class="odt-code-line-content"><span style="color:#000000">                </span><span style="color:#6a3e3e">observables</span><span style="color:#000000"> = </span><span style="color:#6a3e3e">observables</span><span style="color:#000000">.mergeWith(</span><span style="color:#0000c0">rxService</span><span style="color:#000000">.getAleas(</span><span style="color:#0000c0">a</span><span style="color:#000000">, </span><span style="color:#0000c0">b</span><span style="color:#000000">, </span><span style="color:#0000c0">minCount</span><span style="color:#000000">, </span><span style="color:#0000c0">maxCount</span><span style="color:#000000">, </span><span style="color:#0000c0">minDelay</span><span style="color:#000000">, </span><span style="color:#0000c0">maxDelay</span><span style="color:#000000">, </span><span style="color:#6a3e3e">uiResponse</span><span style="color:#000000">).subscribeOn(Schedulers.</span><span style="font-style:italic;color:#000000">computation</span><span style="color:#000000">()));</span></span></span>
+<span class="odt-code-line"><span class="odt-code-line-content"><span style="color:#000000">                </span><span style="font-weight:bold;color:#7f0055">break</span><span style="color:#000000">;</span></span></span>
+<span class="odt-code-line"><span class="odt-code-line-content"><span style="color:#000000">            </span><span style="font-weight:bold;color:#7f0055">case</span><span style="color:#000000"> 2:</span></span></span>
+<span class="odt-code-line"><span class="odt-code-line-content"><span style="color:#000000">                </span><span style="color:#6a3e3e">observables</span><span style="color:#000000"> = </span><span style="color:#6a3e3e">observables</span><span style="color:#000000">.mergeWith(</span><span style="color:#0000c0">rxService</span><span style="color:#000000">.getAleas(</span><span style="color:#0000c0">a</span><span style="color:#000000">, </span><span style="color:#0000c0">b</span><span style="color:#000000">, </span><span style="color:#0000c0">minCount</span><span style="color:#000000">, </span><span style="color:#0000c0">maxCount</span><span style="color:#000000">, </span><span style="color:#0000c0">minDelay</span><span style="color:#000000">, </span><span style="color:#0000c0">maxDelay</span><span style="color:#000000">, </span><span style="color:#6a3e3e">uiResponse</span><span style="color:#000000">).subscribeOn(Schedulers.</span><span style="font-style:italic;color:#000000">newThread</span><span style="color:#000000">()));</span></span></span>
+<span class="odt-code-line"><span class="odt-code-line-content"><span style="color:#000000">                </span><span style="font-weight:bold;color:#7f0055">break</span><span style="color:#000000">;</span></span></span>
+<span class="odt-code-line"><span class="odt-code-line-content"><span style="color:#000000">            </span><span style="font-weight:bold;color:#7f0055">case</span><span style="color:#000000"> 3:</span></span></span>
+<span class="odt-code-line"><span class="odt-code-line-content"><span style="color:#000000">                </span><span style="color:#6a3e3e">observables</span><span style="color:#000000"> = </span><span style="color:#6a3e3e">observables</span><span style="color:#000000">.mergeWith(</span><span style="color:#0000c0">rxService</span><span style="color:#000000">.getAleas(</span><span style="color:#0000c0">a</span><span style="color:#000000">, </span><span style="color:#0000c0">b</span><span style="color:#000000">, </span><span style="color:#0000c0">minCount</span><span style="color:#000000">, </span><span style="color:#0000c0">maxCount</span><span style="color:#000000">, </span><span style="color:#0000c0">minDelay</span><span style="color:#000000">, </span><span style="color:#0000c0">maxDelay</span><span style="color:#000000">, </span><span style="color:#6a3e3e">uiResponse</span><span style="color:#000000">).subscribeOn(Schedulers.</span><span style="font-style:italic;color:#000000">trampoline</span><span style="color:#000000">()));</span></span></span>
+<span class="odt-code-line"><span class="odt-code-line-content"><span style="color:#000000">                </span><span style="font-weight:bold;color:#7f0055">break</span><span style="color:#000000">;</span></span></span>
+<span class="odt-code-line"><span class="odt-code-line-content"><span style="color:#000000">            </span><span style="font-weight:bold;color:#7f0055">case</span><span style="color:#000000"> 4:</span></span></span>
+<span class="odt-code-line"><span class="odt-code-line-content"><span style="color:#000000">                </span><span style="color:#6a3e3e">observables</span><span style="color:#000000"> = </span><span style="color:#6a3e3e">observables</span><span style="color:#000000">.mergeWith(</span><span style="color:#0000c0">rxService</span><span style="color:#000000">.getAleas(</span><span style="color:#0000c0">a</span><span style="color:#000000">, </span><span style="color:#0000c0">b</span><span style="color:#000000">, </span><span style="color:#0000c0">minCount</span><span style="color:#000000">, </span><span style="color:#0000c0">maxCount</span><span style="color:#000000">, </span><span style="color:#0000c0">minDelay</span><span style="color:#000000">, </span><span style="color:#0000c0">maxDelay</span><span style="color:#000000">, </span><span style="color:#6a3e3e">uiResponse</span><span style="color:#000000">).subscribeOn(Schedulers.</span><span style="font-style:italic;color:#000000">immediate</span><span style="color:#000000">()));</span></span></span>
+<span class="odt-code-line"><span class="odt-code-line-content"><span style="color:#000000">                </span><span style="font-weight:bold;color:#7f0055">break</span><span style="color:#000000">;</span></span></span>
+<span class="odt-code-line"><span class="odt-code-line-content">            }</span></span>
+<span class="odt-code-line"><span class="odt-code-line-content">        }</span></span>
+<span class="odt-code-line"><span class="odt-code-line-content">...</span></span>
+<span class="odt-code-line"><span class="odt-code-line-content">}</span></span>
+</code></pre></div>
+
+<p>Schauen wir uns den Code in den Zeilen 12–14 noch einmal an. Der Scheduler [Schedulers.io()] weist jedem Observable einen neuen Thread zu. Wenn wir dem Code folgen:</p>
+<ul>
+  <li>Zeile 5: Wir haben ein leeres Observable;
+  </li>
+  <li>Zeile 13, Iteration 1: <i>observables </i>ist die Liste [observable0/thread0] (Observable <i>observable0 </i>läuft auf Thread <i>thread0</i>);
+  </li>
+  <li>Zeile 13, Iteration 2: <i>„observables“ </i>ist die Liste [observable0/thread0, observable1/thread1];
+  </li>
+  <li>usw...
+  </li>
+</ul>
+
+<p>Letztendlich haben wir nach Zeile 28 ein Observable, das aus der Zusammenführung von [nbRequests] Observables resultiert, die auf [nbRequests] <strong>verschiedenen Threads</strong> laufen. Nicht alle Scheduler funktionieren auf diese Weise, wie wir beim Testen sehen werden.</p>
+<p>Schauen wir uns den Code für den Aufruf des asynchronen Dienstes weiter an:</p>
+<div class="odt-code-rich" data-linenums="true" style="counter-reset: odtline 0;"><pre><code class="language-java">
+<span class="odt-code-line"><span class="odt-code-line-content"><span style="font-weight:bold;color:#7f0055">private</span><span style="color:#000000"> </span><span style="font-weight:bold;color:#7f0055">void</span><span style="color:#000000"> doGenerateWithRxService() {</span></span></span>
+<span class="odt-code-line"><span class="odt-code-line-content">        <span style="color:#000000">// start waiting</span></span></span>
+<span class="odt-code-line"><span class="odt-code-line-content">        beginWaiting();</span></span>
+<span class="odt-code-line"><span class="odt-code-line-content">        <span style="color:#000000">// we ask for the random numbers</span></span></span>
+<span class="odt-code-line"><span class="odt-code-line-content"><span style="color:#000000">        Observable&lt;UiResponse&gt; </span><span style="color:#6a3e3e">observables</span><span style="color:#000000"> = Observable.</span><span style="font-style:italic;color:#000000">empty</span><span style="color:#000000">();</span></span></span>
+<span class="odt-code-line"><span class="odt-code-line-content"><span style="color:#000000">        </span><span style="font-weight:bold;color:#7f0055">for</span><span style="color:#000000"> (</span><span style="font-weight:bold;color:#7f0055">int</span><span style="color:#000000"> </span><span style="color:#6a3e3e">i</span><span style="color:#000000"> = 0; </span><span style="color:#6a3e3e">i</span><span style="color:#000000"> &lt; </span><span style="color:#0000c0">nbRequests</span><span style="color:#000000">; </span><span style="color:#6a3e3e">i</span><span style="color:#000000">++) {</span></span></span>
+<span class="odt-code-line"><span class="odt-code-line-content">        ...</span></span>
+<span class="odt-code-line"><span class="odt-code-line-content">        }</span></span>
+<span class="odt-code-line"><span class="odt-code-line-content">        <span style="color:#000000">// observer</span></span></span>
+<span class="odt-code-line"><span class="odt-code-line-content"><span style="color:#000000">        </span><span style="color:#6a3e3e">observables</span><span style="color:#000000"> = </span><span style="color:#6a3e3e">observables</span><span style="color:#000000">.observeOn(SwingScheduler.</span><span style="font-style:italic;color:#000000">getInstance</span><span style="color:#000000">());</span></span></span>
+<span class="odt-code-line"><span class="odt-code-line-content">        <span style="color:#000000">// these observables are executed</span></span></span>
+<span class="odt-code-line"><span class="odt-code-line-content"><span style="color:#000000">        </span><span style="color:#0000c0">subscriptions</span><span style="color:#000000">.add(</span><span style="color:#6a3e3e">observables</span><span style="color:#000000">.subscribe(</span><span style="color:#6a3e3e">uiResponse</span><span style="color:#000000"> -&gt; {</span></span></span>
+<span class="odt-code-line"><span class="odt-code-line-content"><span style="color:#000000">            updateUi(</span><span style="color:#6a3e3e">uiResponse</span><span style="color:#000000">);</span></span></span>
+<span class="odt-code-line"><span class="odt-code-line-content"><span style="color:#000000">        } , </span><span style="color:#6a3e3e">th</span><span style="color:#000000"> -&gt; {</span></span></span>
+<span class="odt-code-line"><span class="odt-code-line-content"><span style="color:#000000">            System.</span><span style="font-weight:bold;font-style:italic;color:#0000c0">out</span><span style="color:#000000">.println(</span><span style="color:#6a3e3e">th</span><span style="color:#000000">);</span></span></span>
+<span class="odt-code-line"><span class="odt-code-line-content">            doCancel();</span></span>
+<span class="odt-code-line"><span class="odt-code-line-content"><span style="color:#000000">        } , </span><span style="font-weight:bold;color:#7f0055">this</span><span style="color:#000000">::doCancel));</span></span></span>
+<span class="odt-code-line"><span class="odt-code-line-content">    }</span></span>
+</code></pre></div>
+
+<ul>
+  <li>Wir haben gesehen, dass wir bei Erreichen von Zeile 10 ein einzelnes Observable haben, eine Zusammenführung von [nbRequests] Observables, die je nach dem vom Benutzer gewählten Scheduler auf [nbRequests] verschiedenen Threads ausgeführt werden können oder auch nicht;
+  </li>
+  <li>Zeile 10: Mit dem Operator [observeOn] können wir festlegen, in welchem Thread wir die Daten aus dem Observable abrufen möchten, in diesem Fall die Objekte [nbRequests] vom Typ [UiResponse]. In einer Swing-Oberfläche haben wir keine andere Wahl. Jede Aktualisierung der Schnittstelle muss im Event-Loop-Thread erfolgen. Hier werden die Daten des Observables in einer Swing-JList-Komponente angezeigt. Der Thread [SwingScheduler.getInstance()] stellt den Event-Loop-Thread dar. Die Klasse [SwingScheduler] stammt nicht aus der RxJava-Bibliothek, sondern aus der RxSwing-Bibliothek;
+  </li>
+  <li>wenn wir Zeile 12 erreichen, wurde der synchrone Dienst noch nicht aufgerufen, da das Observable in Zeile 10 noch keinen Abonnenten hat. Die Zeilen 12–17 stellen mithilfe des [subscribe]-Operators einen bereit. Die Parameter dieses Operators sind drei Lambda-Funktionen:
+    <ul>
+      <li>Die erste [<i>uiResponse -&gt; {updateUi(uiResponse);}</i>] nimmt als Parameter eines der vom Observable erzeugten [UiResponse]-Objekte entgegen. Zur Erinnerung: Wir werden hier [nbRequests] Objekte dieses Typs haben. Die zugehörige Methode, in diesem Fall <i>updateUi</i>, muss dieses Ergebnis verarbeiten;
+      </li>
+      <li>die zweite [<i>th -&gt; {System.out.println(th);doCancel();}</i>] nimmt einen Typ [Throwable] als Parameter entgegen, in diesem Fall eine Ausnahme, die während der Ausführung des Observables aufgetreten ist. Die zugehörige Methode muss diese Information verarbeiten. Hier zeigen wir sie auf der Konsole an (Zeile 15) und brechen die Ausführung ab, wodurch bestimmte Elemente der GUI aktualisiert werden;
+      </li>
+      <li>das dritte [<i>this::doCancel</i>] wird aufgerufen, wenn das Observable signalisiert, dass es keine Daten mehr zu übertragen hat. Hier ist das Observable die Vereinigung von [nbRequests] Observables. Das resultierende Observable zeigt an, dass es fertig ist, wenn alle Observables, aus denen es besteht, selbst signalisiert haben, dass sie ihre Arbeit beendet haben. Wenn also diese dritte Lambda-Funktion ausgeführt wird, haben wir alle Daten empfangen. Die lokale Methode [doCancel] aktualisiert die GUI, um anzuzeigen, dass die Ausführung abgeschlossen ist;
+      </li>
+    </ul>
+  </li>
+</ul>
+
+<p>Die Variable [subscriptions] ist wie folgt definiert:</p>
+<div class="odt-code-rich" data-linenums="true" style="counter-reset: odtline 0;"><pre><code class="language-java">
+<span class="odt-code-line"><span class="odt-code-line-content">    <span style="color:#000000">// les souscriptions aux observables</span></span></span>
+<span class="odt-code-line"><span class="odt-code-line-content"><span style="font-weight:bold;color:#7f0055">protected</span><span style="color:#000000"> List&lt;Subscription&gt; </span><span style="color:#0000c0">subscriptions</span><span style="color:#000000"> = </span><span style="font-weight:bold;color:#7f0055">new</span><span style="color:#000000"> ArrayList&lt;Subscription&gt;();</span></span></span>
+</code></pre></div>
+
+<p>Der Typ [Subscription] repräsentiert ein Abonnement, d. h. die Verbindung zwischen einem Abonnenten [Subscriber] und dem, was dieser beobachtet [Observable]. Wir haben hier eine Liste von Abonnements verwendet, obwohl es in diesem Beispiel nur eines gibt. Die lokale Methode [doCancel], die ausgeführt wird, wenn das Observable signalisiert, dass es keine Daten mehr zu übertragen hat, lautet wie folgt:</p>
+<div class="odt-code-rich" data-linenums="true" style="counter-reset: odtline 0;"><pre><code class="language-java">
+<span class="odt-code-line"><span class="odt-code-line-content"><span style="color:#000000">    </span><span style="color:#646464">@Override</span></span></span>
+<span class="odt-code-line"><span class="odt-code-line-content"><span style="color:#000000">    </span><span style="font-weight:bold;color:#7f0055">protected</span><span style="color:#000000"> </span><span style="font-weight:bold;color:#7f0055">void</span><span style="color:#000000"> doCancel() {</span></span></span>
+<span class="odt-code-line"><span class="odt-code-line-content">        <span style="color:#000000">// fin attente</span></span></span>
+<span class="odt-code-line"><span class="odt-code-line-content">        endWaiting();</span></span>
+<span class="odt-code-line"><span class="odt-code-line-content">        <span style="color:#000000">// dans le cas de souscriptions</span></span></span>
+<span class="odt-code-line"><span class="odt-code-line-content"><span style="color:#000000">        </span><span style="font-weight:bold;color:#7f0055">if</span><span style="color:#000000"> (</span><span style="color:#0000c0">jCheckBoxRxSwing</span><span style="color:#000000">.isSelected() &amp;&amp; </span><span style="color:#0000c0">subscriptions</span><span style="color:#000000"> != </span><span style="font-weight:bold;color:#7f0055">null</span><span style="color:#000000">) {</span></span></span>
+<span class="odt-code-line"><span class="odt-code-line-content"><span style="color:#000000">            </span><span style="color:#0000c0">subscriptions</span><span style="color:#000000">.forEach(Subscription::unsubscribe);</span></span></span>
+<span class="odt-code-line"><span class="odt-code-line-content">        }</span></span>
+<span class="odt-code-line"><span class="odt-code-line-content">}</span></span>
+</code></pre></div>
+
+<ul>
+  <li>Zeile 7 meldet alle Abonnenten vom Observable ab;
+  </li>
+</ul>
+
+<p>Aus dieser kurzen Erklärung lassen sich folgende wichtige Punkte ableiten:</p>
+<ul>
+  <li>Der Typ [Observable] bezeichnet einen Strom von Werten, die nacheinander an Abonnenten oder Beobachter übermittelt werden;
+  </li>
+  <li>Der Typ [Subscriber] bezeichnet einen Abonnenten vom Typ [Observable];
+  </li>
+  <li>Der Typ [Subscription] bezeichnet ein Abonnement, d. h. die Verbindung zwischen einem [Subscriber] und einem [Observable];
+  </li>
+  <li>der Typ [Observable] unterstützt Operatoren [<i>mergeWith, empty, subscribeOn, observeOn, ...</i>], von denen die meisten Observables erzeugen. Diese Operatoren werden verwendet, um das Observable <b>vor seiner Ausführung zu konfigurieren</b>: 
+    <ul>
+      <li>was beobachtet werden soll;
+      </li>
+      <li>auf welchem Thread das Observable ausgeführt wird;
+      </li>
+      <li>der Thread, auf dem der Abonnent Daten vom Observable empfängt;
+      </li>
+    </ul>
+  </li>
+  <li>Es gibt zwei Arten von Observables: [<b>cold</b>] und [hot]. Ein Cold-Observable wird für jeden neuen Subscriber vollständig ausgeführt. Wenn jede Ausführung dieselben Daten erzeugt, erhält jeder neue Subscriber dieselben Daten wie der vorherige. Ein Hot-Observable erzeugt im Allgemeinen kontinuierlich Daten. Wenn sich ein Subscriber anmeldet, erhält er die Daten, die ab dem Zeitpunkt seiner Anmeldung ausgegeben wurden. Er erhält keine Daten, die möglicherweise zuvor ausgegeben wurden. In unserem Beispiel ist das Observable <b>„cold</b>“: Es wird für jeden neuen Abonnenten vollständig neu ausgeführt. Was wird in unserem Beispiel tatsächlich ausgeführt? Um das herauszufinden, müssen wir zur Definition des beobachteten Observables zurückkehren:
+  </li>
+</ul>
+
+<div class="odt-code-rich" data-linenums="true" style="counter-reset: odtline 0;"><pre><code class="language-java">
+<span class="odt-code-line"><span class="odt-code-line-content"><span style="color:#000000">  </span><span style="color:#646464">@Override</span></span></span>
+<span class="odt-code-line"><span class="odt-code-line-content"><span style="color:#000000">  </span><span style="font-weight:bold;color:#7f0055">public</span><span style="color:#000000"> Observable&lt;UiResponse&gt; getAleas(</span><span style="font-weight:bold;color:#7f0055">int</span><span style="color:#000000"> </span><span style="color:#6a3e3e">a</span><span style="color:#000000">, </span><span style="font-weight:bold;color:#7f0055">int</span><span style="color:#000000"> </span><span style="color:#6a3e3e">b</span><span style="color:#000000">, </span><span style="font-weight:bold;color:#7f0055">int</span><span style="color:#000000"> </span><span style="color:#6a3e3e">minCount</span><span style="color:#000000">, </span><span style="font-weight:bold;color:#7f0055">int</span><span style="color:#000000"> </span><span style="color:#6a3e3e">maxCount</span><span style="color:#000000">, </span><span style="font-weight:bold;color:#7f0055">int</span><span style="color:#000000"> </span><span style="color:#6a3e3e">minDelay</span><span style="color:#000000">, </span><span style="font-weight:bold;color:#7f0055">int</span><span style="color:#000000"> </span><span style="color:#6a3e3e">maxDelay</span><span style="color:#000000">, UiResponse </span><span style="color:#6a3e3e">uiResponse</span><span style="color:#000000">) {</span></span></span>
+<span class="odt-code-line"><span class="odt-code-line-content"><span style="color:#000000">    </span><span style="font-weight:bold;color:#7f0055">return</span><span style="color:#000000"> Observable.</span><span style="font-style:italic;color:#000000">create</span><span style="color:#000000">(</span><span style="color:#6a3e3e">subscriber</span><span style="color:#000000"> -&gt; {</span></span></span>
+<span class="odt-code-line"><span class="odt-code-line-content"><span style="color:#000000">      </span><span style="font-weight:bold;color:#7f0055">try</span><span style="color:#000000"> {</span></span></span>
+<span class="odt-code-line"><span class="odt-code-line-content"><span style="color:#000000">        </span><span style="color:#6a3e3e">uiResponse</span><span style="color:#000000">.setServiceResponse(</span><span style="color:#0000c0">service</span><span style="color:#000000">.getAleas(</span><span style="color:#6a3e3e">a</span><span style="color:#000000">, </span><span style="color:#6a3e3e">b</span><span style="color:#000000">, </span><span style="color:#6a3e3e">minCount</span><span style="color:#000000">, </span><span style="color:#6a3e3e">maxCount</span><span style="color:#000000">, </span><span style="color:#6a3e3e">minDelay</span><span style="color:#000000">, </span><span style="color:#6a3e3e">maxDelay</span><span style="color:#000000">));</span></span></span>
+<span class="odt-code-line"><span class="odt-code-line-content"><span style="color:#000000">        </span><span style="color:#6a3e3e">subscriber</span><span style="color:#000000">.onNext(</span><span style="color:#6a3e3e">uiResponse</span><span style="color:#000000">);</span></span></span>
+<span class="odt-code-line"><span class="odt-code-line-content"><span style="color:#000000">      } </span><span style="font-weight:bold;color:#7f0055">catch</span><span style="color:#000000"> (Exception </span><span style="color:#6a3e3e">e</span><span style="color:#000000">) {</span></span></span>
+<span class="odt-code-line"><span class="odt-code-line-content"><span style="color:#000000">        </span><span style="color:#6a3e3e">subscriber</span><span style="color:#000000">.onError(</span><span style="color:#6a3e3e">e</span><span style="color:#000000">);</span></span></span>
+<span class="odt-code-line"><span class="odt-code-line-content"><span style="color:#000000">      } </span><span style="font-weight:bold;color:#7f0055">finally</span><span style="color:#000000"> {</span></span></span>
+<span class="odt-code-line"><span class="odt-code-line-content"><span style="color:#000000">        </span><span style="color:#6a3e3e">subscriber</span><span style="color:#000000">.onCompleted();</span></span></span>
+<span class="odt-code-line"><span class="odt-code-line-content">      }</span></span>
+<span class="odt-code-line"><span class="odt-code-line-content">    });</span></span>
+<span class="odt-code-line"><span class="odt-code-line-content">}</span></span>
+</code></pre></div>
+
+<p>Für jeden neuen Abonnenten wird die Lambda-Funktion, die ein Parameter der Methode [Observable.create] ist (Zeile 3), erneut ausgeführt. Daher werden die Zeilen 4–11 für jeden neuen Abonnenten [subscriber] ausgeführt;</p>
+<p><a id="refheading194761002124660"></a></p>
+<h2 id="28-testen-asynchroner-aufrufe">2.8. <span style="color: #4f81bd"><strong><span style="color: #4f81bd">Testen asynchroner Aufrufe</span></strong></span></h2>
+<p>Zunächst demonstrieren wir die Auswirkungen der verschiedenen verfügbaren Scheduler. Dazu verwenden wir die folgenden Parameter:</p>
+<table class="odt-table" style="border-collapse: collapse; width: 100%; margin-bottom: 1em;"><tr><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top; text-align: left;"><img src="images/10000000000002E6000001E909429A6C.png" width="371" height="244" style="display:inline-block; margin:4px;width:9.811cm;height:6.466cm;" class="odt-zoomable" data-zoom-src="images/10000000000002E6000001E909429A6C.png" /></td><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top; text-align: left;">&nbsp;</td></tr></table>
+
+<p>Wir setzen [1-2] auf kleine Werte, damit wir auch dann nicht zu lange warten müssen, wenn die Anfragen auf demselben Thread ausgeführt werden.</p>
+<p><a id="refheading375671026374387"></a></p>
+<h3 id="281-mit-dem-schedulersio-scheduler">2.8.1. <span style="color: #4f81bd">mit dem [Schedulers.io]-Scheduler</span></h3>
+<table class="odt-table" style="border-collapse: collapse; width: 100%; margin-bottom: 1em;"><tr><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top; text-align: left;"><img src="images/10000000000002E6000001E9324768EB.png" width="519" height="342" style="display:inline-block; margin:4px;width:13.741cm;height:9.056cm;" class="odt-zoomable" data-zoom-src="images/10000000000002E6000001E9324768EB.png" /></td><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top; text-align: left;">&nbsp;</td></tr></table>
+
+<p>Folgende Punkte sind zu beachten:</p>
+<ul>
+  <li>Die Antworten werden in einer Reihenfolge empfangen, die nicht mit der Reihenfolge der Anfragen übereinstimmt (siehe <i>idClient</i>);
+  </li>
+  <li>jede Anfrage wurde in einem anderen Thread ausgeführt;
+  </li>
+  <li>die Benutzeroberfläche ist diesmal nicht mehr eingefroren:
+    <ul>
+      <li>Man kann zwischen den Registerkarten wechseln;
+      </li>
+      <li>wir sehen, wie die Daten eingehen;
+      </li>
+      <li>es bleibt keine Zeit, die Schaltfläche [Abbrechen] zu sehen, da die Ausführung zu schnell erfolgt. Wir werden dies in einem weiteren Test hervorheben;
+      </li>
+    </ul>
+  </li>
+</ul>
+
+<p><a id="refheading375691026374387"></a></p>
+<h3 id="282-mit-dem-scheduler-schedulerscomputation">2.8.2. <span style="color: #4f81bd">mit dem Scheduler [Schedulers.computation]</span></h3>
+<table class="odt-table" style="border-collapse: collapse; width: 100%; margin-bottom: 1em;"><tr><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top; text-align: left;"><img src="images/10000000000002E6000001E9F9835147.png" width="519" height="342" style="display:inline-block; margin:4px;width:13.741cm;height:9.056cm;" class="odt-zoomable" data-zoom-src="images/10000000000002E6000001E9F9835147.png" /></td><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top; text-align: left;">&nbsp;</td></tr></table>
+
+<p>Folgende Punkte sind zu beachten:</p>
+<ul>
+  <li>Die Antworten werden in einer Reihenfolge empfangen, die nicht mit der Reihenfolge der Anfragen übereinstimmt (siehe idClient);
+  </li>
+  <li>die Anfragen wurden in 8 Threads ausgeführt;
+  </li>
+  <li>Thread Nr. 3 wurde für die Anfragen 8 und 0 verwendet;
+  </li>
+  <li>Thread Nr. 4 wurde für die Anfragen 9 und 1 verwendet;
+  </li>
+  <li>Die anderen Anfragen hatten jeweils einen eigenen Thread;
+  </li>
+</ul>
+
+<p>Der Scheduler [Schedulers.computation] verwendet so viele Threads, wie es Kerne auf dem verwendeten Rechner gibt. Diese Information wird über den Ausdruck [<em>Runtime.getRuntime().availableProcessors()</em>] abgerufen.</p>
+<p><a id="refheading375711026374387"></a></p>
+<h3 id="283-mit-dem-scheduler-schedulersnewthread">2.8.3. <span style="color: #4f81bd"><strong>mit dem Scheduler [Schedulers.newThread]</strong></span></h3>
+<table class="odt-table" style="border-collapse: collapse; width: 100%; margin-bottom: 1em;"><tr><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top; text-align: left;"><img src="images/10000000000002E6000001E9B2CF1823.png" width="519" height="342" style="display:inline-block; margin:4px;width:13.741cm;height:9.056cm;" class="odt-zoomable" data-zoom-src="images/10000000000002E6000001E9B2CF1823.png" /></td><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top; text-align: left;">&nbsp;</td></tr></table>
+
+<p>Das Verhalten ähnelt dem des Schedulers [Schedulers.io].</p>
+<p><a id="refheading375731026374387"></a></p>
+<h3 id="284-mit-den-schedulern-schedulerstrampoline-schedulersimmediate">2.8.4. <span style="color: #4f81bd">mit den Schedulern [Schedulers.trampoline, Schedulers.immediate]</span></h3>
+<table class="odt-table" style="border-collapse: collapse; width: 100%; margin-bottom: 1em;"><tr><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top; text-align: left;"><img src="images/10000000000002E6000001E9520BE310.png" width="519" height="342" style="display:inline-block; margin:4px;width:13.741cm;height:9.056cm;" class="odt-zoomable" data-zoom-src="images/10000000000002E6000001E9520BE310.png" /></td><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top; text-align: left;">&nbsp;</td></tr></table>
+
+<p>Das Verhalten ist <strong>synchron</strong>. Alle Anfragen werden auf dem Event-Loop-Thread ausgeführt. Dieses Ergebnis sollte nicht verallgemeinert werden; es bedeutet vielmehr lediglich, dass in diesem konkreten Beispiel beide Scheduler synchron arbeiteten.</p>
+<p><a id="refheading104088374082361"></a></p>
+<h2 id="29-randfalle">2.9. <span style="color: #4f81bd">Randfälle</span></h2>
+<p>In diesem Beispiel arbeiten wir mit Schedulern, die asynchronen Betrieb unterstützen. Zunächst erhöhen wir die Anzahl der Anfragen auf 100 unter Verwendung des Schedulers [Schedulers.computation], der hier auf 8 Threads läuft. Wir erhalten das folgende Ergebnis:</p>
+<table class="odt-table" style="border-collapse: collapse; width: 100%; margin-bottom: 1em;"><tr><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top; text-align: left;"><img src="images/10000000000002E6000001E9751443A1.png" width="519" height="342" style="display:inline-block; margin:4px;width:13.741cm;height:9.056cm;" class="odt-zoomable" data-zoom-src="images/10000000000002E6000001E9751443A1.png" /></td><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top; text-align: left;">&nbsp;</td></tr></table>
+
+<ul>
+  <li>in [1] ist die Schaltfläche [Cancel] vorhanden und kann verwendet werden (asynchroner Betrieb);
+  </li>
+</ul>
+
+<p>Lassen wir nun die Ausführung bis zum Ende laufen:</p>
+<table class="odt-table" style="border-collapse: collapse; width: 100%; margin-bottom: 1em;"><tr><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top; text-align: left;"><img src="images/10000000000002E6000001E90BB9CC1A.png" width="519" height="342" style="display:inline-block; margin:4px;width:13.741cm;height:9.056cm;" class="odt-zoomable" data-zoom-src="images/10000000000002E6000001E90BB9CC1A.png" /></td><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top; text-align: left;">&nbsp;</td></tr></table>
+
+<p>In [2] sehen wir, dass die Ausführung der 100 Anfragen etwa 4 Sekunden gedauert hat (verteilt auf 8 Threads).</p>
+<p>Führen wir nun dieselben 100 Anfragen mit dem Scheduler [Schedulers.newThread] aus, der jede Anfrage in einem separaten Thread ausführt:</p>
+<table class="odt-table" style="border-collapse: collapse; width: 100%; margin-bottom: 1em;"><tr><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top; text-align: left;"><img src="images/10000000000002E6000001E9586AD45E.png" width="519" height="342" style="display:inline-block; margin:4px;width:13.741cm;height:9.056cm;" class="odt-zoomable" data-zoom-src="images/10000000000002E6000001E9586AD45E.png" /></td><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top; text-align: left;">&nbsp;</td></tr></table>
+
+<p>In [1] sehen wir, dass die Ausführung der 100 Anfragen (über 100 Threads) eine halbe Sekunde gedauert hat. Dies ist somit deutlich schneller als mit dem Scheduler [Schedulers.computation].</p>
+<p>Führen wir nun unter denselben Bedingungen 800 Anfragen durch, wobei wir weiterhin den Scheduler [Schedulers.newThread] verwenden. Wir erhalten folgende Ergebnisse:</p>
+<table class="odt-table" style="border-collapse: collapse; width: 100%; margin-bottom: 1em;"><tr><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top; text-align: left;"><img src="images/10000000000002E6000001E9B2E24017.png" width="519" height="342" style="display:inline-block; margin:4px;width:13.741cm;height:9.056cm;" class="odt-zoomable" data-zoom-src="images/10000000000002E6000001E9B2E24017.png" /></td><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top; text-align: left;">&nbsp;</td></tr></table>
+
+<p>Die 800 Anfragen werden in etwa 1 Sekunde ausgeführt.</p>
+<p>Wenn wir diese Zahl erhöhen (auf meinem Rechner über 2.500 Anfragen – ausgeführt in 1,5 Sekunden – wobei diese Zahl natürlich stark von der Laufzeitumgebung abhängt), erhalten wir schließlich die folgende Ausnahme:</p>
+<table class="odt-table" style="border-collapse: collapse; width: 100%; margin-bottom: 1em;"><tr><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top; text-align: left;"><img src="images/100000000000010800000076BC601725.png" width="185" height="83" style="display:inline-block; margin:4px;width:4.89cm;height:2.185cm;" class="odt-zoomable" data-zoom-src="images/100000000000010800000076BC601725.png" /></td><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top; text-align: left;">&nbsp;</td><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top; text-align: left;">&nbsp;</td></tr></table>
+
+<p>Wir haben es also mit einem Stapelüberlauf zu tun. Tests zeigen, dass das Verhalten des Schedulers [Schedulers.newThread] nicht deterministisch ist. Es kann vorkommen, dass die oben genannte Ausnahme auftritt, Sie neue Tests ausführen, dann zu der Konfiguration zurückkehren, die die Ausnahme verursacht hat, und diese Ausnahme nicht mehr auftritt.</p>
+<p><a id="refheading104090374082361"></a></p>
+<h2 id="210-fazit">2.10. <span style="color: #4f81bd"><strong><span style="color: #4f81bd">Fazit</span></strong></span></h2>
+<p>Wir haben ein Beispiel für die Verwendung der Rx-Bibliothek gezeigt. Fassen wir zusammen, was wir gelernt haben:</p>
+<p>Wir sind mit der folgenden Architektur gestartet:</p>
+<p><img src="images/10000000000003680000015623D3D1A0.png" width="436" height="171" style="width:11.531cm;height:4.523cm;" alt="Image" class="odt-zoomable" data-zoom-src="images/10000000000003680000015623D3D1A0.png" /></p>
+<ul>
+  <li>In [4] führte die [swing]-Schicht synchrone Aufrufe an die [service]-Schicht durch;
+  </li>
+  <li>in [5] führte die [swing]-Schicht asynchrone Aufrufe an die [rxService]-Schicht durch, die wiederum einen synchronen Aufruf [6] an die [service]-Schicht ausführte;
+  </li>
+</ul>
+
+<p>Als Erstes stellten wir fest, dass die Rx-Bibliothek es einfach machte, die asynchrone [rxService]-Schnittstelle aus der synchronen [service]-Schnittstelle zu erstellen (siehe Abschnitt<a href="#refheading36591510222748"><u><span style="color: #0563c1"> 2.4</span></u></a>). Dies ist eine wichtige Erkenntnis, da es bedeutet, dass wir eine synchrone Anwendung leicht zu einer asynchronen weiterentwickeln können.</p>
+<p>In der [swing]-Schicht wurden zwei separate Methoden geschrieben:</p>
+<ul>
+  <li>eine, um synchrone Aufrufe an den Dienst zu senden (siehe Abschnitt<a href="#refheading36591510222748"><u><span style="color: #0563c1"> 2.4</span></u></a>);
+  </li>
+  <li>die andere, um asynchrone Aufrufe an ihn zu senden (siehe Abschnitt<a href="#refheading36611510222748"><u><span style="color: #0563c1"> 2.7</span></u></a>);
+  </li>
+</ul>
+
+<p>Das Schreiben asynchroner Aufrufe hat sich als deutlich komplexer erwiesen als das Schreiben synchroner Aufrufe. Dennoch werden diejenigen, die bereits mit paralleler Programmierung gearbeitet haben, bei der mehrere Threads synchronisiert werden müssen, feststellen, dass die Rx-Lösung einfacher zu schreiben ist und alle schwierigen Probleme der Synchronisation und der Kommunikation zwischen Threads vermeidet. In diesem Artikel haben wir die folgenden Kernpunkte hervorgehoben:</p>
+<ul>
+  <li>Der Typ [Observable] bezeichnet einen Strom von Ereignissen (Werten), die <b>asynchron</b> sein können (müssen aber nicht) und die beobachtet werden können;
+  </li>
+  <li>Der Typ [Subscriber] bezeichnet einen Abonnenten eines Typs [Observable];
+  </li>
+  <li>der Typ [Subscription] bezeichnet ein Abonnement, d. h. die Verbindung zwischen einem [Subscriber] und einem [Observable];
+  </li>
+  <li>Der Typ [Observable] unterstützt Operatoren [<i>mergeWith, empty, subscribeOn, observeOn, ...</i>], die meist Observables erzeugen. Diese Operatoren dienen dazu, das Observable <b>vor seiner Ausführung zu konfigurieren</b>: 
+    <ul>
+      <li>was beobachtet werden soll;
+      </li>
+      <li>auf welchem Thread das Observable ausgeführt wird;
+      </li>
+      <li>der Thread, auf dem der Abonnent Daten vom Observable empfängt;
+      </li>
+    </ul>
+  </li>
+  <li>Es gibt zwei Arten von Observables: [cold] und [hot]. Ein Cold-Observable wird für jeden neuen Abonnenten vollständig ausgeführt. Wenn jede Ausführung dieselben Daten erzeugt, erhält jeder neue Abonnent dieselben Daten wie der vorherige. Ein Hot-Observable erzeugt im Allgemeinen kontinuierlich Daten. Wenn sich ein Abonnent anmeldet, erhält er die Daten, die ab dem Zeitpunkt seiner Anmeldung ausgegeben wurden. Er erhält keine Daten, die möglicherweise zuvor ausgegeben wurden. In unserem Beispiel ist das Observable <b>„cold</b>“: Es wird für jeden neuen Abonnenten vollständig neu ausgeführt.
+  </li>
+</ul>
+
+<p>Nachdem wir nun ein Beispiel gesehen haben, das den Nutzen der Rx-Bibliothek verdeutlicht, werden wir sie genauer untersuchen.</p>
+<p>Die Rx-Bibliothek verfügt über viele Methoden mit generischen Parametern in ihren Signaturen. Wir werden diese Signaturen kurz durchgehen (Abschnitt<a href="#refheading2073011760159442"><u><span style="color: #0563c1"> 3</span></u></a>). Die Parameter dieser Methoden sind meist funktionale Schnittstellen (Java 8), d. h. Schnittstellen mit nur einer einzigen Methode. Die tatsächlichen Parameter müssen daher Instanzen dieser Schnittstellen sein. Vor Java 8 war es gängige Praxis, eine Schnittstelle mithilfe einer anonymen Klasse zu implementieren. In Java 8 ist es bei funktionalen Schnittstellen prägnanter, diese mithilfe einer Lambda-Funktion zu implementieren. Wir werden diese daher vorstellen (Abschnitt<a href="#refheading2073031760159442"><u><span style="color: #0563c1"> 4</span></u></a>). Anschließend stellen wir die Klasse [Stream] vor (Abschnitt<a href="#refheading173491349222571"><u><span style="color: #0563c1"> 5</span></u></a>), mit der Sie Java-Sammlungen mithilfe von Lambda-Funktionen verarbeiten können. Diese Klasse ist interessant, da die Klasse [Observable] von RxJava</p>
+<ul>
+  <li>bestimmte Methoden;
+  </li>
+  <li>die gleiche Art, Methoden miteinander zu verketten, um dasselbe Observable zu verarbeiten;
+  </li>
+</ul>
+
+<p>Anschließend werden wir die funktionalen Schnittstellen vorstellen, die spezifisch für die RxJava-Bibliothek sind (Abschnitt<a href="#refheading2073051760159442"><u><span style="color: #0563c1"> 6</span></u></a>). Wir fahren fort mit den Hauptelementen der Rx-Bibliothek [Observable, Subscriber, Subscription, Operatoren] (Abschnitt<a href="#refheading2073071760159442"><u><span style="color: #0563c1"> 7</span></u></a>). Die Klasse [Observable] verfügt über Dutzende von Operatoren, die ihrerseits mehrfach überladen sind. Dies führt zunächst zu einer erheblichen Komplexität, da sich diese Operatoren und ihre Überladungen manchmal nur in einem einzigen Detail unterscheiden und es ohne Erfahrung schwierig ist, zu wissen, welcher Operator zu verwenden ist. Wir werden nur eine begrenzte Anzahl von Operatoren vorstellen und ihre Überladungen meist außer Acht lassen.</p>
+<p>Der gesamte vorangegangene Abschnitt wird anhand der RxJava-Bibliothek in einfachen Konsolenanwendungen behandelt. Sobald wir die RxJava-Bibliothek beherrschen, werden wir sie in zwei Arten von grafischen Anwendungen einsetzen:</p>
+<ul>
+  <li>In Abschnitt<a href="#refheading2073091760159442"><u><span style="color: #0563c1"> 8</span></u></a> werden wir die Beispiel-Swing-Anwendung erneut betrachten, um sie genauer zu untersuchen. Wir werden dann die RxSwing-Bibliothek verwenden;
+  </li>
+  <li>in Abschnitt<a href="#refheading2073111760159442"><u><span style="color: #0563c1"> 9</span></u></a> erstellen wir eine Android-Anwendung unter Verwendung der RxAndroid-Bibliothek;
+  </li>
+</ul>
+
+<p>Sobald all dies erledigt ist, verfügt der Leser über die Werkzeuge, um auf eigenen Beinen zu stehen. Es wird wahrscheinlich einige Zeit dauern, bis er die Rx-Bibliothek intuitiv nutzen kann. Ich fand diese Bibliothek besonders interessant. Allerdings empfand ich sie als schwer verständlich, und die Lernkurve war steil. Ich hoffe, dass dieses Dokument diese Lernkurve für den Leser verkürzt. Meiner Meinung nach ist der Aufwand die Mühe wert.</p>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"/></svg>
+  Back to top
+</button>
+        
+      </main>
+      
+        
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner">
+
+      <div>
+        <a href="https://stahe.github.io" target="_blank">
+          https://stahe.github.io
+        </a>
+        <br>
+        Dieses Tutorial, verfasst von <strong>Serge Tahé</strong>, wird der Öffentlichkeit unter den Bedingungen der
+<em>Creative Commons Namensnennung – Nicht kommerziell –
+Weitergabe unter gleichen Bedingungen 3.0 Unported</em>.
+      </div>
+
+    </div>
+  </div>
+
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate": null, "base": ".", "features": ["navigation.sections", "navigation.indexes", "navigation.expand", "toc.integrate", "navigation.top"], "search": "assets/javascripts/workers/search.7a47a382.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+    
+    
+      <script src="assets/javascripts/bundle.e71a0d61.min.js"></script>
+      
+        <script src="javascripts/focus.js"></script>
+      
+    
+  </body>
+</html>
