@@ -12,13 +12,13 @@
         <meta name="author" content="Serge Tahé">
       
       
-        <link rel="canonical" href="https://stahe.github.io/de-rxjava-mai-2016/einleitung.html">
+        <link rel="canonical" href="https://stahe.github.io/de-rxjava-mai-2016/einfuhrung.html">
       
       
         <link rel="prev" href="index.html">
       
       
-        <link rel="next" href="ein-einfuhrungsbeispiel.html">
+        <link rel="next" href="ein-beispiel-zur-einfuhrung.html">
       
       
         
@@ -29,7 +29,7 @@
     
     
       
-        <title>1. Einleitung - Einführung in RxJava. Anwendungen in Swing- und Android-Umgebungen</title>
+        <title>1. Einführung - Einführung in RxJava. Anwendungen in Swing- und Android-Umgebungen</title>
       
     
     
@@ -94,7 +94,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#1-einleitung" class="md-skip">
+        <a href="#1-einfuhrung" class="md-skip">
           Skip to content
         </a>
       
@@ -130,7 +130,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              1. Einleitung
+              1. Einführung
             
           </span>
         </div>
@@ -321,7 +321,7 @@
   <span class="md-ellipsis">
     
   
-    1. Einleitung
+    1. Einführung
   
 
     
@@ -332,14 +332,14 @@
           <span class="md-nav__icon md-icon"></span>
         </label>
       
-      <a href="einleitung.html" class="md-nav__link md-nav__link--active">
+      <a href="einfuhrung.html" class="md-nav__link md-nav__link--active">
         
   
   
   <span class="md-ellipsis">
     
   
-    1. Einleitung
+    1. Einführung
   
 
     
@@ -365,10 +365,10 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#11-hintergrund" class="md-nav__link">
+  <a href="#11-contexte" class="md-nav__link">
     <span class="md-ellipsis">
       
-        1.1. Hintergrund
+        1.1. Contexte
       
     </span>
   </a>
@@ -387,10 +387,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#13-beispielcode" class="md-nav__link">
+  <a href="#13-beispielcodes" class="md-nav__link">
     <span class="md-ellipsis">
       
-        1.3. Beispielcode
+        1.3. Beispielcodes
       
     </span>
   </a>
@@ -412,14 +412,14 @@
   
   
     <li class="md-nav__item">
-      <a href="ein-einfuhrungsbeispiel.html" class="md-nav__link">
+      <a href="ein-beispiel-zur-einfuhrung.html" class="md-nav__link">
         
   
   
   <span class="md-ellipsis">
     
   
-    2. Ein Einführungsbeispiel
+    2. Ein Beispiel zur Einführung
   
 
     
@@ -466,14 +466,14 @@
   
   
     <li class="md-nav__item">
-      <a href="java-8-lambda-ausdrucke.html" class="md-nav__link">
+      <a href="lambda-funktionen-in-java-8.html" class="md-nav__link">
         
   
   
   <span class="md-ellipsis">
     
   
-    4. Java 8 Lambda-Ausdrücke
+    4. Lambda-Funktionen in Java 8
   
 
     
@@ -493,14 +493,14 @@
   
   
     <li class="md-nav__item">
-      <a href="der-typ-streamt-in-java-8.html" class="md-nav__link">
+      <a href="der-typ-streamt-aus-java-8.html" class="md-nav__link">
         
   
   
   <span class="md-ellipsis">
     
   
-    5. Der Typ Stream<T> in Java 8
+    5. Der Typ `Stream<T>` aus Java 8
   
 
     
@@ -520,14 +520,14 @@
   
   
     <li class="md-nav__item">
-      <a href="die-funktionalen-schnittstellen-der-rxjava-bibliothek.html" class="md-nav__link">
+      <a href="die-funktionsschnittstellen-der-bibliothek-rxjava.html" class="md-nav__link">
         
   
   
   <span class="md-ellipsis">
     
   
-    6. Die funktionalen Schnittstellen der RxJava-Bibliothek
+    6. Die Funktionsschnittstellen der Bibliothek RxJava
   
 
     
@@ -547,14 +547,14 @@
   
   
     <li class="md-nav__item">
-      <a href="die-rxjava-bibliothek.html" class="md-nav__link">
+      <a href="die-bibliothek-rxjava.html" class="md-nav__link">
         
   
   
   <span class="md-ellipsis">
     
   
-    7. Die RxJava-Bibliothek
+    7. Die Bibliothek RxJava
   
 
     
@@ -665,37 +665,36 @@
 
 
 
-<p><a id="refheading261305838046689"></a></p>
-<h1 id="1-einleitung">1. <span style="color: #365f91">Einleitung</span></h1>
-<p>Das PDF des Dokuments ist |<a href="https://1drv.ms/b/c/f53a919f43d27eb5/IQCAcuyktJP7QJ98sbJPJv5rAWCSp83J4jCZezWk_rAx1hE?e=J5HqQt">HIER</a>| verfügbar.</p>
-<p>Die Beispiele im Dokument sind |<a href="https://1drv.ms/u/c/f53a919f43d27eb5/IQCzhOKO_98JQ5VW_KyrRMwYAUMDMU_QPuxkryqM7Ede96o?e=jgs2Cu">HIER</a>| verfügbar.</p>
-<p><a id="refheading1051242082896917"></a></p>
-<h2 id="11-hintergrund">1.1. <span style="color: #4f81bd">Hintergrund</span></h2>
+<p><span id="refheading261305838046689" name="refheading261305838046689" class="odt-bookmark-anchor"></span></p>
+<h1 id="1-einfuhrung">1. <span style="color: #365f91">Einführung</span></h1>
+<p>Die PDF des Dokuments ist verfügbar |<a href="https://1drv.ms/b/c/f53a919f43d27eb5/IQCAcuyktJP7QJ98sbJPJv5rAWCSp83J4jCZezWk_rAx1hE?e=HOKR8e">HIER</a>|.</p>
+<p>Die Beispiele des Dokuments sind verfügbar |<a href="https://1drv.ms/u/c/f53a919f43d27eb5/IQCzhOKO_98JQ5VW_KyrRMwYAUMDMU_QPuxkryqM7Ede96o?e=ZBfdl0">HIER</a>|.</p>
+<p><span id="refheading1051242082896917" name="refheading1051242082896917" class="odt-bookmark-anchor"></span></p>
+<h2 id="11-contexte">1.1. <span style="color: #4f81bd">Contexte</span></h2>
 <p>Dieses Dokument richtet sich nicht an Anfänger, sondern an Benutzer mit fundierten Java-Kenntnissen. Es stützt sich auf folgende Quellen:</p>
 <ol>
-<li><a href="http://reactivex.io/documentation/observable.html"><u><span style="color: #0563c1">[Reactive Programming]-Dokumentation</span></u></a>;</li>
-</ol>
-<ol start="2">
-  <li><a href="https://docs.oracle.com/javase/tutorial/java/javaOO/lambdaexpressions.html"><u><span style="color: #0563c1">Java 8-Lambda-Funktionen</span></u></a>;
+  <li><a href="http://reactivex.io/documentation/observable.html"><u><span style="color: #0563c1">Dokumentation [Reactive Programming]</span></u></a>;
   </li>
-  <li><a href="https://www.packtpub.com/application-development/learning-reactive-programming-java-8"><u><span style="color: #0563c1">„Learning Reactive Programming With Java 8“</span></u></a><span style="color: #000000">;</span>
+  <li><a href="https://docs.oracle.com/javase/tutorial/java/javaOO/lambdaexpressions.html"><u><span style="color: #0563c1">Lambda-Funktionen in Java 8</span></u></a>;
+  </li>
+  <li><a href="https://www.packtpub.com/application-development/learning-reactive-programming-java-8"><u><span style="color: #0563c1">„Learning Reactive Programming With Java 8</span></u></a><span style="color: #000000">“;</span>
   </li>
   <li><a href="https://www.manning.com/books/java-8-in-action"><u><span style="color: #0563c1">„Java 8 in Action“</span></u></a><span style="color: #000000">;</span>
   </li>
 </ol>
 
-<p>Im Gegensatz zu anderen Dokumenten, die ich verfasst habe, stützt sich dieses vor allem auf Beispiele und geht nur kurz auf die Theorie ein.  Jedes Beispiel wird jedoch von einer Erklärung begleitet, und das Dokument folgt einem logischen Aufbau.</p>
-<p>ReactiveX ist eine Sammlung von Bibliotheken, die die asynchrone Programmierung und die Verarbeitung der daraus resultierenden Daten erleichtern:</p>
-<table class="odt-table" style="border-collapse: collapse; width: 100%; margin-bottom: 1em;"><tr><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top; text-align: left;"><img src="images/100000000000021C000000F7E2A189B6.png" width="270" height="123" style="display:inline-block; margin:4px;width:7.14cm;height:3.267cm;" class="odt-zoomable" data-zoom-src="images/100000000000021C000000F7E2A189B6.png" /></td><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top; text-align: left;">&nbsp;</td></tr></table>
+<p>Im Gegensatz zu anderen Dokumenten, die ich verfasst habe, stützt sich dieses Dokument vor allem auf Beispiele und geht nur wenig auf die Theorie ein. Jedes Beispiel wird jedoch von einer Erklärung begleitet, und das Dokument folgt einem logischen Aufbau.</p>
+<p>ReactiveX ist eine Sammlung von Bibliotheken, die die asynchrone Programmierung und die Auswertung der so gewonnenen Daten erleichtern:</p>
+<table class="odt-table" style="border-collapse: collapse; width: 100%; margin-bottom: 1em;"><tr><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top; text-align: left;"><img src="images/100000000000021C000000F7E2A189B6.png" width="270" height="124" style="display:inline-block; margin:4px;width:7.14cm;height:3.27cm;" class="odt-zoomable" data-zoom-src="images/100000000000021C000000F7E2A189B6.png" /></td><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top; text-align: left;">&nbsp;</td></tr></table>
 
-<table class="odt-table" style="border-collapse: collapse; width: 100%; margin-bottom: 1em;"><tr><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top; text-align: left;"><img src="images/100000000000027000000089BF091E9D.png" width="312" height="69" style="display:inline-block; margin:4px;width:8.26cm;height:1.813cm;" class="odt-zoomable" data-zoom-src="images/100000000000027000000089BF091E9D.png" /></td><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top; text-align: left;">&nbsp;</td></tr></table>
+<table class="odt-table" style="border-collapse: collapse; width: 100%; margin-bottom: 1em;"><tr><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top; text-align: left;"><img src="images/100000000000027000000089BF091E9D.png" width="312" height="68" style="display:inline-block; margin:4px;width:8.26cm;height:1.81cm;" class="odt-zoomable" data-zoom-src="images/100000000000027000000089BF091E9D.png" /></td><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top; text-align: left;">&nbsp;</td></tr></table>
 
-<table class="odt-table" style="border-collapse: collapse; width: 100%; margin-bottom: 1em;"><tr><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top; text-align: left;"><img src="images/100000000000031C000001DF48E61AEE.png" width="398" height="240" style="display:inline-block; margin:4px;width:10.53cm;height:6.338cm;" class="odt-zoomable" data-zoom-src="images/100000000000031C000001DF48E61AEE.png" /></td><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top; text-align: left;">&nbsp;</td></tr></table>
+<table class="odt-table" style="border-collapse: collapse; width: 100%; margin-bottom: 1em;"><tr><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top; text-align: left;"><img src="images/100000000000031C000001DF48E61AEE.png" width="398" height="240" style="display:inline-block; margin:4px;width:10.53cm;height:6.339cm;" class="odt-zoomable" data-zoom-src="images/100000000000031C000001DF48E61AEE.png" /></td><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top; text-align: left;">&nbsp;</td></tr></table>
 
 <p>Die Rx-Bibliothek wurde in vielen Sprachen implementiert:</p>
-<table class="odt-table" style="border-collapse: collapse; width: 100%; margin-bottom: 1em;"><tr><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top; text-align: left;"><img src="images/100000000000015A0000008A80EEFC76.png" width="242" height="97" style="display:inline-block; margin:4px;width:6.41cm;height:2.558cm;" class="odt-zoomable" data-zoom-src="images/100000000000015A0000008A80EEFC76.png" /></td><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top; text-align: left;">&nbsp;</td></tr></table>
+<table class="odt-table" style="border-collapse: collapse; width: 100%; margin-bottom: 1em;"><tr><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top; text-align: left;"><img src="images/100000000000015A0000008A80EEFC76.png" width="242" height="97" style="display:inline-block; margin:4px;width:6.41cm;height:2.559cm;" class="odt-zoomable" data-zoom-src="images/100000000000015A0000008A80EEFC76.png" /></td><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top; text-align: left;">&nbsp;</td></tr></table>
 
-<p>Hier konzentrieren wir uns auf die folgenden Bibliotheken:</p>
+<p>Wir befassen uns hier mit den folgenden Bibliotheken:</p>
 <ul>
   <li>RxJava für die Java-Welt;
   </li>
@@ -705,71 +704,72 @@
   </li>
 </ul>
 
-<p>Die Konzepte der reaktiven Programmierung sind auf den ersten Blick komplex. Deshalb richtet sich dieses Dokument nicht in erster Linie an Anfänger. Dennoch habe ich mich sehr bemüht, den verwendeten Code zu erklären, und auch Anfänger können sich mithilfe dieses Dokuments mit reaktiver Programmierung vertraut machen.</p>
-<p><a id="refheading251519391218965"></a></p>
+<p>Die Konzepte der reaktiven Programmierung sind auf den ersten Blick komplex. Daher richtet sich dieses Dokument grundsätzlich nicht an Anfänger. Dennoch habe ich mich sehr bemüht, den verwendeten Code zu erklären, und auch Anfänger ohne Vorkenntnisse können sich mit diesem Dokument in die reaktive Programmierung einarbeiten.</p>
+<p><span id="refheading251519391218965" name="refheading251519391218965" class="odt-bookmark-anchor"></span></p>
 <h2 id="12-verwendete-tools">1.2. <span style="color: #4f81bd">Verwendete Tools</span></h2>
-<p><a id="refheading4233146869296"></a>Die folgenden Beispiele wurden in der folgenden Umgebung getestet:</p>
+<p><span id="refheading4233146869296" name="refheading4233146869296" class="odt-bookmark-anchor"></span>Die folgenden Beispiele wurden mit der folgenden Arbeitsumgebung getestet:</p>
 <ul>
   <li>Windows 10 Pro 64-Bit-Rechner;
   </li>
-  <li>JDK 1.8 (Abschnitt<a href="#refheading261305838046689"><u><span style="color: #0563c1"> 1</span></u></a>);
+  <li>JDK 1.8 (Absatz<a href="#refheading261305838046689"><u><span style="color: #0563c1"> 1</span></u></a>);
   </li>
-  <li>IntelliJ IDEA Community Edition (Abschnitt<a href="#refheading138132495672820"><u><span style="color: #0563c1"> 10.4</span></u></a>);
+  <li>IntelliJ IDEA Community Edition (Absatz<a href="anhange.html#refheading138132495672820"><u><span style="color: #0563c1"> 10.4</span></u></a>);
   </li>
 </ul>
-<p><a id="refheading104078374082361"></a></p>
-<h2 id="13-beispielcode">1.3. <span style="color: #4f81bd"><strong><span style="color: #4f81bd">Beispielcode</span></strong></span></h2>
-<p>Den Code für die folgenden Beispiele finden Sie |<a href="https://1drv.ms/u/c/f53a919f43d27eb5/IQCzhOKO_98JQ5VW_KyrRMwYAUMDMU_QPuxkryqM7Ede96o?e=jgs2Cu">HIER</a>| im Ordner [dvp/examples].</p>
-<table class="odt-table" style="border-collapse: collapse; width: 100%; margin-bottom: 1em;"><tr><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top; text-align: left;"><img src="images/10000000000000AF000000B5854A5F64.png" width="122" height="127" style="display:inline-block; margin:4px;width:3.24cm;height:3.351cm;" class="odt-zoomable" data-zoom-src="images/10000000000000AF000000B5854A5F64.png" /></td><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top; text-align: left;"><img src="images/10000000000000BF0000014AC81A02A3.png" width="134" height="231" style="display:inline-block; margin:4px;width:3.54cm;height:6.115cm;" class="odt-zoomable" data-zoom-src="images/10000000000000BF0000014AC81A02A3.png" /></td><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top; text-align: left;">&nbsp;</td></tr></table>
 
-<p>Der Ordner [dvp/examples] [2] ist ein Gradle-Projekt, das die meisten Beispiele in diesem Dokument enthält. Er kann mit jeder IDE geöffnet werden, die den Gradle-Projektmanager unterstützt [<a href="http://gradle.org/"><u><span style="color: #0563c1">http://gradle.org/</span></u></a>]. IntelliJ IDEA unterstützt ihn nativ. Für Eclipse oder NetBeans ist ein Plugin erforderlich. Mit der IntelliJ IDEA Community Edition können Sie wie folgt vorgehen:</p>
-<table class="odt-table" style="border-collapse: collapse; width: 100%; margin-bottom: 1em;"><tr><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top; text-align: left;"><img src="images/1000000000000125000001434562954D.png" width="205" height="226" style="display:inline-block; margin:4px;width:5.42cm;height:5.974cm;" class="odt-zoomable" data-zoom-src="images/1000000000000125000001434562954D.png" /><img src="images/10000000000000B20000004310D3CA6F.png" width="125" height="47" style="display:inline-block; margin:4px;width:3.3cm;height:1.242cm;" class="odt-zoomable" data-zoom-src="images/10000000000000B20000004310D3CA6F.png" /></td><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top; text-align: left;"><img src="images/100000000000015700000237DF954743.png" width="240" height="397" style="display:inline-block; margin:4px;width:6.35cm;height:10.497cm;" class="odt-zoomable" data-zoom-src="images/100000000000015700000237DF954743.png" /></td></tr></table>
+<p><span id="refheading104078374082361" name="refheading104078374082361" class="odt-bookmark-anchor"></span></p>
+<h2 id="13-beispielcodes">1.3. <span style="color: #4f81bd">Beispielcodes</span></h2>
+<p>Die Quellcodes der folgenden Beispiele finden Sie |ICI| im Ordner [dvp/exemples].</p>
+<table class="odt-table" style="border-collapse: collapse; width: 100%; margin-bottom: 1em;"><tr><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top; text-align: left;"><img src="images/10000000000000AF000000B5854A5F64.png" width="122" height="127" style="display:inline-block; margin:4px;width:3.24cm;height:3.35cm;" class="odt-zoomable" data-zoom-src="images/10000000000000AF000000B5854A5F64.png" /></td><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top; text-align: left;"><img src="images/10000000000000BF0000014AC81A02A3.png" width="134" height="231" style="display:inline-block; margin:4px;width:3.54cm;height:6.11cm;" class="odt-zoomable" data-zoom-src="images/10000000000000BF0000014AC81A02A3.png" /></td><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top; text-align: left;">&nbsp;</td></tr></table>
 
-<p>Das Projekt [examples] wird durch die folgende [build.gradle]-Datei [4] konfiguriert:</p>
+<p>Der Ordner [dvp/exemples] [2] ist ein Gradle-Projekt, das die meisten Beispiele dieses Dokuments enthält. Er kann mit allen IDE geöffnet werden, die den Gradle-Projektmanager [http://gradle.org/] unterstützen. IntelliJ IDEA unterstützt dies nativ. Für Eclipse oder NetBeans ist ein Plugin erforderlich. Mit der IntelliJ IDEA Community Edition kann wie folgt vorgegangen werden:</p>
+<table class="odt-table" style="border-collapse: collapse; width: 100%; margin-bottom: 1em;"><tr><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top; text-align: left;"><img src="images/1000000000000125000001434562954D.png" width="205" height="226" style="display:inline-block; margin:4px;width:5.42cm;height:5.98cm;" class="odt-zoomable" data-zoom-src="images/1000000000000125000001434562954D.png" /><img src="images/10000000000000B20000004310D3CA6F.png" width="125" height="47" style="display:inline-block; margin:4px;width:3.3cm;height:1.24cm;" class="odt-zoomable" data-zoom-src="images/10000000000000B20000004310D3CA6F.png" /></td><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top; text-align: left;"><img src="images/100000000000015700000237DF954743.png" width="240" height="397" style="display:inline-block; margin:4px;width:6.35cm;height:10.5cm;" class="odt-zoomable" data-zoom-src="images/100000000000015700000237DF954743.png" /></td></tr></table>
+
+<p>Das Projekt [exemples] wird über die folgende Datei konfiguriert: [build.gradle] [4]:</p>
 <div class="odt-code-rich" data-linenums="true" style="counter-reset: odtline 0;"><pre><code class="language-text">
 <span class="odt-code-line"><span class="odt-code-line-content">buildscript {</span></span>
 <span class="odt-code-line"><span class="odt-code-line-content">    repositories {</span></span>
 <span class="odt-code-line"><span class="odt-code-line-content">        mavenCentral()</span></span>
 <span class="odt-code-line"><span class="odt-code-line-content">    }</span></span>
 <span class="odt-code-line"><span class="odt-code-line-content">}</span></span>
-<span class="odt-code-line"><span class="odt-code-line-content"> </span></span>
+<span class="odt-code-line"><span class="odt-code-line-content"></span></span>
 <span class="odt-code-line"><span class="odt-code-line-content">apply <span style="color:#008000">plugin</span>: <span style="color:#008000">&#x27;java&#x27;</span></span></span>
-<span class="odt-code-line"><span class="odt-code-line-content"> </span></span>
+<span class="odt-code-line"><span class="odt-code-line-content"></span></span>
 <span class="odt-code-line"><span class="odt-code-line-content">jar {</span></span>
 <span class="odt-code-line"><span class="odt-code-line-content">    baseName = <span style="color:#008000">&#x27;exemples-01&#x27;</span></span></span>
 <span class="odt-code-line"><span class="odt-code-line-content"><span style="color:#008000">    </span>version = <span style="color:#008000">&#x27;0.0.1-SNAPSHOT&#x27;</span></span></span>
 <span class="odt-code-line"><span class="odt-code-line-content">}</span></span>
-<span class="odt-code-line"><span class="odt-code-line-content"> </span></span>
+<span class="odt-code-line"><span class="odt-code-line-content"></span></span>
 <span class="odt-code-line"><span class="odt-code-line-content">repositories {</span></span>
 <span class="odt-code-line"><span class="odt-code-line-content">    mavenCentral()</span></span>
 <span class="odt-code-line"><span class="odt-code-line-content">}</span></span>
-<span class="odt-code-line"><span class="odt-code-line-content"> </span></span>
+<span class="odt-code-line"><span class="odt-code-line-content"></span></span>
 <span class="odt-code-line"><span class="odt-code-line-content">dependencies {</span></span>
 <span class="odt-code-line"><span class="odt-code-line-content">    compile(<span style="color:#008000">&#x27;io.reactivex:rxswing:0.25.0&#x27;</span>)</span></span>
 <span class="odt-code-line"><span class="odt-code-line-content">    compile(<span style="color:#008000">&#x27;io.reactivex:rxjava:1.1.3&#x27;</span>)</span></span>
 <span class="odt-code-line"><span class="odt-code-line-content">    compile(<span style="color:#008000">&#x27;com.fasterxml.jackson.core:jackson-databind:2.7.3&#x27;</span>)</span></span>
 <span class="odt-code-line"><span class="odt-code-line-content">}</span></span>
-<span class="odt-code-line"><span class="odt-code-line-content"> </span></span>
+<span class="odt-code-line"><span class="odt-code-line-content"></span></span>
 <span class="odt-code-line"><span class="odt-code-line-content">task wrapper(<span style="color:#008000">type</span>: Wrapper) {</span></span>
 <span class="odt-code-line"><span class="odt-code-line-content">    gradleVersion = <span style="color:#008000">&#x27;2.9&#x27;</span></span></span>
 <span class="odt-code-line"><span class="odt-code-line-content">}</span></span>
 </code></pre></div>
 
 <ul>
-  <li>Zeilen 18–22: die Gradle-Abhängigkeiten des Projekts (herunterzuladende Bibliotheken);
+  <li>Zeilen 18–22: die Gradle-Abhängigkeiten des Projekts (die herunterzuladenden Bibliotheken);
   </li>
-  <li>Zeile 19: die für das in Abschnitt<a href="#refheading51101774887325"><u><span style="color: #0563c1"> 2</span></u></a> besprochene Swing-Beispiel erforderliche Bibliothek;
+  <li>Zeile 19: die für das in Abschnitt<a href="ein-beispiel-zur-einfuhrung.html#refheading51101774887325"><u><span style="color: #0563c1"> 2</span></u></a> behandelte Swing-Beispiel erforderliche Bibliothek;
   </li>
-  <li>Zeile 20: die RxJava-Bibliothek;
+  <li>Zeile 20: die Bibliothek „RxJava“;
   </li>
-  <li>Zeile 21: eine JSON-Bibliothek;
+  <li>Zeile 21: eine Bibliothek namens jSON;
   </li>
-  <li>Zeilen 9–12: die Eigenschaften des JAR-Archivs, das durch die Kompilierung des Projekts erstellt wird;
+  <li>Zeilen 9–12: die Eigenschaften des durch die Kompilierung des Projekts erzeugten JAR-Archivs;
   </li>
 </ul>
 
-<p>Um die für das Projekt erforderlichen Abhängigkeiten herunterzuladen, führen Sie die folgenden Schritte [1–4] aus:</p>
-<table class="odt-table" style="border-collapse: collapse; width: 100%; margin-bottom: 1em;"><tr><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top; text-align: left;"><img src="images/10000000000002540000012AD35AA155.png" width="402" height="201" style="display:inline-block; margin:4px;width:10.64cm;height:5.32cm;" class="odt-zoomable" data-zoom-src="images/10000000000002540000012AD35AA155.png" /></td><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top; text-align: left;"><img src="images/100000000000011C0000009EB8205F79.png" width="199" height="111" style="display:inline-block; margin:4px;width:5.26cm;height:2.926cm;" class="odt-zoomable" data-zoom-src="images/100000000000011C0000009EB8205F79.png" /></td></tr></table>
+<p>Um die für das Projekt erforderlichen Abhängigkeiten herunterzuladen, gehen Sie wie folgt vor: [1-4]:</p>
+<table class="odt-table" style="border-collapse: collapse; width: 100%; margin-bottom: 1em;"><tr><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top; text-align: left;"><img src="images/10000000000002540000012AD35AA155.png" width="402" height="201" style="display:inline-block; margin:4px;width:10.64cm;height:5.318cm;" class="odt-zoomable" data-zoom-src="images/10000000000002540000012AD35AA155.png" /></td><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top; text-align: left;"><img src="images/100000000000011C0000009EB8205F79.png" width="199" height="111" style="display:inline-block; margin:4px;width:5.26cm;height:2.93cm;" class="odt-zoomable" data-zoom-src="images/100000000000011C0000009EB8205F79.png" /></td></tr></table>
 
 
 

@@ -15,10 +15,10 @@
         <link rel="canonical" href="https://stahe.github.io/de-rxjava-mai-2016/signaturen-generischer-klassen-und-methoden.html">
       
       
-        <link rel="prev" href="ein-einfuhrungsbeispiel.html">
+        <link rel="prev" href="ein-beispiel-zur-einfuhrung.html">
       
       
-        <link rel="next" href="java-8-lambda-ausdrucke.html">
+        <link rel="next" href="lambda-funktionen-in-java-8.html">
       
       
         
@@ -305,14 +305,14 @@
   
   
     <li class="md-nav__item">
-      <a href="einleitung.html" class="md-nav__link">
+      <a href="einfuhrung.html" class="md-nav__link">
         
   
   
   <span class="md-ellipsis">
     
   
-    1. Einleitung
+    1. Einführung
   
 
     
@@ -332,14 +332,14 @@
   
   
     <li class="md-nav__item">
-      <a href="ein-einfuhrungsbeispiel.html" class="md-nav__link">
+      <a href="ein-beispiel-zur-einfuhrung.html" class="md-nav__link">
         
   
   
   <span class="md-ellipsis">
     
   
-    2. Ein Einführungsbeispiel
+    2. Ein Beispiel zur Einführung
   
 
     
@@ -396,14 +396,14 @@
   
   
     <li class="md-nav__item">
-      <a href="java-8-lambda-ausdrucke.html" class="md-nav__link">
+      <a href="lambda-funktionen-in-java-8.html" class="md-nav__link">
         
   
   
   <span class="md-ellipsis">
     
   
-    4. Java 8 Lambda-Ausdrücke
+    4. Lambda-Funktionen in Java 8
   
 
     
@@ -423,14 +423,14 @@
   
   
     <li class="md-nav__item">
-      <a href="der-typ-streamt-in-java-8.html" class="md-nav__link">
+      <a href="der-typ-streamt-aus-java-8.html" class="md-nav__link">
         
   
   
   <span class="md-ellipsis">
     
   
-    5. Der Typ Stream<T> in Java 8
+    5. Der Typ `Stream<T>` aus Java 8
   
 
     
@@ -450,14 +450,14 @@
   
   
     <li class="md-nav__item">
-      <a href="die-funktionalen-schnittstellen-der-rxjava-bibliothek.html" class="md-nav__link">
+      <a href="die-funktionsschnittstellen-der-bibliothek-rxjava.html" class="md-nav__link">
         
   
   
   <span class="md-ellipsis">
     
   
-    6. Die funktionalen Schnittstellen der RxJava-Bibliothek
+    6. Die Funktionsschnittstellen der Bibliothek RxJava
   
 
     
@@ -477,14 +477,14 @@
   
   
     <li class="md-nav__item">
-      <a href="die-rxjava-bibliothek.html" class="md-nav__link">
+      <a href="die-bibliothek-rxjava.html" class="md-nav__link">
         
   
   
   <span class="md-ellipsis">
     
   
-    7. Die RxJava-Bibliothek
+    7. Die Bibliothek RxJava
   
 
     
@@ -595,11 +595,11 @@
 
 
 
-<p><a id="refheading2073011760159442"></a></p>
+<p><span id="refheading2073011760159442" name="refheading2073011760159442" class="odt-bookmark-anchor"></span></p>
 <h1 id="3-signaturen-generischer-klassen-und-methoden">3. <span style="color: #365f91">Signaturen generischer Klassen und Methoden</span></h1>
 <table class="odt-table" style="border-collapse: collapse; width: 100%; margin-bottom: 1em;"><tr><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top; text-align: left;"><img src="images/10000000000000E0000000A22E7E1A87.png" width="157" height="113" style="display:inline-block; margin:4px;width:4.15cm;height:3cm;" class="odt-zoomable" data-zoom-src="images/10000000000000E0000000A22E7E1A87.png" /></td><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top; text-align: left;">&nbsp;</td><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top; text-align: left;">&nbsp;</td></tr></table>
 
-<p>Die RxJava-Bibliothek verfügt über viele Methoden, die Instanzen generischer Schnittstellen als Parameter akzeptieren. Manchmal sind ihre Signaturen komplex. Hier sind einige Beispiele:</p>
+<p>Die Bibliothek RxJava verfügt über zahlreiche Methoden, die Instanzen generischer Schnittstellen als Parameter akzeptieren. Manchmal ist deren Signatur komplex. Hier sind einige Beispiele:</p>
 <div class="odt-code-rich" data-linenums="false" style="counter-reset: odtline 0;"><pre><code class="language-text">
 <span class="odt-code-line"><span class="odt-code-line-content">public final &lt;R&gt; Observable&lt;R&gt; <span style="font-weight:bold">map</span>(Func1&lt;? super T,? extends R&gt; func)</span></span>
 </code></pre></div>
@@ -608,18 +608,18 @@
 <span class="odt-code-line"><span class="odt-code-line-content">public final &lt;R&gt; Observable&lt;R&gt; <span style="font-weight:bold">flatMap</span>(Func1&lt;? super T,? extends Observable&lt;? extends R&gt;&gt; func)</span></span>
 </code></pre></div>
 
-<p>Diese beiden Methoden verwenden zwei generische Typen, T und R. Aber was bedeutet beispielsweise die Parameterdefinition der map-Methode:  <em>Func1&lt;? super T,? extends R&gt; func</em> ?</p>
-<p>Informationen zu Generika finden Sie unter der URL [<a href="https://docs.oracle.com/javase/tutorial/java/generics/"><u><span style="color: #0563c1">https://docs.oracle.com/javase/tutorial/java/generics/</span></u></a>]. Einige der folgenden Informationen stammen aus dieser URL. Generika wurden in Java Version 1.5 eingeführt.</p>
-<p>Stellen wir uns einen Webdienst vor, der Informationen verschiedener Typen bereitstellt. Der Webdienst kann manchmal bei der Bereitstellung dieser Informationen fehlschlagen und muss dann seinem Client einen Fehler melden. Wir können die Antwort des Webdienstes dann in der folgenden Form standardisieren:</p>
+<p>Diese beiden Methoden verwenden zwei generische Typen T und R. Aber was bedeutet beispielsweise die Definition des Parameters der Methode <strong>„map</strong>“:  <em>Func1&lt;? super T,? extends R&gt; func</em> ?</p>
+<p>Informationen zu Generika finden Sie unter URL [https://docs.oracle.com/javase/tutorial/java/generics/]. Einige der folgenden Informationen stammen aus dieser Quelle: URL. Generika wurden mit der Version 1.5 von Java eingeführt.</p>
+<p>Stellen wir uns einen Webdienst vor, der Informationen verschiedener Typen bereitstellt. Der Webdienst kann manchmal bei der Bereitstellung dieser Informationen fehlschlagen und muss dann seinem Client einen Fehler melden. Die Antwort des Webdienstes lässt sich dann wie folgt standardisieren:</p>
 <div class="odt-code-rich" data-linenums="true" style="counter-reset: odtline 0;"><pre><code class="language-csharp">
 <span class="odt-code-line"><span class="odt-code-line-content"><span style="font-weight:bold;color:#7f0055">public</span><span style="color:#000000"> </span><span style="font-weight:bold;color:#7f0055">class</span><span style="color:#000000"> Response&lt;</span><span style="font-weight:bold;color:#000000">T</span><span style="color:#000000">&gt; {</span></span></span>
-<span class="odt-code-line"><span class="odt-code-line-content"> </span></span>
-<span class="odt-code-line"><span class="odt-code-line-content">    <span style="color:#000000">// ----------------- properties</span></span></span>
-<span class="odt-code-line"><span class="odt-code-line-content">    <span style="color:#000000">// operation status</span></span></span>
+<span class="odt-code-line"><span class="odt-code-line-content"></span></span>
+<span class="odt-code-line"><span class="odt-code-line-content">    <span style="color:#000000">// ----------------- Eigenschaften</span></span></span>
+<span class="odt-code-line"><span class="odt-code-line-content">    <span style="color:#000000">// Status der Operation</span></span></span>
 <span class="odt-code-line"><span class="odt-code-line-content"><span style="color:#000000">    </span><span style="font-weight:bold;color:#7f0055">private</span><span style="color:#000000"> </span><span style="font-weight:bold;color:#7f0055">int</span><span style="color:#000000"> </span><span style="color:#0000c0">status</span><span style="color:#000000">;</span></span></span>
-<span class="odt-code-line"><span class="odt-code-line-content">    <span style="color:#000000">// any error messages</span></span></span>
+<span class="odt-code-line"><span class="odt-code-line-content">    <span style="color:#000000">// etwaige Fehlermeldungen</span></span></span>
 <span class="odt-code-line"><span class="odt-code-line-content"><span style="color:#000000">    </span><span style="font-weight:bold;color:#7f0055">private</span><span style="color:#000000"> List&lt;String&gt; </span><span style="color:#0000c0">messages</span><span style="color:#000000">;</span></span></span>
-<span class="odt-code-line"><span class="odt-code-line-content">    <span style="color:#000000">// the body of the reply</span></span></span>
+<span class="odt-code-line"><span class="odt-code-line-content">    <span style="color:#000000">// der Antworttext</span></span></span>
 <span class="odt-code-line"><span class="odt-code-line-content"><span style="color:#000000">    </span><span style="font-weight:bold;color:#7f0055">private</span><span style="color:#000000"> T </span><span style="color:#0000c0">body</span><span style="color:#000000">;</span></span></span>
 <span class="odt-code-line"><span class="odt-code-line-content">...</span></span>
 <span class="odt-code-line"><span class="odt-code-line-content">}</span></span>
@@ -628,7 +628,7 @@
 <ul>
   <li>Zeile 1: Die Klasse [Response] wird durch den Typ T parametrisiert;
   </li>
-  <li>Zeile 9: Der Typ T ist der Typ des Antwortkörpers, also das, was der Client tatsächlich erwartet;
+  <li>Zeile 9: Der Typ T ist der Typ des Antwortkörpers, der tatsächlich vom Client erwartet wird;
   </li>
   <li>Zeile 5: ein Fehlercode, 0, wenn kein Fehler vorliegt;
   </li>
@@ -636,7 +636,7 @@
   </li>
 </ul>
 
-<p>Auf der Client-Seite können wir dann schreiben:</p>
+<p>Auf der Client-Seite kann man dann schreiben:</p>
 <div class="odt-code-rich" data-linenums="false" style="counter-reset: odtline 0;"><pre><code class="language-text">
 <span class="odt-code-line"><span class="odt-code-line-content">Response&lt;<span style="font-weight:bold">Product</span>&gt; product=getDataFromWebService(...) ;</span></span>
 </code></pre></div>
@@ -646,136 +646,136 @@
 <span class="odt-code-line"><span class="odt-code-line-content">Response&lt;<span style="font-weight:bold">List&lt;Product&gt;</span>&gt;=getDataFromWebService(...) ;</span></span>
 </code></pre></div>
 
-<p>Der formale Typ T wird durch einen tatsächlichen Typ ersetzt, hier [Product] oder [List&lt;Product&gt;]. Die generische Klasse [Response&lt;T&gt;] ist hier nützlich, da sie es uns ermöglicht, mit einer Standardantwort zu arbeiten.</p>
-<p>Um einen [Response]-Typ mit dem <strong>new</strong>-Operator zu erstellen, schreiben wir:</p>
+<p>Der formale Typ T wird durch einen effektiven Typ ersetzt, hier [Product] oder [List&lt;Product&gt;]. Die generische Klasse [Response&lt;T&gt;] erweist sich hier als praktisch, da sie die Arbeit mit einer Standardantwort ermöglicht.</p>
+<p>Um einen Typ [Response] mit dem Operator <strong>„new“</strong> zu erstellen, schreibt man:</p>
 <div class="odt-code-rich" data-linenums="false" style="counter-reset: odtline 0;"><pre><code class="language-text">
 <span class="odt-code-line"><span class="odt-code-line-content">Response&lt;<span style="font-weight:bold">List&lt;Product&gt;</span>&gt; response=<span style="font-weight:bold">new</span> Response&lt;<span style="font-weight:bold">List&lt;Product&gt;</span>&gt; (...) ;</span></span>
 </code></pre></div>
 
-<p>Seit Java Version 1.8 lässt sich die obige Anweisung einfacher schreiben:</p>
+<p>Seit Java-Version 1.8 lässt sich die obige Anweisung einfacher schreiben:</p>
 <div class="odt-code-rich" data-linenums="false" style="counter-reset: odtline 0;"><pre><code class="language-text">
 <span class="odt-code-line"><span class="odt-code-line-content">Response&lt;<span style="font-weight:bold">List&lt;Product&gt;</span>&gt; response=new Response<span style="font-weight:bold">&lt;&gt;</span> (...) ;</span></span>
 </code></pre></div>
 
-<p>Es ist nicht mehr erforderlich, den tatsächlichen Typ der generischen Parameter auf der rechten Seite des Gleichheitszeichens anzugeben: Stattdessen wird der auf der linken Seite des Gleichheitszeichens angegebene formale Typ verwendet. Dies wird <strong>als Typinferenz</strong> bezeichnet: Der Compiler ist in der Lage, den tatsächlichen Typ der generischen Parameter anhand des Kontexts selbst zu ermitteln. Diese Funktion wird häufig in Lambda-Funktionen verwendet, wo der tatsächliche Typ der generischen Parameter einer Methode oft weggelassen wird.</p>
-<p>Auf der Client-Seite könnte die Methode [getDataFromWebService] nun die folgende Signatur haben:</p>
+<p>Es ist nun nicht mehr erforderlich, rechts vom Gleichheitszeichen den tatsächlichen Typ der generischen Parameter anzugeben: Es wird der formale Typ übernommen, der links vom Gleichheitszeichen angegeben wurde. Dies wird <strong>als Typinferenz</strong> bezeichnet: Der Compiler ist in der Lage, den effektiven Typ der generischen Parameter anhand des Kontexts selbst zu ermitteln. Diese Besonderheit wird häufig in Lambda-Funktionen genutzt, bei denen der effektive Typ der generischen Parameter einer Methode oft weggelassen wird.</p>
+<p>Auf der Client-Seite könnte die Methode [getDataFromWebService] nun folgende Signatur haben:</p>
 <div class="odt-code-rich" data-linenums="false" style="counter-reset: odtline 0;"><pre><code class="language-text">
 <span class="odt-code-line"><span class="odt-code-line-content"><span style="font-weight:bold">&lt;T1,T2&gt;</span> Response&lt;<span style="font-weight:bold">T1</span>&gt;  getDataFromWebService(String urlWebService, String httpMethod, <span style="font-weight:bold">T2</span> post)</span></span>
 </code></pre></div>
 
-<p>Hier haben wir eine generische Methode, die durch zwei Typen, T1 und T2, parametrisiert ist:</p>
+<p>Hier handelt es sich um eine generische Methode, die durch zwei Typen parametrisiert ist: T1 und T2:</p>
 <ul>
   <li>T1 ist der Typ des erwarteten Antwortkörpers;
   </li>
-  <li>T2 ist der Typ des Wertes, der bei einer POST-Operation gesendet wird, bei einer GET-Operation ist er <i>null</i>;
+  <li>T2 ist der Typ des gesendeten Werts für eine Operation POST, <i>null </i>für eine Operation GET;
   </li>
-  <li>urlWebService: ist die URL des Webdienstes;
+  <li>urlWebService: ist der URL des Webdienstes;
   </li>
-  <li>httpMethod: ist die HTTP-Methode GET oder POST, die bei der Abfrage dieser URL verwendet werden soll;
+  <li>httpMethod: ist die Methode HTTP, GET oder POST, die zur Abfrage dieses URL verwendet werden soll;
   </li>
 </ul>
 
 <p>Auf der Client-Seite könnte der folgende Aufruf erfolgen:</p>
 <div class="odt-code-rich" data-linenums="false" style="counter-reset: odtline 0;"><pre><code class="language-text">
 <span class="odt-code-line"><span class="odt-code-line-content"><span style="font-weight:bold">Long</span> id=... ;</span></span>
-<span class="odt-code-line"><span class="odt-code-line-content">Response&lt;<span style="font-weight:bold">Product</span>&gt; product=this.&lt;<span style="font-weight:bold">Product</span>,<span style="font-weight:bold">Long</span>&gt;getDataFromWebService(&#x27;http://localhost:8080/rest/product&#x27;,&#x27;POST&#x27;,id) ;</span></span>
+<span class="odt-code-line"><span class="odt-code-line-content">Response&lt;Product&gt; product=this.&lt;Product,Long&gt;getDataFromWebService(&#x27;http://localhost:8080/rest/product&#x27;,&#x27;POST&#x27;,id) ;</span></span>
 </code></pre></div>
 
-<p>In diesem Fall haben wir <em>T1=Product</em> und <em>T2=Long</em>.</p>
-<p>Mit Java 8 können wir die Typinferenz nutzen und den Code einfacher schreiben:</p>
+<p>In diesem Fall gilt: T1 = <em>Product</em> und <em>T2 = Long</em>.</p>
+<p>Mit Java 8 kann man die Typinferenz nutzen und schreibt dann einfacher:</p>
 <div class="odt-code-rich" data-linenums="false" style="counter-reset: odtline 0;"><pre><code class="language-text">
 <span class="odt-code-line"><span class="odt-code-line-content"><span style="font-weight:bold">Long</span> id=... ;</span></span>
-<span class="odt-code-line"><span class="odt-code-line-content">Response&lt;<span style="font-weight:bold">Product</span>&gt; product=getDataFromWebService(&#x27;http://localhost:8080/rest/product&#x27;,&#x27;POST&#x27;,id) ;</span></span>
+<span class="odt-code-line"><span class="odt-code-line-content">Response&lt;Product&gt; product=getDataFromWebService(&#x27;http://localhost:8080/rest/product&#x27;,&#x27;POST&#x27;,id) ;</span></span>
 </code></pre></div>
 
 <p>Hier ist ein weiterer möglicher Aufruf:</p>
 <div class="odt-code-rich" data-linenums="false" style="counter-reset: odtline 0;"><pre><code class="language-text">
 <span class="odt-code-line"><span class="odt-code-line-content"><span style="font-weight:bold">Long[]</span> ids=... ;</span></span>
-<span class="odt-code-line"><span class="odt-code-line-content">Response&lt;<span style="font-weight:bold">List&lt;Product&gt;</span>&gt; product=getDataFromWebService(&#x27;http://localhost:8080/rest/products&#x27;,&#x27;POST&#x27;,ids) ;</span></span>
+<span class="odt-code-line"><span class="odt-code-line-content">Response&lt;List&lt;Product&gt;&gt; product=getDataFromWebService(&#x27;http://localhost:8080/rest/products&#x27;,&#x27;POST&#x27;,ids) ;</span></span>
 </code></pre></div>
 
-<p>In diesem Fall haben wir <em>T1=List&lt;Product&gt;</em> und <em>T2=Long[]</em>.</p>
-<p>Die generische Klasse oder Methode kann Einschränkungen für ihre generischen Parameter festlegen. Schauen wir uns noch einmal die Definition der [map]-Methode in RxJava an:</p>
+<p>In diesem Fall gilt: T1 = <em>List&lt;Product&gt;</em> und <em>T2 = Long[]</em>.</p>
+<p>Die generische Klasse oder Methode kann Einschränkungen für ihre generischen Parameter festlegen. Kehren wir zur Definition der Methode [map] von RxJava zurück:</p>
 <div class="odt-code-rich" data-linenums="false" style="counter-reset: odtline 0;"><pre><code class="language-text">
 <span class="odt-code-line"><span class="odt-code-line-content">public final &lt;<span style="font-weight:bold">R</span>&gt; Observable&lt;<span style="font-weight:bold">R</span>&gt; <span style="font-weight:bold">map</span>(Func1&lt;? super T,? extends <span style="font-weight:bold">R</span>&gt; func)</span></span>
 </code></pre></div>
 
-<p>Die Methode nimmt zwei Parametertypen entgegen, T und R. Der Typ [Func1] ist eine generische Schnittstelle:</p>
+<p>Die Methode akzeptiert zwei Parametertypen, T und R. Der Typ [Func1] ist eine generische Schnittstelle:</p>
 <table class="odt-table" style="border-collapse: collapse; width: 100%; margin-bottom: 1em;"><tr><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top; text-align: left;"><img src="images/100000000000027D000001854D86DED3.png" width="445" height="272" style="display:inline-block; margin:4px;width:11.786cm;height:7.197cm;" class="odt-zoomable" data-zoom-src="images/100000000000027D000001854D86DED3.png" /></td><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top; text-align: left;">&nbsp;</td></tr></table>
 
-<p><em>Func1</em> definiert eine funktionale Schnittstelle, d. h. eine Schnittstelle mit einer einzigen Methode. Funktionale Schnittstellen bilden die Grundlage für Lambda-Ausdrücke in Java 8. Hier ist die Methode der Schnittstelle wie folgt definiert:</p>
+<p><em>Func1</em> definiert eine funktionale Schnittstelle, d. h. eine Schnittstelle mit nur einer einzigen Methode. Funktionale Schnittstellen bilden die Grundlage für die Lambda-Funktionen in Java 8. Hier ist die Methode der Schnittstelle wie folgt definiert:</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>R call(T t)
 </code></pre></div>
-<p><strong>T</strong> ist also der Typ des an [call] übergebenen Parameters und <strong>R ist</strong> der Typ des erhaltenen Ergebnisses. Kehren wir zur Definition der [map]-Methode zurück:</p>
+<p><strong>T</strong> ist also der Typ des an [call] übergebenen Parameters und <strong>R</strong> der Typ des erhaltenen Ergebnisses. Kehren wir zur Definition der Methode [map] zurück:</p>
 <div class="odt-code-rich" data-linenums="false" style="counter-reset: odtline 0;"><pre><code class="language-text">
 <span class="odt-code-line"><span class="odt-code-line-content">public final &lt;R&gt; Observable&lt;R&gt; <span style="font-weight:bold">map</span>(Func1&lt;? super T,? extends R&gt; func)</span></span>
 </code></pre></div>
 
 <ul>
-  <li>Die Methode [map] erwartet einen einzelnen Parameter vom Typ [Func1&lt;? super T,? extends R&gt;] und gibt einen Typ [Observable&lt;R&gt;] zurück;
+  <li>Die Methode [map] erwartet einen einzigen Parameter vom Typ [Func1&lt;? super T,? extends R&gt;] und gibt einen Typ [Observable&lt;R&gt;] zurück;
   </li>
-  <li><b>? super T</b>: Der an die Methode [Func1.call] übergebene Parameter muss vom Typ T oder <b>einem Supertyp </b>von T sein;
+  <li><b>? super T</b>: Der an die Methode [Func1.call] übergebene Parameter muss vom Typ T oder <b>ein übergeordneter Typ </b>von T sein;
   </li>
-  <li><b>? extends R</b>: Der Typ des von der Methode [call] zurückgegebenen Ergebnisses muss vom Typ R oder <b>einem Subtyp </b>sein, wenn R eine Klasse ist, oder R<b> implementieren</b>, wenn R eine Schnittstelle ist;
+  <li><b>? extends R</b>: Der Typ des von der Methode [call] zurückgegebenen Ergebnisses muss vom Typ R oder <b>davon abgeleitet</b> sein, wenn R eine Klasse ist, oder R <b>implementieren, </b>wenn R eine Schnittstelle ist;
   </li>
 </ul>
 
-<p>Um die beiden oben genannten Einschränkungen besser zu verstehen, sehen wir uns Beispiele aus der Referenz [<a href="https://docs.oracle.com/javase/tutorial/java/generics/bounded.html"><u><span style="color: #0563c1">https://docs.oracle.com/javase/tutorial/java/generics/bounded.html</span></u></a>] an:</p>
+<p>Um die beiden vorstehenden Einschränkungen besser zu verstehen, betrachten wir einige Beispiele aus der Referenz [https://docs.oracle.com/javase/tutorial/java/generics/bounded.html]:</p>
 <div class="odt-code-rich" data-linenums="true" style="counter-reset: odtline 0;"><pre><code class="language-java">
 <span class="odt-code-line"><span class="odt-code-line-content"><span style="font-weight:bold;color:#7f0055">package</span><span style="color:#000000"> tests;</span></span></span>
-<span class="odt-code-line"><span class="odt-code-line-content"> </span></span>
+<span class="odt-code-line"><span class="odt-code-line-content"></span></span>
 <span class="odt-code-line"><span class="odt-code-line-content"><span style="font-weight:bold;color:#7f0055">public</span><span style="color:#000000"> </span><span style="font-weight:bold;color:#7f0055">class</span><span style="color:#000000"> Box&lt;T&gt; {</span></span></span>
-<span class="odt-code-line"><span class="odt-code-line-content"> </span></span>
+<span class="odt-code-line"><span class="odt-code-line-content"></span></span>
 <span class="odt-code-line"><span class="odt-code-line-content"><span style="color:#000000">    </span><span style="font-weight:bold;color:#7f0055">private</span><span style="color:#000000"> T </span><span style="color:#0000c0">t</span><span style="color:#000000">;</span></span></span>
-<span class="odt-code-line"><span class="odt-code-line-content"> </span></span>
+<span class="odt-code-line"><span class="odt-code-line-content"></span></span>
 <span class="odt-code-line"><span class="odt-code-line-content"><span style="color:#000000">    </span><span style="font-weight:bold;color:#7f0055">public</span><span style="color:#000000"> </span><span style="font-weight:bold;color:#7f0055">void</span><span style="color:#000000"> set(T </span><span style="color:#6a3e3e">t</span><span style="color:#000000">) {</span></span></span>
 <span class="odt-code-line"><span class="odt-code-line-content"><span style="color:#000000">        </span><span style="font-weight:bold;color:#7f0055">this</span><span style="color:#000000">.</span><span style="color:#0000c0">t</span><span style="color:#000000"> = </span><span style="color:#6a3e3e">t</span><span style="color:#000000">;</span></span></span>
 <span class="odt-code-line"><span class="odt-code-line-content">    }</span></span>
-<span class="odt-code-line"><span class="odt-code-line-content"> </span></span>
+<span class="odt-code-line"><span class="odt-code-line-content"></span></span>
 <span class="odt-code-line"><span class="odt-code-line-content"><span style="color:#000000">    </span><span style="font-weight:bold;color:#7f0055">public</span><span style="color:#000000"> T get() {</span></span></span>
 <span class="odt-code-line"><span class="odt-code-line-content"><span style="color:#000000">        </span><span style="font-weight:bold;color:#7f0055">return</span><span style="color:#000000"> </span><span style="color:#0000c0">t</span><span style="color:#000000">;</span></span></span>
 <span class="odt-code-line"><span class="odt-code-line-content">    }</span></span>
-<span class="odt-code-line"><span class="odt-code-line-content"> </span></span>
+<span class="odt-code-line"><span class="odt-code-line-content"></span></span>
 <span class="odt-code-line"><span class="odt-code-line-content"><span style="color:#000000">    </span><span style="font-weight:bold;color:#7f0055">public</span><span style="color:#000000"> &lt;U </span><span style="font-weight:bold;color:#7f0055">extends</span><span style="color:#000000"> Number&gt; </span><span style="font-weight:bold;color:#7f0055">void</span><span style="color:#000000"> inspect(U </span><span style="color:#6a3e3e">u</span><span style="color:#000000">) {</span></span></span>
 <span class="odt-code-line"><span class="odt-code-line-content"><span style="color:#000000">        System.</span><span style="font-weight:bold;font-style:italic;color:#0000c0">out</span><span style="color:#000000">.println(</span><span style="color:#2a00ff">&quot;T: &quot;</span><span style="color:#000000"> + </span><span style="color:#0000c0">t</span><span style="color:#000000">.getClass().getName());</span></span></span>
 <span class="odt-code-line"><span class="odt-code-line-content"><span style="color:#000000">        System.</span><span style="font-weight:bold;font-style:italic;color:#0000c0">out</span><span style="color:#000000">.println(</span><span style="color:#2a00ff">&quot;U: &quot;</span><span style="color:#000000"> + </span><span style="color:#6a3e3e">u</span><span style="color:#000000">.getClass().getName());</span></span></span>
 <span class="odt-code-line"><span class="odt-code-line-content">    }</span></span>
-<span class="odt-code-line"><span class="odt-code-line-content"> </span></span>
+<span class="odt-code-line"><span class="odt-code-line-content"></span></span>
 <span class="odt-code-line"><span class="odt-code-line-content"><span style="color:#000000">    </span><span style="font-weight:bold;color:#7f0055">public</span><span style="color:#000000"> </span><span style="font-weight:bold;color:#7f0055">static</span><span style="color:#000000"> </span><span style="font-weight:bold;color:#7f0055">void</span><span style="color:#000000"> main(String[] </span><span style="color:#6a3e3e">args</span><span style="color:#000000">) {</span></span></span>
 <span class="odt-code-line"><span class="odt-code-line-content"><span style="color:#000000">        Box&lt;Integer&gt; </span><span style="color:#6a3e3e">integerBox</span><span style="color:#000000"> = </span><span style="font-weight:bold;color:#7f0055">new</span><span style="color:#000000"> Box&lt;&gt;();</span></span></span>
 <span class="odt-code-line"><span class="odt-code-line-content"><span style="color:#000000">        </span><span style="color:#6a3e3e">integerBox</span><span style="color:#000000">.set(</span><span style="font-weight:bold;color:#7f0055">new</span><span style="color:#000000"> Integer(10));</span></span></span>
 <span class="odt-code-line"><span class="odt-code-line-content"><span style="color:#000000">        </span><span style="color:#6a3e3e">integerBox</span><span style="color:#000000">.inspect(</span><span style="font-weight:bold;color:#7f0055">new</span><span style="color:#000000"> Long(20));</span></span></span>
 <span class="odt-code-line"><span class="odt-code-line-content"><span style="color:#000000">        </span><span style="color:#6a3e3e">integerBox</span><span style="color:#000000">.inspect(</span><span style="font-weight:bold;color:#7f0055">new</span><span style="color:#000000"> Double(-1.78));</span></span></span>
-<span class="odt-code-line"><span class="odt-code-line-content">        <span style="color:#000000">//integerBox.inspect(&quot;some text&quot;); // error: this is still String!</span></span></span>
+<span class="odt-code-line"><span class="odt-code-line-content">        <span style="color:#000000">//integerBox.inspect(&quot;some text&quot;); // Fehler: Dies ist immer noch ein String!</span></span></span>
 <span class="odt-code-line"><span class="odt-code-line-content">    }</span></span>
 <span class="odt-code-line"><span class="odt-code-line-content">}</span></span>
 </code></pre></div>
 
 <ul>
-  <li>Zeile 3: Die Klasse [Box] ist durch den Typ T parametrisiert, der dem Typ des Feldes in Zeile 5 entspricht;
+  <li>Zeile 3: Die Klasse [Box] wird durch den Typ T parametrisiert, der dem Typ des Feldes in Zeile 5 entspricht;
   </li>
-  <li>Zeile 15: Die Methode [inspect] nimmt einen Parameter vom Typ U entgegen. Eine Methode kann auch generische Parameter haben. Sie wird dann wie folgt deklariert:
+  <li>Zeile 15: Die Methode [inspect] akzeptiert einen Parameter vom Typ U. Auch eine Methode kann generische Parameter haben. Sie wird dann wie folgt deklariert:
   </li>
 </ul>
 
 <div class="highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a>&lt;T1, T2, ..., Tn&gt; TResult méthode(paramètres ...)
 </code></pre></div>
-<p>Hier wird U als generischer Typ der Methode mit &lt;U&gt; deklariert, jedoch mit der Einschränkung &lt;U extends Number&gt;, d. h., U muss die Klasse [Number] erweitern. Aufgrund dieser Einschränkung meldet der Compiler in Zeile 25 einen Fehler;</p>
+<p>Hier wird U durch &lt;U&gt; als generischer Typ der Methode deklariert, jedoch mit der Einschränkung &lt;U extends Number&gt;, d. h., U muss die Klasse [Number] erweitern. Aufgrund dieser Einschränkung meldet der Compiler in Zeile 25 einen Fehler;</p>
 <ul>
   <li>Zeilen 23–24: Aufrufe der Methode [inspect] mit von [Number] abgeleiteten Typen;
   </li>
 </ul>
 
-<p>Es werden folgende Ergebnisse erhalten:</p>
+<p>Es ergeben sich folgende Ergebnisse:</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a>T: java.lang.Integer
 <a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a>U: java.lang.Long
 <a id="__codelineno-2-3" name="__codelineno-2-3" href="#__codelineno-2-3"></a>T: java.lang.Integer
 <a id="__codelineno-2-4" name="__codelineno-2-4" href="#__codelineno-2-4"></a>U: java.lang.Double
 </code></pre></div>
-<p><strong>Hinweis</strong>: Um die Klasse in IntelliJ auszuführen, führen Sie die folgenden Schritte aus [1, 2]:</p>
+<p><strong>Hinweis</strong>: Um die Klasse in IntelliJ auszuführen, gehen Sie wie folgt vor: [1, 2]:</p>
 <table class="odt-table" style="border-collapse: collapse; width: 100%; margin-bottom: 1em;"><tr><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top; text-align: left;"><img src="images/1000000000000209000001EAEA780CA8.png" width="327" height="307" style="display:inline-block; margin:4px;width:8.641cm;height:8.126cm;" class="odt-zoomable" data-zoom-src="images/1000000000000209000001EAEA780CA8.png" /></td><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top; text-align: left;">&nbsp;</td></tr></table>
 
-<p>Betrachten Sie nun das folgende Beispiel:</p>
+<p>Betrachten wir nun das folgende Beispiel:</p>
 <div class="odt-code-rich" data-linenums="true" style="counter-reset: odtline 0;"><pre><code class="language-bash">
 <span class="odt-code-line"><span class="odt-code-line-content"><span style="color:#000000">    </span><span style="font-weight:bold;color:#7f0055">public</span><span style="color:#000000"> </span><span style="font-weight:bold;color:#7f0055">void</span><span style="color:#000000"> addNumbers(List&lt;? </span><span style="font-weight:bold;color:#7f0055">super</span><span style="color:#000000"> Integer&gt; </span><span style="color:#6a3e3e">list</span><span style="color:#000000">) {</span></span></span>
 <span class="odt-code-line"><span class="odt-code-line-content"><span style="color:#000000">        </span><span style="font-weight:bold;color:#7f0055">for</span><span style="color:#000000"> (</span><span style="font-weight:bold;color:#7f0055">int</span><span style="color:#000000"> </span><span style="color:#6a3e3e">i</span><span style="color:#000000"> = 1; </span><span style="color:#6a3e3e">i</span><span style="color:#000000"> &lt;= 3; </span><span style="color:#6a3e3e">i</span><span style="color:#000000">++) {</span></span></span>
@@ -784,22 +784,22 @@
 <span class="odt-code-line"><span class="odt-code-line-content">}</span></span>
 </code></pre></div>
 
-<p>Die Methode [<span style="color: #000000">addNumbers</span>] nimmt eine List&lt;T&gt; als Parameter entgegen, wobei T eine Oberklasse der Klasse [Integer] ist. Aufgrund dieser Einschränkung können die <em>Ganzzahlen</em> 1 bis 3 zur Liste hinzugefügt werden (Zeilen 2–4), und die Methode könnte wie folgt aufgerufen werden:</p>
+<p>Die Methode [addNumbers] akzeptiert als Parameter einen Typ List&lt;T&gt;, wobei T eine übergeordnete Klasse der Klasse [Integer] ist. Aufgrund dieser Einschränkung können die Ganzzahlen <em>int</em> 1 bis 3 zur Liste hinzugefügt werden (Zeilen 2–4), und die Methode könnte wie folgt aufgerufen werden:</p>
 <div class="odt-code-rich" data-linenums="true" style="counter-reset: odtline 0;"><pre><code class="language-java">
 <span class="odt-code-line"><span class="odt-code-line-content"><span style="color:#000000">    List&lt;Number&gt; </span><span style="color:#6a3e3e">numbers</span><span style="color:#000000">=</span><span style="font-weight:bold;color:#7f0055">new</span><span style="color:#000000"> ArrayList&lt;&gt;();</span></span></span>
-<span class="odt-code-line"><span class="odt-code-line-content">    <span style="color:#000000">// ajout double Number &lt;-- Double</span></span></span>
+<span class="odt-code-line"><span class="odt-code-line-content">    <span style="color:#000000">// Hinzufügen eines Double-Werts &lt;-- Double</span></span></span>
 <span class="odt-code-line"><span class="odt-code-line-content"><span style="color:#000000">    </span><span style="color:#6a3e3e">numbers</span><span style="color:#000000">.add(7.8);</span></span></span>
-<span class="odt-code-line"><span class="odt-code-line-content">    <span style="color:#000000">// ajout Long Number &lt;-- Long</span></span></span>
+<span class="odt-code-line"><span class="odt-code-line-content">    <span style="color:#000000">// Hinzufügen von Long Number &lt;-- Long</span></span></span>
 <span class="odt-code-line"><span class="odt-code-line-content"><span style="color:#000000">    </span><span style="color:#6a3e3e">numbers</span><span style="color:#000000">.add(1L);</span></span></span>
-<span class="odt-code-line"><span class="odt-code-line-content">    <span style="color:#000000">// ajout List&lt;Number&gt; Number &lt;-- Integer</span></span></span>
+<span class="odt-code-line"><span class="odt-code-line-content">    <span style="color:#000000">// Hinzufügen von List&lt;Number&gt; Number &lt;-- Integer</span></span></span>
 <span class="odt-code-line"><span class="odt-code-line-content"><span style="color:#000000">    </span><span style="font-style:italic;color:#000000">addNumbers</span><span style="color:#000000">(</span><span style="color:#6a3e3e">numbers</span><span style="color:#000000">);</span></span></span>
-<span class="odt-code-line"><span class="odt-code-line-content">    <span style="color:#000000">// affichagede List&lt;Number&gt;</span></span></span>
+<span class="odt-code-line"><span class="odt-code-line-content">    <span style="color:#000000">// Anzeige von List&lt;Number&gt;</span></span></span>
 <span class="odt-code-line"><span class="odt-code-line-content"><span style="color:#000000">    </span><span style="font-weight:bold;color:#7f0055">for</span><span style="color:#000000">(Number </span><span style="color:#6a3e3e">number</span><span style="color:#000000"> : </span><span style="color:#6a3e3e">numbers</span><span style="color:#000000">){</span></span></span>
 <span class="odt-code-line"><span class="odt-code-line-content"><span style="color:#000000">      System.</span><span style="font-weight:bold;font-style:italic;color:#0000c0">out</span><span style="color:#000000">.println(</span><span style="color:#6a3e3e">number</span><span style="color:#000000">.getClass().getName());</span></span></span>
 <span class="odt-code-line"><span class="odt-code-line-content">}</span></span>
 </code></pre></div>
 
-<p>Dies führt zu folgendem Ergebnis:</p>
+<p>Man erhält dann das folgende Ergebnis:</p>
 <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-3-1">1</a></span>
 <span class="normal"><a href="#__codelineno-3-2">2</a></span>
 <span class="normal"><a href="#__codelineno-3-3">3</a></span>
@@ -810,14 +810,14 @@
 <a id="__codelineno-3-4" name="__codelineno-3-4"></a>java.lang.Integer
 <a id="__codelineno-3-5" name="__codelineno-3-5"></a>java.lang.Integer
 </code></pre></div></td></tr></table></div>
-<p>Um die Klasse <code>Box&amp;lt;T&amp;gt;</code> zu erweitern, würden wir schreiben:</p>
+<p>Um die Klasse <code>Box&amp;lt;T&amp;gt;</code> zu erweitern, schreibt man:</p>
 <div class="odt-code-rich" data-linenums="true" style="counter-reset: odtline 0;"><pre><code class="language-text">
 <span class="odt-code-line"><span class="odt-code-line-content"><span style="font-weight:bold;color:#7f0055">class</span><span style="color:#000000"> OtherBox&lt;T&gt; </span><span style="font-weight:bold;color:#7f0055">extends</span><span style="color:#000000"> Box&lt;T&gt; {</span></span></span>
-<span class="odt-code-line"><span class="odt-code-line-content"> </span></span>
+<span class="odt-code-line"><span class="odt-code-line-content"></span></span>
 <span class="odt-code-line"><span class="odt-code-line-content">}</span></span>
 </code></pre></div>
 
-<p>Die Unterklasse kann selbst neue generische Parameter einführen:</p>
+<p>Die untergeordnete Klasse kann ihrerseits neue generische Parameter einführen:</p>
 <div class="odt-code-rich" data-linenums="true" style="counter-reset: odtline 0;"><pre><code class="language-text">
 <span class="odt-code-line"><span class="odt-code-line-content"><span style="font-weight:bold;color:#7f0055">class</span><span style="color:#000000"> AnotherBox&lt;T, T1&gt; </span><span style="font-weight:bold;color:#7f0055">extends</span><span style="color:#000000"> Box&lt;T&gt; {</span></span></span>
 <span class="odt-code-line"><span class="odt-code-line-content"><span style="color:#000000">    </span><span style="font-weight:bold;color:#7f0055">void</span><span style="color:#000000"> consumer(T1 </span><span style="color:#6a3e3e">t1</span><span style="color:#000000">) {</span></span></span>
@@ -826,22 +826,22 @@
 <span class="odt-code-line"><span class="odt-code-line-content">}</span></span>
 </code></pre></div>
 
-<p>Eine Schnittstelle kann auch generische Parameter verwenden:</p>
+<p>Auch eine Schnittstelle kann generische Parameter verwenden:</p>
 <div class="odt-code-rich" data-linenums="true" style="counter-reset: odtline 0;"><pre><code class="language-text">
 <span class="odt-code-line"><span class="odt-code-line-content"><span style="font-weight:bold;color:#7f0055">interface</span><span style="color:#000000"> I&lt;T&gt; {</span></span></span>
 <span class="odt-code-line"><span class="odt-code-line-content"><span style="color:#000000">    </span><span style="font-weight:bold;color:#7f0055">void</span><span style="color:#000000"> doSomethingWith(T </span><span style="color:#6a3e3e">t</span><span style="color:#000000">);</span></span></span>
 <span class="odt-code-line"><span class="odt-code-line-content">}</span></span>
 </code></pre></div>
 
-<p>Verwenden Sie zur Implementierung die folgende Syntax:</p>
+<p>Zur Implementierung wird die folgende Syntax verwendet:</p>
 <div class="odt-code-rich" data-linenums="true" style="counter-reset: odtline 0;"><pre><code class="language-java">
 <span class="odt-code-line"><span class="odt-code-line-content"><span style="font-weight:bold;color:#7f0055">class</span><span style="color:#000000"> A&lt;T&gt; </span><span style="font-weight:bold;color:#7f0055">implements</span><span style="color:#000000"> I&lt;T&gt; {</span></span></span>
-<span class="odt-code-line"><span class="odt-code-line-content"> </span></span>
+<span class="odt-code-line"><span class="odt-code-line-content"></span></span>
 <span class="odt-code-line"><span class="odt-code-line-content"><span style="color:#000000">    </span><span style="color:#646464">@Override</span></span></span>
 <span class="odt-code-line"><span class="odt-code-line-content"><span style="color:#000000">    </span><span style="font-weight:bold;color:#7f0055">public</span><span style="color:#000000"> </span><span style="font-weight:bold;color:#7f0055">void</span><span style="color:#000000"> doSomethingWith(T </span><span style="color:#6a3e3e">t</span><span style="color:#000000">) {</span></span></span>
 <span class="odt-code-line"><span class="odt-code-line-content"><span style="color:#000000">        System.</span><span style="font-weight:bold;font-style:italic;color:#0000c0">out</span><span style="color:#000000">.printf(</span><span style="color:#2a00ff">&quot;%s%n&quot;</span><span style="color:#000000">, </span><span style="color:#6a3e3e">t</span><span style="color:#000000">);</span></span></span>
 <span class="odt-code-line"><span class="odt-code-line-content">    }</span></span>
-<span class="odt-code-line"><span class="odt-code-line-content"> </span></span>
+<span class="odt-code-line"><span class="odt-code-line-content"></span></span>
 <span class="odt-code-line"><span class="odt-code-line-content">}</span></span>
 </code></pre></div>
 

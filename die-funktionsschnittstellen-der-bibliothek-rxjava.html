@@ -12,13 +12,13 @@
         <meta name="author" content="Serge Tahé">
       
       
-        <link rel="canonical" href="https://stahe.github.io/de-rxjava-mai-2016/die-funktionalen-schnittstellen-der-rxjava-bibliothek.html">
+        <link rel="canonical" href="https://stahe.github.io/de-rxjava-mai-2016/die-funktionsschnittstellen-der-bibliothek-rxjava.html">
       
       
-        <link rel="prev" href="der-typ-streamt-in-java-8.html">
+        <link rel="prev" href="der-typ-streamt-aus-java-8.html">
       
       
-        <link rel="next" href="die-rxjava-bibliothek.html">
+        <link rel="next" href="die-bibliothek-rxjava.html">
       
       
         
@@ -29,7 +29,7 @@
     
     
       
-        <title>6. Die funktionalen Schnittstellen der RxJava-Bibliothek - Einführung in RxJava. Anwendungen in Swing- und Android-Umgebungen</title>
+        <title>6. Die Funktionsschnittstellen der Bibliothek RxJava - Einführung in RxJava. Anwendungen in Swing- und Android-Umgebungen</title>
       
     
     
@@ -94,7 +94,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#6-die-funktionalen-schnittstellen-der-rxjava-bibliothek" class="md-skip">
+        <a href="#6-die-funktionsschnittstellen-der-bibliothek-rxjava" class="md-skip">
           Skip to content
         </a>
       
@@ -130,7 +130,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              6. Die funktionalen Schnittstellen der RxJava-Bibliothek
+              6. Die Funktionsschnittstellen der Bibliothek RxJava
             
           </span>
         </div>
@@ -305,14 +305,14 @@
   
   
     <li class="md-nav__item">
-      <a href="einleitung.html" class="md-nav__link">
+      <a href="einfuhrung.html" class="md-nav__link">
         
   
   
   <span class="md-ellipsis">
     
   
-    1. Einleitung
+    1. Einführung
   
 
     
@@ -332,14 +332,14 @@
   
   
     <li class="md-nav__item">
-      <a href="ein-einfuhrungsbeispiel.html" class="md-nav__link">
+      <a href="ein-beispiel-zur-einfuhrung.html" class="md-nav__link">
         
   
   
   <span class="md-ellipsis">
     
   
-    2. Ein Einführungsbeispiel
+    2. Ein Beispiel zur Einführung
   
 
     
@@ -386,14 +386,14 @@
   
   
     <li class="md-nav__item">
-      <a href="java-8-lambda-ausdrucke.html" class="md-nav__link">
+      <a href="lambda-funktionen-in-java-8.html" class="md-nav__link">
         
   
   
   <span class="md-ellipsis">
     
   
-    4. Java 8 Lambda-Ausdrücke
+    4. Lambda-Funktionen in Java 8
   
 
     
@@ -413,14 +413,14 @@
   
   
     <li class="md-nav__item">
-      <a href="der-typ-streamt-in-java-8.html" class="md-nav__link">
+      <a href="der-typ-streamt-aus-java-8.html" class="md-nav__link">
         
   
   
   <span class="md-ellipsis">
     
   
-    5. Der Typ Stream<T> in Java 8
+    5. Der Typ `Stream<T>` aus Java 8
   
 
     
@@ -456,7 +456,7 @@
   <span class="md-ellipsis">
     
   
-    6. Die funktionalen Schnittstellen der RxJava-Bibliothek
+    6. Die Funktionsschnittstellen der Bibliothek RxJava
   
 
     
@@ -467,14 +467,14 @@
           <span class="md-nav__icon md-icon"></span>
         </label>
       
-      <a href="die-funktionalen-schnittstellen-der-rxjava-bibliothek.html" class="md-nav__link md-nav__link--active">
+      <a href="die-funktionsschnittstellen-der-bibliothek-rxjava.html" class="md-nav__link md-nav__link--active">
         
   
   
   <span class="md-ellipsis">
     
   
-    6. Die funktionalen Schnittstellen der RxJava-Bibliothek
+    6. Die Funktionsschnittstellen der Bibliothek RxJava
   
 
     
@@ -522,10 +522,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#63-beispiel-04-05-die-funktionale-schnittstelle-funci" class="md-nav__link">
+  <a href="#63-beispiel-04-05-die-funktionsschnittstelle-funci" class="md-nav__link">
     <span class="md-ellipsis">
       
-        6.3. Beispiel 04, 05: die funktionale Schnittstelle [Funci]
+        6.3. Beispiel-04, 05: Die Funktionsschnittstelle [Funci]
       
     </span>
   </a>
@@ -547,14 +547,14 @@
   
   
     <li class="md-nav__item">
-      <a href="die-rxjava-bibliothek.html" class="md-nav__link">
+      <a href="die-bibliothek-rxjava.html" class="md-nav__link">
         
   
   
   <span class="md-ellipsis">
     
   
-    7. Die RxJava-Bibliothek
+    7. Die Bibliothek RxJava
   
 
     
@@ -665,32 +665,32 @@
 
 
 
-<p><a id="refheading2073051760159442"></a></p>
-<h1 id="6-die-funktionalen-schnittstellen-der-rxjava-bibliothek">6. <span style="color: #365f91"><strong><span style="color: #365f91">Die funktionalen Schnittstellen der RxJava-Bibliothek</span></strong></span></h1>
-<p>Die Klasse <em><code>Observable</code></em> bildet die Grundlage der asynchronen RxJava-Bibliothek. Sie weist viele Ähnlichkeiten mit der soeben besprochenen <em><code>Stream</code></em>-Klasse auf. Wie <code>Stream</code> bietet sie eine große Anzahl von Methoden – mehrere Dutzend. Und wie bei <code>Stream</code> akzeptieren diese Methoden Instanzen funktionaler Schnittstellen als Parameter. Wir beginnen mit der Vorstellung der gängigsten: [Action] und [Function].</p>
-<p><a id="refheading174751349222571"></a></p>
+<p><span id="refheading2073051760159442" name="refheading2073051760159442" class="odt-bookmark-anchor"></span></p>
+<h1 id="6-die-funktionsschnittstellen-der-bibliothek-rxjava">6. <span style="color: #365f91">Die Funktionsschnittstellen der Bibliothek RxJava</span></h1>
+<p>Die Klasse <em>Observable</em> bildet die Grundlage der asynchronen Bibliothek RxJava. Sie weist viele Ähnlichkeiten mit der soeben vorgestellten Klasse <em>Stream</em> auf. Wie diese verfügt sie über sehr viele Methoden, mehrere Dutzend. Und wie diese akzeptiert auch sie Instanzen von funktionalen Schnittstellen als Parameter. Wir beginnen mit der Vorstellung der gängigsten davon: [Actioni] und [Funci].</p>
+<p><span id="refheading174751349222571" name="refheading174751349222571" class="odt-bookmark-anchor"></span></p>
 <h2 id="61-beispiel-01-die-funktionale-schnittstelle-action0">6.1. <span style="color: #4f81bd">Beispiel-01: Die funktionale Schnittstelle [Action0]</span></h2>
-<table class="odt-table" style="border-collapse: collapse; width: 100%; margin-bottom: 1em;"><tr><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top; text-align: left;"><img src="images/10000000000000FE0000015A1072417F.png" width="178" height="242" style="display:inline-block; margin:4px;width:4.701cm;height:6.405cm;" class="odt-zoomable" data-zoom-src="images/10000000000000FE0000015A1072417F.png" /></td><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top; text-align: left;">&nbsp;</td><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top; text-align: left;">&nbsp;</td></tr></table>
+<table class="odt-table" style="border-collapse: collapse; width: 100%; margin-bottom: 1em;"><tr><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top; text-align: left;"><img src="images/10000000000000FE0000015A1072417F.png" width="178" height="242" style="display:inline-block; margin:4px;width:4.701cm;height:6.41cm;" class="odt-zoomable" data-zoom-src="images/10000000000000FE0000015A1072417F.png" /></td><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top; text-align: left;">&nbsp;</td><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top; text-align: left;">&nbsp;</td></tr></table>
 
 <p>Die Schnittstelle [Action0] sieht wie folgt aus:</p>
-<table class="odt-table" style="border-collapse: collapse; width: 100%; margin-bottom: 1em;"><tr><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top; text-align: left;"><img src="images/100000000000019E00000178262C7807.png" width="248" height="226" style="display:inline-block; margin:4px;width:6.57cm;height:5.967cm;" class="odt-zoomable" data-zoom-src="images/100000000000019E00000178262C7807.png" /></td><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top; text-align: left;"><img src="images/100000000000015C00000187CE435B62.png" width="209" height="234" style="display:inline-block; margin:4px;width:5.519cm;height:6.202cm;" class="odt-zoomable" data-zoom-src="images/100000000000015C00000187CE435B62.png" /></td></tr></table>
+<table class="odt-table" style="border-collapse: collapse; width: 100%; margin-bottom: 1em;"><tr><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top; text-align: left;"><img src="images/100000000000019E00000178262C7807.png" width="248" height="226" style="display:inline-block; margin:4px;width:6.57cm;height:5.971cm;" class="odt-zoomable" data-zoom-src="images/100000000000019E00000178262C7807.png" /></td><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top; text-align: left;"><img src="images/100000000000015C00000187CE435B62.png" width="209" height="235" style="display:inline-block; margin:4px;width:5.519cm;height:6.211cm;" class="odt-zoomable" data-zoom-src="images/100000000000015C00000187CE435B62.png" /></td></tr></table>
 
 <ul>
-  <li>Die Schnittstelle [Action0] verfügt über eine einzige Methode, <b>`call`</b>, mit der Signatur [2]: `<b>void call()</b>`. Sie leitet sich von der Schnittstelle [Action] ab [1, 3]. Die Schnittstelle [Action] hat keine Methoden. Diese Art von Schnittstelle wird als Marker-Schnittstelle bezeichnet [4]. Sie werden hauptsächlich verwendet, um Folgendes zu schreiben: <i>if(c </i><i><b>instanceOf</b></i><i>(Action)) {...}</i>. Die Schnittstelle [Action] selbst leitet sich von der Marker-Schnittstelle [Function] ab [4-6];
+  <li>Die Schnittstelle [Action0] verfügt über die einzige Methode <b>„call“ </b>mit der Signatur [2]: <b>void call()</b>. Sie leitet sich von den Schnittstellen [Action] und [1, 3] ab. Die Schnittstelle [Action] hat keine Methoden. Diese Art von Schnittstellen werden als Marker-Schnittstellen bezeichnet ([4]). Sie dienen hauptsächlich dazu, Folgendes zu schreiben: <i>if(c </i><i><b>instanceOf</b></i><i>(Action)) {...}</i>. Die Schnittstelle [Action] leitet sich ihrerseits von der Marker-Schnittstelle [Function] [4-6] ab;
   </li>
 </ul>
 
 <table class="odt-table" style="border-collapse: collapse; width: 100%; margin-bottom: 1em;"><tr><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top; text-align: left;"><img src="images/100000000000015B0000016CB46D4FBD.png" width="208" height="218" style="display:inline-block; margin:4px;width:5.51cm;height:5.78cm;" class="odt-zoomable" data-zoom-src="images/100000000000015B0000016CB46D4FBD.png" /></td><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top; text-align: left;">&nbsp;</td></tr></table>
 
-<p>Wir werden die Schnittstelle [Action0] anhand des folgenden Codes veranschaulichen (<strong>Beispiel01</strong>): </p>
+<p>Wir veranschaulichen die Schnittstelle [Action0] anhand des folgenden Codes (<strong>Beispiel01</strong>): </p>
 <div class="odt-code-rich" data-linenums="true" style="counter-reset: odtline 0;"><pre><code class="language-java">
 <span class="odt-code-line"><span class="odt-code-line-content"><span style="font-weight:bold;color:#7f0055">package</span><span style="color:#000000"> dvp.rxjava.lamdbas;</span></span></span>
-<span class="odt-code-line"><span class="odt-code-line-content"> </span></span>
+<span class="odt-code-line"><span class="odt-code-line-content"></span></span>
 <span class="odt-code-line"><span class="odt-code-line-content"><span style="font-weight:bold;color:#7f0055">import</span><span style="color:#000000"> rx.functions.Action0;</span></span></span>
-<span class="odt-code-line"><span class="odt-code-line-content"> </span></span>
+<span class="odt-code-line"><span class="odt-code-line-content"></span></span>
 <span class="odt-code-line"><span class="odt-code-line-content"><span style="font-weight:bold;color:#7f0055">public</span><span style="color:#000000"> </span><span style="font-weight:bold;color:#7f0055">class</span><span style="color:#000000"> Exemple01 {</span></span></span>
 <span class="odt-code-line"><span class="odt-code-line-content"><span style="color:#000000">  </span><span style="font-weight:bold;color:#7f0055">public</span><span style="color:#000000"> </span><span style="font-weight:bold;color:#7f0055">static</span><span style="color:#000000"> </span><span style="font-weight:bold;color:#7f0055">void</span><span style="color:#000000"> main(String[] </span><span style="color:#6a3e3e">args</span><span style="color:#000000">) {</span></span></span>
-<span class="odt-code-line"><span class="odt-code-line-content">    <span style="color:#000000">// Action0</span></span></span>
+<span class="odt-code-line"><span class="odt-code-line-content">    <span style="color:#000000">// Aktion 0</span></span></span>
 <span class="odt-code-line"><span class="odt-code-line-content"><span style="color:#000000">    Action0 </span><span style="color:#6a3e3e">a01</span><span style="color:#000000"> = </span><span style="font-weight:bold;color:#7f0055">new</span><span style="color:#000000"> Action0() {</span></span></span>
 <span class="odt-code-line"><span class="odt-code-line-content"><span style="color:#000000">      </span><span style="color:#646464">@Override</span></span></span>
 <span class="odt-code-line"><span class="odt-code-line-content"><span style="color:#000000">      </span><span style="font-weight:bold;color:#7f0055">public</span><span style="color:#000000"> </span><span style="font-weight:bold;color:#7f0055">void</span><span style="color:#000000"> call() {</span></span></span>
@@ -698,7 +698,7 @@
 <span class="odt-code-line"><span class="odt-code-line-content">      }</span></span>
 <span class="odt-code-line"><span class="odt-code-line-content">    };</span></span>
 <span class="odt-code-line"><span class="odt-code-line-content"><span style="color:#000000">    Action0 </span><span style="color:#6a3e3e">a02</span><span style="color:#000000"> = () -&gt; System.</span><span style="font-weight:bold;font-style:italic;color:#0000c0">out</span><span style="color:#000000">.println(</span><span style="color:#2a00ff">&quot;lambda ao2.call&quot;</span><span style="color:#000000">);</span></span></span>
-<span class="odt-code-line"><span class="odt-code-line-content">    <span style="color:#000000">// displays</span></span></span>
+<span class="odt-code-line"><span class="odt-code-line-content">    <span style="color:#000000">// Aufrufe</span></span></span>
 <span class="odt-code-line"><span class="odt-code-line-content"><span style="color:#000000">    </span><span style="color:#6a3e3e">a01</span><span style="color:#000000">.call();</span></span></span>
 <span class="odt-code-line"><span class="odt-code-line-content"><span style="color:#000000">    </span><span style="color:#6a3e3e">a02</span><span style="color:#000000">.call();</span></span></span>
 <span class="odt-code-line"><span class="odt-code-line-content">  }</span></span>
@@ -706,9 +706,9 @@
 </code></pre></div>
 
 <ul>
-  <li>Zeilen 8–13: Implementierung der Schnittstelle [Action0] mithilfe einer anonymen Klasse;
+  <li>Zeilen 8–13: Implementierung der Schnittstelle [Action0] mit einer anonymen Klasse;
   </li>
-  <li>Zeilen 8–13: Implementierung der Schnittstelle [Action0] mithilfe eines Lambda-Ausdrucks;
+  <li>Zeilen 8–13: Implementierung der Schnittstelle [Action0] mit einem Lambda-Ausdruck;
   </li>
 </ul>
 
@@ -717,22 +717,22 @@
 <span class="normal"><a href="#__codelineno-0-2">2</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1"></a>anonymous a01.call
 <a id="__codelineno-0-2" name="__codelineno-0-2"></a>lambda ao2.call
 </code></pre></div></td></tr></table></div>
-<p><a id="refheading174701349222571"></a></p>
-<h2 id="62-beispiel-02-03-die-funktionale-schnittstelle-actioni">6.2. <span style="color: #4f81bd"><strong>Beispiel-02, 03: die funktionale Schnittstelle [Actioni]</strong></span></h2>
-<table class="odt-table" style="border-collapse: collapse; width: 100%; margin-bottom: 1em;"><tr><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top; text-align: left;"><img src="images/10000000000000FE0000015A206EE307.png" width="178" height="242" style="display:inline-block; margin:4px;width:4.701cm;height:6.405cm;" class="odt-zoomable" data-zoom-src="images/10000000000000FE0000015A206EE307.png" /></td><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top; text-align: left;">&nbsp;</td><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top; text-align: left;">&nbsp;</td></tr></table>
+<p><span id="refheading174701349222571" name="refheading174701349222571" class="odt-bookmark-anchor"></span></p>
+<h2 id="62-beispiel-02-03-die-funktionale-schnittstelle-actioni">6.2. <span style="color: #4f81bd">Beispiel-02, 03: die funktionale Schnittstelle [Actioni]</span></h2>
+<table class="odt-table" style="border-collapse: collapse; width: 100%; margin-bottom: 1em;"><tr><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top; text-align: left;"><img src="images/10000000000000FE0000015A206EE307.png" width="178" height="242" style="display:inline-block; margin:4px;width:4.701cm;height:6.41cm;" class="odt-zoomable" data-zoom-src="images/10000000000000FE0000015A206EE307.png" /></td><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top; text-align: left;">&nbsp;</td><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top; text-align: left;">&nbsp;</td></tr></table>
 
-<p>Die Schnittstelle [Action1] sieht wie folgt aus:</p>
-<table class="odt-table" style="border-collapse: collapse; width: 100%; margin-bottom: 1em;"><tr><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top; text-align: left;"><img src="images/1000000000000187000000F45229427B.png" width="235" height="146" style="display:inline-block; margin:4px;width:6.211cm;height:3.875cm;" class="odt-zoomable" data-zoom-src="images/1000000000000187000000F45229427B.png" /></td><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top; text-align: left;">&nbsp;</td></tr></table>
+<p>Die Schnittstelle [Action1] lautet wie folgt:</p>
+<table class="odt-table" style="border-collapse: collapse; width: 100%; margin-bottom: 1em;"><tr><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top; text-align: left;"><img src="images/1000000000000187000000F45229427B.png" width="235" height="146" style="display:inline-block; margin:4px;width:6.211cm;height:3.87cm;" class="odt-zoomable" data-zoom-src="images/1000000000000187000000F45229427B.png" /></td><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top; text-align: left;">&nbsp;</td></tr></table>
 
 <p>Wir veranschaulichen dies anhand des folgenden Codes (<strong>Beispiel 02</strong>):</p>
 <div class="odt-code-rich" data-linenums="true" style="counter-reset: odtline 0;"><pre><code class="language-java">
 <span class="odt-code-line"><span class="odt-code-line-content"><span style="font-weight:bold;color:#7f0055">package</span><span style="color:#000000"> dvp.rxjava.lamdbas;</span></span></span>
-<span class="odt-code-line"><span class="odt-code-line-content"> </span></span>
+<span class="odt-code-line"><span class="odt-code-line-content"></span></span>
 <span class="odt-code-line"><span class="odt-code-line-content"><span style="font-weight:bold;color:#7f0055">import</span><span style="color:#000000"> rx.functions.Action1;</span></span></span>
-<span class="odt-code-line"><span class="odt-code-line-content"> </span></span>
+<span class="odt-code-line"><span class="odt-code-line-content"></span></span>
 <span class="odt-code-line"><span class="odt-code-line-content"><span style="font-weight:bold;color:#7f0055">public</span><span style="color:#000000"> </span><span style="font-weight:bold;color:#7f0055">class</span><span style="color:#000000"> Exemple02 {</span></span></span>
 <span class="odt-code-line"><span class="odt-code-line-content"><span style="color:#000000">  </span><span style="font-weight:bold;color:#7f0055">public</span><span style="color:#000000"> </span><span style="font-weight:bold;color:#7f0055">static</span><span style="color:#000000"> </span><span style="font-weight:bold;color:#7f0055">void</span><span style="color:#000000"> main(String[] </span><span style="color:#6a3e3e">args</span><span style="color:#000000">) {</span></span></span>
-<span class="odt-code-line"><span class="odt-code-line-content">    <span style="color:#000000">// Action1</span></span></span>
+<span class="odt-code-line"><span class="odt-code-line-content">    <span style="color:#000000">// Aktion1</span></span></span>
 <span class="odt-code-line"><span class="odt-code-line-content"><span style="color:#000000">    Action1&lt;Integer&gt; </span><span style="color:#6a3e3e">a10</span><span style="color:#000000"> = </span><span style="font-weight:bold;color:#7f0055">new</span><span style="color:#000000"> Action1&lt;Integer&gt;() {</span></span></span>
 <span class="odt-code-line"><span class="odt-code-line-content"><span style="color:#000000">      </span><span style="color:#646464">@Override</span></span></span>
 <span class="odt-code-line"><span class="odt-code-line-content"><span style="color:#000000">      </span><span style="font-weight:bold;color:#7f0055">public</span><span style="color:#000000"> </span><span style="font-weight:bold;color:#7f0055">void</span><span style="color:#000000"> call(Integer </span><span style="color:#6a3e3e">integer</span><span style="color:#000000">) {</span></span></span>
@@ -740,28 +740,28 @@
 <span class="odt-code-line"><span class="odt-code-line-content">      }</span></span>
 <span class="odt-code-line"><span class="odt-code-line-content">    };</span></span>
 <span class="odt-code-line"><span class="odt-code-line-content"><span style="color:#000000">    Action1&lt;Double&gt; </span><span style="color:#6a3e3e">a11</span><span style="color:#000000"> = (</span><span style="color:#6a3e3e">d</span><span style="color:#000000"> -&gt; System.</span><span style="font-weight:bold;font-style:italic;color:#0000c0">out</span><span style="color:#000000">.printf(</span><span style="color:#2a00ff">&quot;lambda a11.call (%s)%n&quot;</span><span style="color:#000000">, </span><span style="color:#6a3e3e">d</span><span style="color:#000000">));</span></span></span>
-<span class="odt-code-line"><span class="odt-code-line-content"> </span></span>
-<span class="odt-code-line"><span class="odt-code-line-content">    <span style="color:#000000">// executions</span></span></span>
+<span class="odt-code-line"><span class="odt-code-line-content"></span></span>
+<span class="odt-code-line"><span class="odt-code-line-content">    <span style="color:#000000">// Ausführungen</span></span></span>
 <span class="odt-code-line"><span class="odt-code-line-content"><span style="color:#000000">    </span><span style="color:#6a3e3e">a10</span><span style="color:#000000">.call(20);</span></span></span>
 <span class="odt-code-line"><span class="odt-code-line-content"><span style="color:#000000">    </span><span style="color:#6a3e3e">a11</span><span style="color:#000000">.call(17.4);</span></span></span>
 <span class="odt-code-line"><span class="odt-code-line-content">  }</span></span>
 <span class="odt-code-line"><span class="odt-code-line-content">}</span></span>
 </code></pre></div>
 
-<p>was folgendes Ergebnis liefert:</p>
+<p>was zu folgendem Ergebnis führt:</p>
 <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-1-1">1</a></span>
 <span class="normal"><a href="#__codelineno-1-2">2</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1"></a>anonymous a10.call (20)
 <a id="__codelineno-1-2" name="__codelineno-1-2"></a>lambda a11.call (17.4)
 </code></pre></div></td></tr></table></div>
-<p>Im Allgemeinen ist [Actioni] (0 &lt;= i &lt;= 9) eine funktionale Schnittstelle mit einer einzigen Methode der folgenden Signatur: <strong>void call(T1 t1, T2 t2, ..., Ti ti)</strong>. Hier ist ein Beispiel für [Action2] (<strong>Beispiel03</strong>):</p>
+<p>Allgemein gesagt ist [Actioni] (0 &lt;= i &lt;= 9) eine funktionale Schnittstelle mit der einzigen Methode mit folgender Signatur: <strong>void call(T1 t1, T2 t2, ..., Ti ti)</strong>. Hier ein Beispiel für [Action2] (<strong>Beispiel03</strong>):</p>
 <div class="odt-code-rich" data-linenums="true" style="counter-reset: odtline 0;"><pre><code class="language-java">
 <span class="odt-code-line"><span class="odt-code-line-content"><span style="font-weight:bold;color:#7f0055">package</span><span style="color:#000000"> dvp.rxjava.lamdbas;</span></span></span>
-<span class="odt-code-line"><span class="odt-code-line-content"> </span></span>
+<span class="odt-code-line"><span class="odt-code-line-content"></span></span>
 <span class="odt-code-line"><span class="odt-code-line-content"><span style="font-weight:bold;color:#7f0055">import</span><span style="color:#000000"> rx.functions.Action2;</span></span></span>
-<span class="odt-code-line"><span class="odt-code-line-content"> </span></span>
+<span class="odt-code-line"><span class="odt-code-line-content"></span></span>
 <span class="odt-code-line"><span class="odt-code-line-content"><span style="font-weight:bold;color:#7f0055">public</span><span style="color:#000000"> </span><span style="font-weight:bold;color:#7f0055">class</span><span style="color:#000000"> Exemple03 {</span></span></span>
 <span class="odt-code-line"><span class="odt-code-line-content"><span style="color:#000000">  </span><span style="font-weight:bold;color:#7f0055">public</span><span style="color:#000000"> </span><span style="font-weight:bold;color:#7f0055">static</span><span style="color:#000000"> </span><span style="font-weight:bold;color:#7f0055">void</span><span style="color:#000000"> main(String[] </span><span style="color:#6a3e3e">args</span><span style="color:#000000">) {</span></span></span>
-<span class="odt-code-line"><span class="odt-code-line-content">    <span style="color:#000000">// Action2</span></span></span>
+<span class="odt-code-line"><span class="odt-code-line-content">    <span style="color:#000000">// Aktion 2</span></span></span>
 <span class="odt-code-line"><span class="odt-code-line-content"><span style="color:#000000">    Action2&lt;Integer, Double&gt; </span><span style="color:#6a3e3e">a20</span><span style="color:#000000"> = </span><span style="font-weight:bold;color:#7f0055">new</span><span style="color:#000000"> Action2&lt;Integer, Double&gt;() {</span></span></span>
 <span class="odt-code-line"><span class="odt-code-line-content"><span style="color:#000000">      </span><span style="color:#646464">@Override</span></span></span>
 <span class="odt-code-line"><span class="odt-code-line-content"><span style="color:#000000">      </span><span style="font-weight:bold;color:#7f0055">public</span><span style="color:#000000"> </span><span style="font-weight:bold;color:#7f0055">void</span><span style="color:#000000"> call(Integer </span><span style="color:#6a3e3e">integer</span><span style="color:#000000">, Double </span><span style="color:#6a3e3e">aDouble</span><span style="color:#000000">) {</span></span></span>
@@ -769,7 +769,7 @@
 <span class="odt-code-line"><span class="odt-code-line-content">      }</span></span>
 <span class="odt-code-line"><span class="odt-code-line-content">    };</span></span>
 <span class="odt-code-line"><span class="odt-code-line-content"><span style="color:#000000">    Action2&lt;Integer, Double&gt; </span><span style="color:#6a3e3e">a21</span><span style="color:#000000"> = (</span><span style="color:#6a3e3e">i</span><span style="color:#000000">, </span><span style="color:#6a3e3e">d</span><span style="color:#000000">) -&gt; System.</span><span style="font-weight:bold;font-style:italic;color:#0000c0">out</span><span style="color:#000000">.printf(</span><span style="color:#2a00ff">&quot;lambda a21.call(%s,%s)%n&quot;</span><span style="color:#000000">, </span><span style="color:#6a3e3e">i</span><span style="color:#000000">, </span><span style="color:#6a3e3e">d</span><span style="color:#000000">);</span></span></span>
-<span class="odt-code-line"><span class="odt-code-line-content">    <span style="color:#000000">// executions</span></span></span>
+<span class="odt-code-line"><span class="odt-code-line-content">    <span style="color:#000000">// Ausführungen</span></span></span>
 <span class="odt-code-line"><span class="odt-code-line-content"><span style="color:#000000">    </span><span style="color:#6a3e3e">a20</span><span style="color:#000000">.call(10,11.3);</span></span></span>
 <span class="odt-code-line"><span class="odt-code-line-content"><span style="color:#000000">    </span><span style="color:#6a3e3e">a21</span><span style="color:#000000">.call(5,5.6);</span></span></span>
 <span class="odt-code-line"><span class="odt-code-line-content">  }</span></span>
@@ -780,23 +780,23 @@
 <div class="highlight"><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a>anonymous a20.call(10,11.3)
 <a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a>lambda a21.call(5,5.6)
 </code></pre></div>
-<p><a id="refheading104126374082361"></a></p>
-<h2 id="63-beispiel-04-05-die-funktionale-schnittstelle-funci">6.3. <span style="color: #4f81bd"><strong>Beispiel 04, 05: die funktionale Schnittstelle [Funci]</strong></span></h2>
-<table class="odt-table" style="border-collapse: collapse; width: 100%; margin-bottom: 1em;"><tr><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top; text-align: left;"><img src="images/10000000000000B0000000AA1102BA48.png" width="123" height="119" style="display:inline-block; margin:4px;width:3.26cm;height:3.149cm;" class="odt-zoomable" data-zoom-src="images/10000000000000B0000000AA1102BA48.png" /></td><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top; text-align: left;">&nbsp;</td><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top; text-align: left;">&nbsp;</td></tr></table>
+<p><span id="refheading104126374082361" name="refheading104126374082361" class="odt-bookmark-anchor"></span></p>
+<h2 id="63-beispiel-04-05-die-funktionsschnittstelle-funci">6.3. <span style="color: #4f81bd">Beispiel-04, 05: Die Funktionsschnittstelle [Funci]</span></h2>
+<table class="odt-table" style="border-collapse: collapse; width: 100%; margin-bottom: 1em;"><tr><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top; text-align: left;"><img src="images/10000000000000B0000000AA1102BA48.png" width="123" height="119" style="display:inline-block; margin:4px;width:3.26cm;height:3.15cm;" class="odt-zoomable" data-zoom-src="images/10000000000000B0000000AA1102BA48.png" /></td><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top; text-align: left;">&nbsp;</td><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top; text-align: left;">&nbsp;</td></tr></table>
 
 <p>Die Schnittstelle [Func0] sieht wie folgt aus:</p>
-<table class="odt-table" style="border-collapse: collapse; width: 100%; margin-bottom: 1em;"><tr><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top; text-align: left;"><img src="images/10000000000001AA000000DE7A673980.png" width="235" height="122" style="display:inline-block; margin:4px;width:6.211cm;height:3.237cm;" class="odt-zoomable" data-zoom-src="images/10000000000001AA000000DE7A673980.png" /></td><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top; text-align: left;">&nbsp;</td></tr></table>
+<table class="odt-table" style="border-collapse: collapse; width: 100%; margin-bottom: 1em;"><tr><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top; text-align: left;"><img src="images/10000000000001AA000000DE7A673980.png" width="235" height="122" style="display:inline-block; margin:4px;width:6.211cm;height:3.23cm;" class="odt-zoomable" data-zoom-src="images/10000000000001AA000000DE7A673980.png" /></td><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top; text-align: left;">&nbsp;</td></tr></table>
 
 <p>In diesem Fall gibt die Methode [call] der Schnittstelle ein Ergebnis vom Typ R zurück.</p>
-<p>Wir werden die Schnittstelle anhand des folgenden Codes veranschaulichen:</p>
+<p>Wir veranschaulichen die Schnittstelle mit dem folgenden Code:</p>
 <div class="odt-code-rich" data-linenums="true" style="counter-reset: odtline 0;"><pre><code class="language-java">
 <span class="odt-code-line"><span class="odt-code-line-content"><span style="font-weight:bold;color:#7f0055">package</span><span style="color:#000000"> dvp.rxjava.lamdbas;</span></span></span>
 <span class="odt-code-line"><span class="odt-code-line-content"></span></span>
 <span class="odt-code-line"><span class="odt-code-line-content"><span style="font-weight:bold;color:#7f0055">import</span><span style="color:#000000"> rx.functions.Func0;</span></span></span>
-<span class="odt-code-line"><span class="odt-code-line-content"> </span></span>
+<span class="odt-code-line"><span class="odt-code-line-content"></span></span>
 <span class="odt-code-line"><span class="odt-code-line-content"><span style="font-weight:bold;color:#7f0055">public</span><span style="color:#000000"> </span><span style="font-weight:bold;color:#7f0055">class</span><span style="color:#000000"> Exemple04 {</span></span></span>
 <span class="odt-code-line"><span class="odt-code-line-content"><span style="color:#000000">  </span><span style="font-weight:bold;color:#7f0055">public</span><span style="color:#000000"> </span><span style="font-weight:bold;color:#7f0055">static</span><span style="color:#000000"> </span><span style="font-weight:bold;color:#7f0055">void</span><span style="color:#000000"> main(String[] </span><span style="color:#6a3e3e">args</span><span style="color:#000000">) {</span></span></span>
-<span class="odt-code-line"><span class="odt-code-line-content">    <span style="color:#000000">// Function0</span></span></span>
+<span class="odt-code-line"><span class="odt-code-line-content">    <span style="color:#000000">// Funktion0</span></span></span>
 <span class="odt-code-line"><span class="odt-code-line-content"><span style="color:#000000">    Func0&lt;String&gt; </span><span style="color:#6a3e3e">f00</span><span style="color:#000000"> = </span><span style="font-weight:bold;color:#7f0055">new</span><span style="color:#000000"> Func0&lt;String&gt;() {</span></span></span>
 <span class="odt-code-line"><span class="odt-code-line-content"><span style="color:#000000">      </span><span style="color:#646464">@Override</span></span></span>
 <span class="odt-code-line"><span class="odt-code-line-content"><span style="color:#000000">      </span><span style="font-weight:bold;color:#7f0055">public</span><span style="color:#000000"> String call() {</span></span></span>
@@ -804,7 +804,7 @@
 <span class="odt-code-line"><span class="odt-code-line-content">      }</span></span>
 <span class="odt-code-line"><span class="odt-code-line-content">    };</span></span>
 <span class="odt-code-line"><span class="odt-code-line-content"><span style="color:#000000">    Func0&lt;String&gt; </span><span style="color:#6a3e3e">f01</span><span style="color:#000000"> = () -&gt; </span><span style="color:#2a00ff">&quot;lambda f01.call&quot;</span><span style="color:#000000">;</span></span></span>
-<span class="odt-code-line"><span class="odt-code-line-content">    <span style="color:#000000">// executions</span></span></span>
+<span class="odt-code-line"><span class="odt-code-line-content">    <span style="color:#000000">// Ausführungen</span></span></span>
 <span class="odt-code-line"><span class="odt-code-line-content"><span style="color:#000000">    System.</span><span style="font-weight:bold;font-style:italic;color:#0000c0">out</span><span style="color:#000000">.println(</span><span style="color:#6a3e3e">f00</span><span style="color:#000000">.call());</span></span></span>
 <span class="odt-code-line"><span class="odt-code-line-content"><span style="color:#000000">    System.</span><span style="font-weight:bold;font-style:italic;color:#0000c0">out</span><span style="color:#000000">.println(</span><span style="color:#6a3e3e">f01</span><span style="color:#000000">.call());</span></span></span>
 <span class="odt-code-line"><span class="odt-code-line-content">  }</span></span>
@@ -816,12 +816,12 @@
 <span class="normal"><a href="#__codelineno-3-2">2</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-3-1" name="__codelineno-3-1"></a>anonymous a20.call(10,11.3)
 <a id="__codelineno-3-2" name="__codelineno-3-2"></a>lambda a21.call(5,5.6)
 </code></pre></div></td></tr></table></div>
-<p><span style="color: #000000">Im Allgemeinen ist [Funci] (0&lt;=i&lt;=9) eine funktionale Schnittstelle mit einer einzigen Methodensignatur: </span><strong><span style="color: #000000">R call(T1 t1, T2 t2, ..., Ti ti)</span></strong><span style="color: #000000">. Hier ist ein Beispiel für [Func2] (</span><strong><span style="color: #000000">Beispiel05</span></strong><span style="color: #000000">): </span></p>
+<p><span style="color: #000000">Allgemein ist [Funci] (0 &lt;= i &lt;= 9) eine funktionale Schnittstelle mit der einzigen Signaturmethode: </span><strong><span style="color: #000000">R call(T1 t1, T2 t2, ..., Ti ti)</span></strong><span style="color: #000000">. Hier ein Beispiel für [Func2] (</span><strong><span style="color: #000000">Beispiel05</span></strong><span style="color: #000000">): </span></p>
 <div class="odt-code-rich" data-linenums="true" style="counter-reset: odtline 0;"><pre><code class="language-java">
 <span class="odt-code-line"><span class="odt-code-line-content"><span style="font-weight:bold;color:#7f0055">package</span><span style="color:#000000"> dvp.rxjava.lamdbas;</span></span></span>
-<span class="odt-code-line"><span class="odt-code-line-content"> </span></span>
+<span class="odt-code-line"><span class="odt-code-line-content"></span></span>
 <span class="odt-code-line"><span class="odt-code-line-content"><span style="font-weight:bold;color:#7f0055">import</span><span style="color:#000000"> rx.functions.Func2;</span></span></span>
-<span class="odt-code-line"><span class="odt-code-line-content"> </span></span>
+<span class="odt-code-line"><span class="odt-code-line-content"></span></span>
 <span class="odt-code-line"><span class="odt-code-line-content"><span style="font-weight:bold;color:#7f0055">public</span><span style="color:#000000"> </span><span style="font-weight:bold;color:#7f0055">class</span><span style="color:#000000"> Exemple05 {</span></span></span>
 <span class="odt-code-line"><span class="odt-code-line-content"><span style="color:#000000">  </span><span style="font-weight:bold;color:#7f0055">public</span><span style="color:#000000"> </span><span style="font-weight:bold;color:#7f0055">static</span><span style="color:#000000"> </span><span style="font-weight:bold;color:#7f0055">void</span><span style="color:#000000"> main(String[] </span><span style="color:#6a3e3e">args</span><span style="color:#000000">) {</span></span></span>
 <span class="odt-code-line"><span class="odt-code-line-content">    <span style="color:#000000">// Func2</span></span></span>
@@ -832,7 +832,7 @@
 <span class="odt-code-line"><span class="odt-code-line-content">      }</span></span>
 <span class="odt-code-line"><span class="odt-code-line-content">    };</span></span>
 <span class="odt-code-line"><span class="odt-code-line-content"><span style="color:#000000">    Func2&lt;Integer, Double, String&gt; </span><span style="color:#6a3e3e">f21</span><span style="color:#000000"> = (</span><span style="color:#6a3e3e">i</span><span style="color:#000000">,</span><span style="color:#6a3e3e">d</span><span style="color:#000000">) -&gt; String.</span><span style="font-style:italic;color:#000000">format</span><span style="color:#000000">(</span><span style="color:#2a00ff">&quot;anonymous f21.call(%s,%s)&quot;</span><span style="color:#000000">, </span><span style="color:#6a3e3e">i</span><span style="color:#000000">, </span><span style="color:#6a3e3e">d</span><span style="color:#000000">);</span></span></span>
-<span class="odt-code-line"><span class="odt-code-line-content">    <span style="color:#000000">// displays</span></span></span>
+<span class="odt-code-line"><span class="odt-code-line-content">    <span style="color:#000000">// Anzeigen</span></span></span>
 <span class="odt-code-line"><span class="odt-code-line-content"><span style="color:#000000">    System.</span><span style="font-weight:bold;font-style:italic;color:#0000c0">out</span><span style="color:#000000">.println(</span><span style="color:#6a3e3e">f20</span><span style="color:#000000">.call(10,10.2));</span></span></span>
 <span class="odt-code-line"><span class="odt-code-line-content"><span style="color:#000000">    System.</span><span style="font-weight:bold;font-style:italic;color:#0000c0">out</span><span style="color:#000000">.println(</span><span style="color:#6a3e3e">f21</span><span style="color:#000000">.call(100, 100.3));</span></span></span>
 <span class="odt-code-line"><span class="odt-code-line-content">  }</span></span>

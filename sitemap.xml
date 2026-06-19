@@ -2,46 +2,46 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
     <url>
          <loc>https://stahe.github.io/de-rxjava-mai-2016/index.html</loc>
-         <lastmod>2026-05-25</lastmod>
+         <lastmod>2026-06-19</lastmod>
     </url>
     <url>
          <loc>https://stahe.github.io/de-rxjava-mai-2016/anhange.html</loc>
-         <lastmod>2026-05-25</lastmod>
+         <lastmod>2026-06-19</lastmod>
     </url>
     <url>
-         <loc>https://stahe.github.io/de-rxjava-mai-2016/der-typ-streamt-in-java-8.html</loc>
-         <lastmod>2026-05-25</lastmod>
+         <loc>https://stahe.github.io/de-rxjava-mai-2016/der-typ-streamt-aus-java-8.html</loc>
+         <lastmod>2026-06-19</lastmod>
     </url>
     <url>
-         <loc>https://stahe.github.io/de-rxjava-mai-2016/die-funktionalen-schnittstellen-der-rxjava-bibliothek.html</loc>
-         <lastmod>2026-05-25</lastmod>
+         <loc>https://stahe.github.io/de-rxjava-mai-2016/die-bibliothek-rxjava.html</loc>
+         <lastmod>2026-06-19</lastmod>
     </url>
     <url>
-         <loc>https://stahe.github.io/de-rxjava-mai-2016/die-rxjava-bibliothek.html</loc>
-         <lastmod>2026-05-25</lastmod>
+         <loc>https://stahe.github.io/de-rxjava-mai-2016/die-funktionsschnittstellen-der-bibliothek-rxjava.html</loc>
+         <lastmod>2026-06-19</lastmod>
     </url>
     <url>
-         <loc>https://stahe.github.io/de-rxjava-mai-2016/ein-einfuhrungsbeispiel.html</loc>
-         <lastmod>2026-05-25</lastmod>
+         <loc>https://stahe.github.io/de-rxjava-mai-2016/ein-beispiel-zur-einfuhrung.html</loc>
+         <lastmod>2026-06-19</lastmod>
     </url>
     <url>
-         <loc>https://stahe.github.io/de-rxjava-mai-2016/einleitung.html</loc>
-         <lastmod>2026-05-25</lastmod>
+         <loc>https://stahe.github.io/de-rxjava-mai-2016/einfuhrung.html</loc>
+         <lastmod>2026-06-19</lastmod>
     </url>
     <url>
-         <loc>https://stahe.github.io/de-rxjava-mai-2016/java-8-lambda-ausdrucke.html</loc>
-         <lastmod>2026-05-25</lastmod>
+         <loc>https://stahe.github.io/de-rxjava-mai-2016/lambda-funktionen-in-java-8.html</loc>
+         <lastmod>2026-06-19</lastmod>
     </url>
     <url>
          <loc>https://stahe.github.io/de-rxjava-mai-2016/rxjava-in-der-android-umgebung.html</loc>
-         <lastmod>2026-05-25</lastmod>
+         <lastmod>2026-06-19</lastmod>
     </url>
     <url>
          <loc>https://stahe.github.io/de-rxjava-mai-2016/rxjava-in-der-swing-umgebung.html</loc>
-         <lastmod>2026-05-25</lastmod>
+         <lastmod>2026-06-19</lastmod>
     </url>
     <url>
          <loc>https://stahe.github.io/de-rxjava-mai-2016/signaturen-generischer-klassen-und-methoden.html</loc>
-         <lastmod>2026-05-25</lastmod>
+         <lastmod>2026-06-19</lastmod>
     </url>
 </urlset>
